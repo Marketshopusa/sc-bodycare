@@ -1032,42 +1032,27 @@ const INITIAL_MOCK_PRODUCTS = [
 
 const originalFetch = window.fetch;
 
-// A helper to safely check if the API is offline or returns non-JSON/404
-async function checkApiAvailability() {
-  if (window.sc_use_mock_db !== undefined) return;
-  try {
-    const res = await originalFetch('/api/products');
-    const contentType = res.headers.get('content-type') || '';
-    if (!res.ok || contentType.includes('text/html')) {
-      console.warn("[Mock DB] API returned 404/HTML. Enabling local mock database.");
-      window.sc_use_mock_db = true;
-    } else {
-      console.log("[Mock DB] Connected to real backend API.");
-      window.sc_use_mock_db = false;
-    }
-  } catch (err) {
-    console.warn("[Mock DB] API connection failed. Enabling local mock database.");
-    window.sc_use_mock_db = true;
-  }
-}
+// Synchronously determine if we should use the mock DB based on current origin/port
+const isStaticHost = window.location.hostname.includes('lovable') || 
+                     window.location.hostname.includes('github.io') || 
+                     window.location.hostname.includes('netlify') || 
+                     window.location.hostname.includes('vercel') ||
+                     (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') ||
+                     (window.location.port !== '3000' && window.location.port !== '');
 
-// Intercept window.fetch immediately
-window.fetch = async function(resource, options) {
+window.sc_use_mock_db = isStaticHost;
+
+// Intercept window.fetch immediately and synchronously
+window.fetch = function(resource, options) {
   const urlString = typeof resource === 'string' ? resource : (resource instanceof URL ? resource.toString() : (resource && resource.url ? resource.url : ''));
   
   if (urlString.includes('/api/')) {
-    // Determine if we should use the mock DB
-    if (window.sc_use_mock_db === undefined) {
-      await checkApiAvailability();
-    }
-    
     if (window.sc_use_mock_db) {
       return handleMockApi(urlString, options);
     }
     
     // Attempt real request, fall back to mock if it fails or returns 404/HTML
-    try {
-      const response = await originalFetch(resource, options);
+    return originalFetch(resource, options).then(response => {
       const contentType = response.headers.get('content-type') || '';
       if (!response.ok && (response.status === 404 || contentType.includes('text/html'))) {
         console.warn("[Mock DB] API returned 404/HTML. Switching to local mock database.");
@@ -1075,11 +1060,11 @@ window.fetch = async function(resource, options) {
         return handleMockApi(urlString, options);
       }
       return response;
-    } catch (err) {
+    }).catch(err => {
       console.warn("[Mock DB] API request failed. Switching to local mock database:", err);
       window.sc_use_mock_db = true;
       return handleMockApi(urlString, options);
-    }
+    });
   }
   
   return originalFetch(resource, options);
