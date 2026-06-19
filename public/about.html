@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sobre scbodycare | Historia, Calidad y Estudios</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0c231e">
+  <style>
+    /* Estilos específicos para la sección Sobre Nosotros */
+    .about-container {
+      display: flex;
+      gap: 40px;
+      margin-top: 50px;
+      margin-bottom: 80px;
+    }
+    .about-sidebar {
+      flex: 1;
+      max-width: 300px;
+    }
+    .about-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: sticky;
+      top: 30px;
+      background-color: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .about-sidebar li {
+      margin-bottom: 8px;
+    }
+    .about-sidebar li:last-child {
+      margin-bottom: 0;
+    }
+    .about-tab-link {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 6px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .about-tab-link:hover {
+      background-color: var(--color-bg-light);
+      color: var(--color-gold);
+    }
+    .about-tab-link.active {
+      background-color: var(--color-bg-light);
+      color: var(--color-gold);
+      border-left: 3px solid var(--color-gold);
+      border-radius: 0 6px 6px 0;
+      padding-left: 13px;
+    }
+    .about-content {
+      flex: 3;
+      background: #ffffff;
+      border: var(--border-silver-subtle);
+      border-radius: 8px;
+      padding: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .about-section {
+      display: none;
+    }
+    .about-section.active {
+      display: block;
+    }
+    .about-section h2 {
+      font-family: var(--font-secondary);
+      color: var(--color-text-dark);
+      font-size: 28px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--color-gold-light);
+      padding-bottom: 10px;
+    }
+    .about-section h3 {
+      font-size: 18px;
+      color: var(--color-gold-light);
+      margin-top: 30px;
+      margin-bottom: 12px;
+      font-family: var(--font-secondary);
+    }
+    .about-section p, .about-section li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    .about-section ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .about-section li {
+      margin-bottom: 8px;
+    }
+    .feature-box {
+      background-color: #f7f9fa;
+      border-left: 4px solid var(--color-gold);
+      padding: 20px;
+      border-radius: 4px;
+      margin: 25px 0;
+    }
+    .feature-box h4 {
+      color: var(--color-gold-light);
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Reglas para traducción limpia por CSS */
+    html[lang="es"] .lang-en { display: none !important; }
+    html[lang="es"] .lang-es { display: block !important; }
+    html[lang="en"] .lang-es { display: none !important; }
+    html[lang="en"] .lang-en { display: block !important; }
+
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+        margin-top: 20px;
+      }
+      .about-sidebar {
+        max-width: 100%;
+      }
+      .about-sidebar ul {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+        white-space: nowrap;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #eaeaea;
+      }
+      .about-sidebar li {
+        margin-bottom: 0;
+      }
+      .about-tab-link {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+      .about-tab-link.active {
+        border-left: none;
+        border-bottom: 3px solid var(--color-gold);
+        border-radius: 6px 6px 0 0;
+        padding-left: 12px;
+      }
+      .about-content {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera Móvil Estilo App Nativa -->
+  <header class="mobile-app-bar">
+    <div class="mobile-app-bar-container">
+      <a href="index.html" class="mobile-app-logo-link">
+        <img src="logo.jpg" alt="S&C Logo" class="mobile-logo-img">
+        <span class="mobile-logo-text">S&C Body Care</span>
+      </a>
+      <div class="mobile-app-bar-actions">
+        <!-- Panel administrativo móvil oculto por defecto para clientes regulares -->
+        <a href="admin.html" id="mobile-admin-panel-link" class="admin-panel-link" style="display: none; color: var(--color-gold); font-size: 18px; margin-right: 15px;" title="Panel Admin">
+          <i class="fa-solid fa-cogs"></i>
+        </a>
+        <button class="mobile-lang-toggle" onclick="toggleLanguage()" title="Cambiar Idioma">
+          <img id="mobile-lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+        <a href="index.html?cart=open" class="mobile-cart-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" id="mobile-cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span class="lang-es">✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+    <span class="lang-en">✨ Become a member Accumulate points and win prizes ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="tel:+17045247396" class="contact-btn phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i> <span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
+        <a href="https://wa.me/17045247396" target="_blank" class="contact-btn whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="sms:+17045247396" class="contact-btn sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i> SMS</a>
+        <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="contact-btn tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="contact-btn instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+      
+      <div class="top-nav-links" style="display: flex; align-items: center; gap: 15px; margin-left: auto;">
+        <a href="admin.html" class="admin-panel-link" style="display: none;"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> <span class="lang-es">Ingresar / Registrarse</span><span class="lang-en">Login / Register</span></a>
+        </span>
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" style="background: none; border: none; cursor: pointer; padding: 0; display: inline-flex; align-items: center;" title="Cambiar Idioma">
+          <img id="lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia -->
+  <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field" onkeyup="if(event.key === 'Enter') window.location.href='index.html?search=open';">
+        </div>
+        <a href="index.html?cart=open" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span class="lang-es">Carrito</span><span class="lang-en">Cart</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal de Información -->
+  <main class="container">
+    <div class="about-container">
+      
+      <!-- Barra lateral de navegación de Sobre Nosotros -->
+      <aside class="about-sidebar">
+        <ul>
+          <li>
+            <a href="#historia" class="about-tab-link active" onclick="switchSection(event, 'historia')">
+              <span class="lang-es"><i class="fa fa-history" style="margin-right:8px;"></i> Historia de la Marca</span>
+              <span class="lang-en"><i class="fa fa-history" style="margin-right:8px;"></i> Brand History</span>
+            </a>
+          </li>
+          <li>
+            <a href="#calidad" class="about-tab-link" onclick="switchSection(event, 'calidad')">
+              <span class="lang-es"><i class="fa fa-flask" style="margin-right:8px;"></i> Compromiso de Calidad</span>
+              <span class="lang-en"><i class="fa fa-flask" style="margin-right:8px;"></i> Quality Commitment</span>
+            </a>
+          </li>
+          <li>
+            <a href="#estudios" class="about-tab-link" onclick="switchSection(event, 'estudios')">
+              <span class="lang-es"><i class="fa fa-graduation-cap" style="margin-right:8px;"></i> Estudios Clínicos</span>
+              <span class="lang-en"><i class="fa fa-graduation-cap" style="margin-right:8px;"></i> Clinical Studies</span>
+            </a>
+          </li>
+          <li>
+            <a href="#sostenibilidad" class="about-tab-link" onclick="switchSection(event, 'sostenibilidad')">
+              <span class="lang-es"><i class="fa fa-leaf" style="margin-right:8px;"></i> Sostenibilidad Verde</span>
+              <span class="lang-en"><i class="fa fa-leaf" style="margin-right:8px;"></i> Green Sustainability</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Área de Contenido de Sobre Nosotros -->
+      <section class="about-content">
+
+        <!-- SECCIÓN 1: HISTORIA DE LA MARCA -->
+        <div id="historia" class="about-section active">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Historia de la Marca</h2>
+            <p>Fundada en 2026, <strong>scbodycare</strong> (S&C Body Care) nació con la firme visión de redefinir los estándares de calidad y confianza en el suministro de péptidos liofilizados y compuestos de investigación en todo el continente americano.</p>
+            <p>Identificamos que la industria del suministro científico carecía de transparencia, encontrando competidores que utilizaban imágenes falsas o simulaciones de IA, lo que comprometía la percepción de autenticidad en los laboratorios de ensayo. En respuesta, tomamos la decisión inalterable de representar nuestros productos única y exclusivamente con <strong>imágenes y fotos reales de nuestros viales de etiqueta negra</strong> con el logotipo original de S&C.</p>
+            <p>Nuestra trayectoria está marcada por el compromiso inquebrantable de abastecer a centros de investigación, laboratorios académicos y científicos independientes con péptidos de la más alta pureza del mercado, sirviendo como un pilar confiable en el avance científico contemporáneo.</p>
+            <div class="feature-box">
+              <h4>Nuestra Misión</h4>
+              <p>Facilitar el progreso científico y biotecnológico proporcionando reactivos químicos de pureza analítica comprobada, operando bajo las más estrictas normativas éticas y de seguridad del sector.</p>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Brand History</h2>
+            <p>Founded in 2026, <strong>scbodycare</strong> (S&C Body Care) was born with the firm vision to redefine quality and trust standards in the supply of lyophilized peptides and research compounds throughout the Americas.</p>
+            <p>We recognized that the scientific supply industry lacked transparency, often finding competitors relying on fake or AI-generated vial graphics, compromising the perception of authenticity for assay laboratories. In response, we made the unalterable decision to represent our products solely using <strong>real photographs of our black-label vials</strong> bearing the original S&C logo.</p>
+            <p>Our journey is defined by our unwavering commitment to supplying research centers, academic laboratories, and independent scientists with peptides of the highest purity on the market, serving as a trusted pillar in modern scientific breakthroughs.</p>
+            <div class="feature-box">
+              <h4>Our Mission</h4>
+              <p>To facilitate scientific and biotechnological progress by providing analytical-grade chemical reagents of proven purity, operating under the industry's strictest ethical and safety guidelines.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: COMPROMISO DE CALIDAD -->
+        <div id="calidad" class="about-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Compromiso de Calidad HPLC/MS</h2>
+            <p>En scbodycare, la calidad no es una opción; es nuestro estándar fundamental. Todos nuestros péptidos son sometidos a rigurosos procesos de purificación y caracterización analítica para garantizar resultados reproducibles y consistentes en sus aplicaciones experimentales.</p>
+            
+            <h3>1. Pureza Certificada Superior al 98%</h3>
+            <p>Garantizamos que cada vial de investigación contiene péptidos liofilizados con una pureza analítica superior al 98%. Esto reduce significativamente las variables no deseadas en sus ensayos y garantiza la estabilidad del compuesto.</p>
+
+            <h3>2. Caracterización por HPLC y Espectrometría de Masas (MS)</h3>
+            <p>Cada lote es analizado de forma independiente mediante Cromatografía Líquida de Alta Resolución (HPLC) para evaluar la pureza química y la ausencia de impurezas orgánicas. Asimismo, utilizamos la Espectrometría de Masas (MS) para confirmar el peso molecular exacto y la secuencia correcta de los aminoácidos.</p>
+
+            <div class="feature-box">
+              <h4>Proceso de Liofilización Estéril</h4>
+              <p>Nuestros péptidos pasan por un proceso avanzado de congelación al vacío (liofilización) en atmósferas estériles y controladas de laboratorio. Esto nos permite entregar un polvo liofilizado altamente estable que conserva sus propiedades biológicas intactas durante largos periodos de transporte y almacenamiento a temperatura ambiente.</p>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>HPLC/MS Quality Commitment</h2>
+            <p>At scbodycare, quality is not an option; it is our fundamental standard. All of our peptides undergo rigorous purification and analytical characterization processes to guarantee reproducible and consistent results in your experimental applications.</p>
+            
+            <h3>1. Certified Purity Exceeding 98%</h3>
+            <p>We guarantee that every research vial contains lyophilized peptides with an analytical purity level exceeding 98%. This significantly reduces unwanted variables in your assays and ensures the compound's stability.</p>
+
+            <h3>2. HPLC and Mass Spectrometry (MS) Characterization</h3>
+            <p>Every single batch is independently analyzed using High-Performance Liquid Chromatography (HPLC) to evaluate chemical purity and organic impurity profiles. Additionally, Mass Spectrometry (MS) is deployed to confirm exact molecular weight and verify amino acid sequencing.</p>
+
+            <div class="feature-box">
+              <h4>Sterile Lyophilization Process</h4>
+              <p>Our peptides undergo a state-of-the-art vacuum freeze-drying (lyophilization) process under sterile and controlled laboratory atmospheres. This allows us to supply a highly stable lyophilized powder that keeps its biological properties intact during shipping and storage at room temperature.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: ESTUDIOS CLÍNICOS -->
+        <div id="estudios" class="about-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Estudios Clínicos y Referencias Científicas</h2>
+            <p>Los péptidos liofilizados representan una de las áreas más dinámicas de la investigación endocrina, metabólica y regenerativa contemporánea. Aquí recopilamos el enfoque científico de las principales familias de péptidos en nuestro catálogo:</p>
+            
+            <h3>1. Péptidos de Regulación Metabólica (GLP-1/GIP)</h3>
+            <p>El estudio de agonistas de receptores metabólicos duales y triples (como Tirzepatide y Retatrutide) está revolucionando la investigación sobre la homeostasis de la glucosa y la secreción de insulina estimulada por glucosa. Los ensayos se enfocan en comprender cómo el receptor GLP-1 y el receptor GIP modulan la lipólisis celular y retrasan el vaciado gástrico in vitro.</p>
+
+            <h3>2. Péptidos Mitocondriales y de Composición Corporal</h3>
+            <p>Compuestos como MOTS-c (péptido derivado de mitocondria) son analizados por su capacidad para regular la resistencia a la insulina sistémica y promover la absorción celular de glucosa de forma independiente a la vía clásica de la insulina. Se estudian activamente en modelos celulares de envejecimiento muscular y longevidad.</p>
+
+            <h3>3. Péptidos de Reparación Tisular y Regeneración</h3>
+            <p>Péptidos como el BPC 157 (Body Protection Compound) y el GHK-Cu (péptido de cobre) son evaluados por su rol en los procesos de angiogénesis (formación de nuevos vasos sanguíneos), síntesis de colágeno y modulación de factores de crecimiento celular, demostrando acelerar significativamente la regeneración de tejidos blandos en ensayos in vitro.</p>
+
+            <div class="warning-box" style="border-left-color: #ff9800; background-color: #fffaf0;">
+              <h4 style="color: #ff9800;">AVISO DE LECTURA CIENTÍFICA</h4>
+              <p>Todas las referencias bibliográficas, estudios y aplicaciones descritas en esta sección tienen fines estrictamente académicos e informativos para investigadores de laboratorio. scbodycare no avala ni promueve la autoadministración o consumo de estas sustancias en humanos.</p>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Clinical Studies & Scientific References</h2>
+            <p>Lyophilized peptides represent one of the most dynamic areas of contemporary endocrine, metabolic, and regenerative research. Below we compile the scientific focus of the main peptide families in our catalog:</p>
+            
+            <h3>1. Metabolic Regulation Peptides (GLP-1/GIP)</h3>
+            <p>The study of dual and triple metabolic receptor agonists (such as Tirzepatide and Retatrutide) is transforming research into glucose homeostasis and glucose-stimulated insulin secretion. Assays focus on understanding how the GLP-1 receptor and GIP receptor modulate cellular lipolysis and delay gastric emptying in vitro.</p>
+
+            <h3>2. Mitochondrial & Body Composition Peptides</h3>
+            <p>Compounds such as MOTS-c (mitochondria-derived peptide) are analyzed for their ability to regulate systemic insulin resistance and promote cellular glucose uptake independently of the classical insulin pathway. They are actively studied in muscle cell aging and longevity models.</p>
+
+            <h3>3. Tissue Repair & Regeneration Peptides</h3>
+            <p>Peptides like BPC 157 (Body Protection Compound) and GHK-Cu (copper peptide) are evaluated for their role in angiogenesis (formation of new blood vessels), collagen synthesis, and modulation of cellular growth factors, demonstrating accelerated soft tissue healing in in vitro assays.</p>
+
+            <div class="warning-box" style="border-left-color: #ff9800; background-color: #fffaf0;">
+              <h4 style="color: #ff9800;">SCIENTIFIC REFERENCE NOTICE</h4>
+              <p>All literature references, studies, and applications described in this section are strictly for academic and informational purposes for laboratory researchers. scbodycare does not endorse or promote self-administration or consumption of these substances in humans.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 4: SOSTENIBILIDAD VERDE -->
+        <div id="sostenibilidad" class="about-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Sostenibilidad Verde y Empaque Responsable</h2>
+            <p>Creemos que el desarrollo de la ciencia de vanguardia no debe ocurrir a expensas de nuestro entorno natural. En scbodycare, estamos comprometidos con la reducción del impacto ambiental de las operaciones de distribución biotecnológica.</p>
+            
+            <h3>1. Reducción de Plásticos de un Solo Uso</h3>
+            <p>Hemos rediseñado nuestros empaques de envío exterior eliminando el uso de plásticos tradicionales y reemplazándolos por cartón kraft reciclable, protectores de burbujas biodegradables de base vegetal y cinta de embalaje compostable.</p>
+
+            <h3>2. Logística Consolidada de Envío</h3>
+            <p>Optimizamos nuestras rutas y agrupamos entregas para minimizar la huella de carbono generada en el transporte terrestre y aéreo, asegurando la entrega eficiente de viales de investigación con el menor impacto logístico posible.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Green Sustainability & Responsible Packaging</h2>
+            <p>We believe that developing cutting-edge science should not occur at the expense of our natural environment. At scbodycare, we are committed to reducing the environmental footprint of our biotechnology distribution operations.</p>
+            
+            <h3>1. Reduction of Single-Use Plastics</h3>
+            <p>We have redesigned our outer shipping boxes, replacing traditional plastics with recyclable kraft cardboard, plant-based biodegradable bubble wrap, and compostable packaging tape.</p>
+
+            <h3>2. Consolidated Shipping Logistics</h3>
+            <p>We optimize our shipping routes and group deliveries to minimize the carbon footprint generated during land and air transit, ensuring efficient delivery of research vials with the lowest logistical footprint possible.</p>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <div class="footer-columns">
+        
+        <div class="footer-col">
+          <h3 class="lang-es">Sobre scbodycare</h3><h3 class="lang-en">About scbodycare</h3>
+          <ul>
+            <li><a href="about.html#historia"><span class="lang-es">Historia de la marca</span><span class="lang-en">Brand History</span></a></li>
+            <li><a href="about.html#calidad"><span class="lang-es">Compromiso de Calidad</span><span class="lang-en">Quality Commitment</span></a></li>
+            <li><a href="policies.html#aviso-legal"><span class="lang-es">Aviso Legal</span><span class="lang-en">Legal Disclaimer</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="lang-es">Soporte Técnico</h3><h3 class="lang-en">Support</h3>
+          <ul>
+            <li><a href="index.html?contact=open"><span class="lang-es">Atención al Cliente</span><span class="lang-en">Customer Support</span></a></li>
+            <li><a href="policies.html#envios-devoluciones"><span class="lang-es">Política de Envío y Devoluciones</span><span class="lang-en">Shipping & Return Policy</span></a></li>
+            <li><a href="policies.html#prevencion"><span class="lang-es">Prevención de Adicciones</span><span class="lang-en">Addiction Prevention</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 id="footer-contact-title" class="lang-es">Mantente en contacto</h3><h3 class="lang-en">Keep in Touch</h3>
+          <p id="footer-contact-desc" style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-es">Síguenos en nuestras redes oficiales para contactar directamente.</p>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-en">Follow us on our official channels to contact us directly.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="tel:+17045247396" id="footer-call-btn" class="contact-btn-circle phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/17045247396" target="_blank" id="footer-whatsapp-btn" class="contact-btn-circle whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="sms:+17045247396" id="footer-sms-btn" class="contact-btn-circle sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i></a>
+            <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" id="footer-tiktok-btn" class="contact-btn-circle tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" id="footer-instagram-btn" class="contact-btn-circle instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="lang-es">Únete al boletín</h3><h3 class="lang-en">Join our Newsletter</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-es">Recibe actualizaciones instantáneas del catálogo.</p>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-en">Receive instant catalog updates.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Tu correo electrónico" class="form-control" style="padding: 8px 12px; font-size: 13px; background-color:#111;">
+            <button class="btn-primary" style="padding: 8px 15px; font-size: 13px; box-shadow:none;" onclick="showToast('¡Te has suscrito al boletín!');"><span class="lang-es">Enviar</span><span class="lang-en">Send</span></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div style="font-size: 11px; color: #888; text-align: justify; margin-top: 30px; line-height: 1.5; border-top: 1px solid #222; padding-top: 25px;">
+        <div class="lang-es">
+          <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+        </div>
+        <div class="lang-en">
+          <strong>SAFETY & LIABILITY DISCLAIMER (RESEARCH USE ONLY):</strong> All products distributed on this portal are intended solely and exclusively for scientific laboratory research, chemical or biological in vitro studies, and not for human therapeutic, clinical, veterinary, injection, dietary, or cosmetic consumption. scbodycare does not provide medical advice, prescriptions, or dosage suggestions. Misuse or abuse of substances can be harmful and highly addictive. If you experience symptoms of dependency, contact professionals by calling SAMHSA in the USA (1-800-662-4357) or local helplines in your country of residence.
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. <span class="lang-es">Todos los derechos reservados.</span><span class="lang-en">All rights reserved.</span></p>
+        <p>
+          <a href="policies.html#terminos" onclick="switchSection(null, 'terminos')"><span class="lang-es">Términos y Condiciones</span><span class="lang-en">Terms & Conditions</span></a> | 
+          <a href="policies.html#privacidad" onclick="switchSection(null, 'privacidad')"><span class="lang-es">Política de Privacidad</span><span class="lang-en">Privacy Policy</span></a> | 
+          <a href="policies.html#aviso-legal" onclick="switchSection(null, 'aviso-legal')"><span class="lang-es">Aviso Legal</span><span class="lang-en">Legal Disclaimer</span></a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    let currentLang = localStorage.getItem('lang') || 'es';
+    
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang;
+      
+      const langFlag = document.getElementById('lang-flag-img');
+      const mobileLangFlag = document.getElementById('mobile-lang-flag-img');
+      
+      if (lang === 'en') {
+        if (langFlag) langFlag.src = "https://flagcdn.com/w20/es.png";
+        if (mobileLangFlag) mobileLangFlag.src = "https://flagcdn.com/w20/es.png";
+      } else {
+        if (langFlag) langFlag.src = "https://flagcdn.com/w20/us.png";
+        if (mobileLangFlag) mobileLangFlag.src = "https://flagcdn.com/w20/us.png";
+      }
+    }
+    
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', currentLang);
+      applyLanguage(currentLang);
+      const message = currentLang === 'en' ? "Language changed to English" : "Idioma cambiado a Español";
+      showToast(message);
+    }
+    
+    function switchSection(event, sectionId) {
+      if (event) {
+        event.preventDefault();
+      }
+      
+      document.querySelectorAll('.about-tab-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      const activeLink = document.querySelector(`.about-tab-link[href="#${sectionId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+      
+      document.querySelectorAll('.about-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      
+      const targetSec = document.getElementById(sectionId);
+      if (targetSec) {
+        targetSec.classList.add('active');
+        document.querySelector('.about-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+      
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        switchSection(null, hash);
+      }
+    });
+
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        switchSection(null, hash);
+      }
+    });
+  </script>
+</body>
+</html>

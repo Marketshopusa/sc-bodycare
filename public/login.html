@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Ingreso y Registro | scbodycare</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0c231e">
+</head>
+<body>
+
+  <!-- Cabecera Móvil Estilo App Nativa -->
+  <header class="mobile-app-bar">
+    <div class="mobile-app-bar-container">
+      <a href="index.html" class="mobile-app-logo-link">
+        <img src="logo.jpg" alt="S&C Logo" class="mobile-logo-img">
+        <span class="mobile-logo-text">S&C Body Care</span>
+      </a>
+      <div class="mobile-app-bar-actions">
+        <!-- Panel administrativo móvil oculto por defecto para clientes regulares -->
+        <a href="admin.html" id="mobile-admin-panel-link" class="admin-panel-link" style="display: none; color: var(--color-gold); font-size: 18px; margin-right: 15px;" title="Panel Admin">
+          <i class="fa-solid fa-cogs"></i>
+        </a>
+        <!-- Selector de idioma móvil con bandera -->
+        <button class="mobile-lang-toggle" onclick="localStorage.setItem('lang', localStorage.getItem('lang') === 'es' ? 'en' : 'es'); window.location.reload();" title="Cambiar Idioma">
+          <img id="mobile-lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+        <!-- Carrito móvil -->
+        <a href="index.html?cart=open" class="mobile-cart-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" id="mobile-cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span>✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container">
+      <div class="top-nav-links">
+        <a href="admin.html" class="admin-panel-link" style="display: none;"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> Ingresar / Registrarse</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia -->
+    <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field">
+        </div>
+        <a href="cart.html" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span>Carrito</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Formulario de Ingreso y Registro -->
+  <main class="container">
+    <div class="login-layout">
+      
+      <!-- Lado del Login -->
+      <div class="login-form-side">
+        <h2 style="font-family: var(--font-secondary); margin-bottom: 25px; color: var(--color-gold-light);">Iniciar Sesión</h2>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="login-email">Correo Electrónico</label>
+            <input type="email" id="login-email" class="form-control" required placeholder="tu@correo.com">
+          </div>
+          <div class="form-group">
+            <label for="login-password">Contraseña</label>
+            <input type="password" id="login-password" class="form-control" required placeholder="******">
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; margin-top: 10px;">Ingresar</button>
+        </form>
+      </div>
+
+      <!-- Divisor -->
+      <div class="login-divider"></div>
+
+      <!-- Lado del Registro -->
+      <div class="login-form-side">
+        <h2 style="font-family: var(--font-secondary); margin-bottom: 25px; color: var(--color-gold-light);">Crear Cuenta</h2>
+        <form id="register-form">
+          <div class="form-group">
+            <label for="register-name">Nombre Completo</label>
+            <input type="text" id="register-name" class="form-control" required placeholder="Juan Pérez">
+          </div>
+          <div class="form-group">
+            <label for="register-email">Correo Electrónico</label>
+            <input type="email" id="register-email" class="form-control" required placeholder="tu@correo.com">
+          </div>
+          <div class="form-group">
+            <label for="register-password">Contraseña</label>
+            <input type="password" id="register-password" class="form-control" required placeholder="Mínimo 6 caracteres">
+          </div>
+          
+          <!-- Checkbox de autorización de correos automáticos (Checked por defecto) -->
+          <div class="checkbox-group">
+            <input type="checkbox" id="register-subscribe" checked>
+            <label for="register-subscribe">
+              Autorizo a <strong>scbodycare</strong> a enviarme boletines informativos y notificaciones automáticas directamente a mi correo sobre actualizaciones, promociones y nuevos productos en el catálogo de la tienda.
+            </label>
+          </div>
+          
+          <button type="submit" class="btn-secondary" style="width: 100%;">Registrarse</button>
+        </form>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div id="global-legal-disclaimer" style="font-size: 11px; color: #888; text-align: justify; margin-top: 10px; line-height: 1.5; border-top: 1px solid #222; padding-top: 20px;">
+        <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p>
+          <a href="policies.html#terminos">Términos y Condiciones</a> | 
+          <a href="policies.html#privacidad">Política de Privacidad</a> | 
+          <a href="policies.html#aviso-legal">Aviso Legal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Configurar buscador
+      const searchField = document.getElementById('search-input-field');
+      searchField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchField.value.trim();
+          if (query) {
+            window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      // Manejar envío de Formulario de Login
+      const loginForm = document.getElementById('login-form');
+      loginForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value;
+
+        fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        })
+        .then(res => {
+          if (!res.ok) return res.json().then(d => { throw new Error(d.error) });
+          return res.json();
+        })
+        .then(data => {
+          loginUser(data.user);
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1500);
+        })
+        .catch(err => {
+          showToast(`Error: ${err.message || 'Credenciales inválidas'}`);
+        });
+      });
+
+      // Manejar envío de Formulario de Registro
+      const registerForm = document.getElementById('register-form');
+      registerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('register-name').value.trim();
+        const email = document.getElementById('register-email').value.trim();
+        const password = document.getElementById('register-password').value;
+        const subscribe = document.getElementById('register-subscribe').checked;
+
+        fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password, subscribe })
+        })
+        .then(res => {
+          if (!res.ok) return res.json().then(d => { throw new Error(d.error) });
+          return res.json();
+        })
+        .then(data => {
+          loginUser(data.user);
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 1500);
+        })
+        .catch(err => {
+          showToast(`Error: ${err.message}`);
+        });
+      });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+      const currentLang = localStorage.getItem('lang') || 'es';
+      const mobileFlagImg = document.getElementById('mobile-lang-flag-img');
+      if (mobileFlagImg) {
+        if (currentLang === 'en') {
+          mobileFlagImg.src = "https://flagcdn.com/w20/es.png";
+          mobileFlagImg.alt = "Español";
+        } else {
+          mobileFlagImg.src = "https://flagcdn.com/w20/us.png";
+          mobileFlagImg.alt = "English";
+        }
+      }
+    });
+  </script>
+
+  <!-- Barra de Navegación Inferior Móvil Estilo App Nativa -->
+  <nav class="mobile-bottom-nav">
+    <a href="index.html" class="mobile-nav-tab" id="mobile-tab-home">
+      <i class="fa-solid fa-flask"></i>
+      <span class="mobile-nav-tab-label">Catálogo</span>
+    </a>
+    <a href="index.html?search=open" class="mobile-nav-tab" id="mobile-tab-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="mobile-nav-tab-label">Buscar</span>
+    </a>
+    <a href="index.html?cart=open" class="mobile-nav-tab" id="mobile-tab-cart">
+      <div style="position: relative; display: inline-block;">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="mobile-tab-cart-badge" style="display: none; position: absolute; top: -6px; right: -12px; font-size: 9px; padding: 2px 5px;">0</span>
+      </div>
+      <span class="mobile-nav-tab-label">Carrito</span>
+    </a>
+    <a href="index.html?contact=open" class="mobile-nav-tab" id="mobile-tab-contact">
+      <i class="fa-solid fa-comments"></i>
+      <span class="mobile-nav-tab-label">Contacto</span>
+    </a>
+    <a href="login.html" class="mobile-nav-tab active" id="mobile-tab-profile">
+      <i class="fa-solid fa-user"></i>
+      <span class="mobile-nav-tab-label">Perfil</span>
+    </a>
+  </nav>
+
+</body>
+</html>

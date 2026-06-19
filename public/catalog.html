@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get("category");
+    let newCategory = "";
+    if (category === "Nutrición" || category === "Proteína") {
+      newCategory = "Metabolismo & Pérdida de Peso";
+    } else if (category === "Belleza") {
+      newCategory = "Regeneración & Estética";
+    }
+    if (newCategory) {
+      window.location.replace("index.html?category=" + encodeURIComponent(newCategory));
+    } else {
+      window.location.replace("index.html#catalog-section");
+    }
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de Productos | scbodycare</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span>✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container">
+      <div class="top-nav-links">
+        <a href="admin.html"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> Ingresar / Registrarse</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia -->
+    <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field">
+        </div>
+        <a href="cart.html" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span>Carrito</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación Inferior (Categorías) -->
+  <nav class="bottom-nav">
+    <div class="container" style="justify-content: center;">
+      <ul class="bottom-nav-list" id="nav-categories-list">
+        <li class="bottom-nav-item" id="nav-home"><a href="index.html" class="bottom-nav-link">Inicio</a></li>
+        <li class="bottom-nav-item" id="nav-nutricion">
+          <a href="catalog.html?category=Nutrición" class="bottom-nav-link">Nutrición</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Nutrición&subcategory=Vitaminas-y-Minerales" class="submenu-link">Vitaminas y Minerales</a></li>
+            <li><a href="catalog.html?category=Nutrición&subcategory=Colágeno" class="submenu-link">Colágeno</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item" id="nav-proteina">
+          <a href="catalog.html?category=Proteína" class="bottom-nav-link">Proteína</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Proteína&subcategory=Suero" class="submenu-link">Suero</a></li>
+            <li><a href="catalog.html?category=Proteína&subcategory=Vegetal-y-Vegano" class="submenu-link">Vegetal y Vegano</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item" id="nav-belleza">
+          <a href="catalog.html?category=Belleza" class="bottom-nav-link">Belleza</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Belleza&subcategory=Sueros-Faciales" class="submenu-link">Sueros Faciales</a></li>
+            <li><a href="catalog.html?category=Belleza&subcategory=Antienvejecimiento" class="submenu-link">Antienvejecimiento</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item" id="nav-hogar"><a href="catalog.html?category=Hogar-Verde" class="bottom-nav-link">Hogar Verde</a></li>
+        <li class="bottom-nav-item" id="nav-modere"><a href="catalog.html?category=Modere" class="bottom-nav-link">Modere</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Cuerpo del Catálogo -->
+  <main class="container catalog-layout">
+    
+    <!-- Filtros / Barra Lateral -->
+    <aside class="sidebar">
+      <h3 class="sidebar-title">Categorías</h3>
+      <ul class="category-menu">
+        <li class="category-menu-item" id="side-all"><a href="catalog.html" class="category-menu-link">Todos los Productos</a></li>
+        
+        <li class="category-menu-item" id="side-nutricion">
+          <a href="catalog.html?category=Nutrición" class="category-menu-link" style="font-weight:600;">Nutrición</a>
+          <ul style="list-style:none; padding-left:15px; margin-top:5px; font-size:12px;">
+            <li><a href="catalog.html?category=Nutrición&subcategory=Vitaminas-y-Minerales" class="category-menu-link">Vitaminas y Minerales</a></li>
+            <li><a href="catalog.html?category=Nutrición&subcategory=Colágeno" class="category-menu-link">Colágeno</a></li>
+          </ul>
+        </li>
+        
+        <li class="category-menu-item" id="side-proteina">
+          <a href="catalog.html?category=Proteína" class="category-menu-link" style="font-weight:600;">Proteínas</a>
+          <ul style="list-style:none; padding-left:15px; margin-top:5px; font-size:12px;">
+            <li><a href="catalog.html?category=Proteína&subcategory=Suero" class="category-menu-link">Suero de Leche</a></li>
+            <li><a href="catalog.html?category=Proteína&subcategory=Vegetal-y-Vegano" class="category-menu-link">Vegetal y Vegano</a></li>
+          </ul>
+        </li>
+        
+        <li class="category-menu-item" id="side-belleza">
+          <a href="catalog.html?category=Belleza" class="category-menu-link" style="font-weight:600;">Belleza</a>
+          <ul style="list-style:none; padding-left:15px; margin-top:5px; font-size:12px;">
+            <li><a href="catalog.html?category=Belleza&subcategory=Sueros-Faciales" class="category-menu-link">Sueros Faciales</a></li>
+            <li><a href="catalog.html?category=Belleza&subcategory=Antienvejecimiento" class="category-menu-link">Antienvejecimiento</a></li>
+          </ul>
+        </li>
+        
+        <li class="category-menu-item" id="side-hogar"><a href="catalog.html?category=Hogar-Verde" class="category-menu-link">Hogar Verde</a></li>
+        <li class="category-menu-item" id="side-modere"><a href="catalog.html?category=Modere" class="category-menu-link">Modere</a></li>
+      </ul>
+    </aside>
+
+    <!-- Contenedor del Listado -->
+    <section class="catalog-content">
+      <div class="catalog-header">
+        <h2 id="catalog-title" style="font-family: var(--font-secondary); font-size: 28px;">Catálogo Completo</h2>
+        <div style="display: flex; gap: 15px; align-items: center;">
+          <div class="catalog-results-count" id="results-count">Cargando productos...</div>
+          <div class="catalog-sort">
+            <select id="sort-select" onchange="applyFiltersAndSort();">
+              <option value="default">Recomendados</option>
+              <option value="price-asc">Precio: Bajo a Alto</option>
+              <option value="price-desc">Precio: Alto a Bajo</option>
+              <option value="name-asc">Nombre: A-Z</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Productos -->
+      <div class="products-grid" id="products-grid-container">
+        <!-- Render dinámico -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Sobre scbodycare</h3>
+          <ul>
+            <li><a href="about.html#historia">Historia de la marca</a></li>
+            <li><a href="about.html#calidad">Compromiso de Calidad</a></li>
+            <li><a href="about.html#sostenibilidad">Sostenibilidad Verde</a></li>
+            <li><a href="about.html#estudios">Estudios Clínicos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Soporte Técnico</h3>
+          <ul>
+            <li><a href="index.html?contact=open">Atención al Cliente</a></li>
+            <li><a href="policies.html#envios-devoluciones">Política de Envío y Devoluciones</a></li>
+            <li><a href="policies.html#prevencion">Prevención de Adicciones</a></li>
+            <li><a href="policies.html#aviso-legal">Aviso Legal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Mantente en contacto</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;">Síguenos en nuestras redes oficiales para contactar directamente.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="tel:+17045247396" class="contact-btn-circle phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/17045247396" target="_blank" class="contact-btn-circle whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="sms:+17045247396" class="contact-btn-circle sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i></a>
+            <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="contact-btn-circle tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="contact-btn-circle instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Únete al boletín</h3>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Tu correo electrónico" class="form-control" style="padding: 8px 12px; font-size: 13px; background-color:#111;">
+            <button class="btn-primary" style="padding: 8px 15px; font-size: 13px; box-shadow:none;" onclick="showToast('¡Te has suscrito al boletín!');">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div id="global-legal-disclaimer" style="font-size: 11px; color: #888; text-align: justify; margin-top: 30px; line-height: 1.5; border-top: 1px solid #222; padding-top: 25px;">
+        <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p>
+          <a href="policies.html#terminos">Términos y Condiciones</a> | 
+          <a href="policies.html#privacidad">Política de Privacidad</a> | 
+          <a href="policies.html#aviso-legal">Aviso Legal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    let allProducts = [];
+    
+    // Obtener parámetros de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const categoryParam = urlParams.get('category');
+    const subcategoryParam = urlParams.get('subcategory');
+    const searchParam = urlParams.get('search');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Configurar campo de búsqueda con el valor actual si lo hay
+      const searchField = document.getElementById('search-input-field');
+      if (searchParam) {
+        searchField.value = searchParam;
+      }
+
+      // Escuchar búsqueda
+      searchField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchField.value.trim();
+          if (query) {
+            window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+          } else {
+            window.location.href = `catalog.html`;
+          }
+        }
+      });
+
+      // Resaltar categorías activas en navegación y barra lateral
+      updateActiveNavStyles();
+
+      // Cargar productos desde la API
+      fetchProducts();
+    });
+
+    function updateActiveNavStyles() {
+      // Remover clase active de todos
+      document.querySelectorAll('.bottom-nav-item').forEach(item => item.classList.remove('active'));
+      document.querySelectorAll('.category-menu-item').forEach(item => item.classList.remove('active'));
+
+      if (categoryParam === 'Nutrición') {
+        document.getElementById('nav-nutricion')?.classList.add('active');
+        document.getElementById('side-nutricion')?.classList.add('active');
+      } else if (categoryParam === 'Proteína') {
+        document.getElementById('nav-proteina')?.classList.add('active');
+        document.getElementById('side-proteina')?.classList.add('active');
+      } else if (categoryParam === 'Belleza') {
+        document.getElementById('nav-belleza')?.classList.add('active');
+        document.getElementById('side-belleza')?.classList.add('active');
+      } else if (categoryParam === 'Hogar-Verde') {
+        document.getElementById('nav-hogar')?.classList.add('active');
+        document.getElementById('side-hogar')?.classList.add('active');
+      } else if (categoryParam === 'Modere') {
+        document.getElementById('nav-modere')?.classList.add('active');
+        document.getElementById('side-modere')?.classList.add('active');
+      } else if (!searchParam) {
+        document.getElementById('side-all')?.classList.add('active');
+      }
+    }
+
+    function fetchProducts() {
+      fetch('/api/products')
+        .then(res => res.json())
+        .then(data => {
+          allProducts = data;
+          applyFiltersAndSort();
+        })
+        .catch(err => {
+          console.error("Error al obtener productos:", err);
+          document.getElementById('results-count').textContent = "Error al cargar catálogo.";
+        });
+    }
+
+    function applyFiltersAndSort() {
+      let filtered = [...allProducts];
+
+      // 1. Filtrar por categoría
+      if (categoryParam) {
+        filtered = filtered.filter(p => p.category.toLowerCase() === categoryParam.toLowerCase());
+        document.getElementById('catalog-title').textContent = categoryParam.replace('-', ' ');
+      }
+
+      // 2. Filtrar por subcategoría
+      if (subcategoryParam) {
+        filtered = filtered.filter(p => p.subcategory.toLowerCase() === subcategoryParam.toLowerCase());
+        document.getElementById('catalog-title').textContent = `${categoryParam.replace('-', ' ')} > ${subcategoryParam.replace(/-/g, ' ')}`;
+      }
+
+      // 3. Filtrar por buscador
+      if (searchParam) {
+        const query = searchParam.toLowerCase();
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(query) || 
+          p.description.toLowerCase().includes(query) ||
+          p.category.toLowerCase().includes(query)
+        );
+        document.getElementById('catalog-title').textContent = `Búsqueda: "${searchParam}"`;
+      }
+
+      // Actualizar conteo
+      document.getElementById('results-count').textContent = `${filtered.length} productos encontrados`;
+
+      // 4. Ordenación
+      const sortBy = document.getElementById('sort-select').value;
+      if (sortBy === 'price-asc') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (sortBy === 'price-desc') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (sortBy === 'name-asc') {
+        filtered.sort((a, b) => a.name.localeCompare(b.name));
+      }
+
+      // Renderizar productos
+      renderProducts(filtered);
+    }
+
+    function renderProducts(products) {
+      const container = document.getElementById('products-grid-container');
+      container.innerHTML = '';
+
+      if (products.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px; background-color: var(--color-black-card); border-radius: 8px; border: var(--border-gold-subtle);">
+            <i class="fa fa-info-circle" style="font-size: 30px; color: var(--color-gold); margin-bottom: 15px;"></i>
+            <p>No se encontraron productos en esta selección.</p>
+          </div>
+        `;
+        return;
+      }
+
+      products.forEach(product => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-img-container">
+            ${product.promo ? `<span class="product-badge">${product.promo}</span>` : ''}
+            <a href="product.html?id=${product.id}">
+              <img src="${product.image}" alt="${product.name}" class="product-img">
+            </a>
+          </div>
+          <div class="product-info">
+            <h3 class="product-name"><a href="product.html?id=${product.id}">${product.name}</a></h3>
+            <p class="product-desc">${product.description}</p>
+            <div class="product-footer">
+              <span class="product-price">$${product.price.toFixed(2)}</span>
+              <button class="btn-add-cart" onclick="addToCart('${product.id}', '${product.name}', ${product.price}, 1, 'regular')">Agregar</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+  </script>
+</body>
+</html>

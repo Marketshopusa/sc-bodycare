@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Políticas y Aviso Legal | scbodycare</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0c231e">
+  <style>
+    /* Estilos específicos para la sección de Políticas */
+    .policies-container {
+      display: flex;
+      gap: 40px;
+      margin-top: 50px;
+      margin-bottom: 80px;
+    }
+    .policies-sidebar {
+      flex: 1;
+      max-width: 300px;
+    }
+    .policies-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      position: sticky;
+      top: 30px;
+      background-color: #fff;
+      border: 1px solid #eaeaea;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .policies-sidebar li {
+      margin-bottom: 8px;
+    }
+    .policies-sidebar li:last-child {
+      margin-bottom: 0;
+    }
+    .policy-tab-link {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 6px;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.2s;
+      border-left: 3px solid transparent;
+    }
+    .policy-tab-link:hover {
+      background-color: var(--color-bg-light);
+      color: var(--color-gold);
+    }
+    .policy-tab-link.active {
+      background-color: var(--color-bg-light);
+      color: var(--color-gold);
+      border-left: 3px solid var(--color-gold);
+      border-radius: 0 6px 6px 0;
+      padding-left: 13px;
+    }
+    .policies-content {
+      flex: 3;
+      background: #ffffff;
+      border: var(--border-silver-subtle);
+      border-radius: 8px;
+      padding: 50px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+    }
+    .policy-section {
+      display: none;
+    }
+    .policy-section.active {
+      display: block;
+    }
+    .policy-section h2 {
+      font-family: var(--font-secondary);
+      color: var(--color-text-dark);
+      font-size: 28px;
+      margin-bottom: 25px;
+      border-bottom: 2px solid var(--color-gold-light);
+      padding-bottom: 10px;
+    }
+    .policy-section h3 {
+      font-size: 18px;
+      color: var(--color-gold-light);
+      margin-top: 30px;
+      margin-bottom: 12px;
+      font-family: var(--font-secondary);
+    }
+    .policy-section p, .policy-section li {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+    .policy-section ul {
+      margin-bottom: 20px;
+      padding-left: 20px;
+    }
+    .policy-section li {
+      margin-bottom: 8px;
+    }
+    .warning-box {
+      background-color: #fff8f8;
+      border-left: 4px solid #dc3545;
+      padding: 20px;
+      border-radius: 4px;
+      margin: 25px 0;
+    }
+    .warning-box h4 {
+      color: #dc3545;
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .info-box {
+      background-color: #f7f9fa;
+      border-left: 4px solid var(--color-gold);
+      padding: 20px;
+      border-radius: 4px;
+      margin: 25px 0;
+    }
+    .info-box h4 {
+      color: var(--color-gold-light);
+      margin: 0 0 10px 0;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    /* Reglas para traducción limpia por CSS */
+    html[lang="es"] .lang-en { display: none !important; }
+    html[lang="es"] .lang-es { display: block !important; }
+    html[lang="en"] .lang-es { display: none !important; }
+    html[lang="en"] .lang-en { display: block !important; }
+
+    @media (max-width: 768px) {
+      .policies-container {
+        flex-direction: column;
+        margin-top: 20px;
+      }
+      .policies-sidebar {
+        max-width: 100%;
+      }
+      .policies-sidebar ul {
+        position: static;
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+        white-space: nowrap;
+        border-radius: 8px;
+        box-shadow: none;
+        border: 1px solid #eaeaea;
+      }
+      .policies-sidebar li {
+        margin-bottom: 0;
+      }
+      .policy-tab-link {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+      .policy-tab-link.active {
+        border-left: none;
+        border-bottom: 3px solid var(--color-gold);
+        border-radius: 6px 6px 0 0;
+        padding-left: 12px;
+      }
+      .policies-content {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera Móvil Estilo App Nativa -->
+  <header class="mobile-app-bar">
+    <div class="mobile-app-bar-container">
+      <a href="index.html" class="mobile-app-logo-link">
+        <img src="logo.jpg" alt="S&C Logo" class="mobile-logo-img">
+        <span class="mobile-logo-text">S&C Body Care</span>
+      </a>
+      <div class="mobile-app-bar-actions">
+        <!-- Panel administrativo móvil oculto por defecto para clientes regulares -->
+        <a href="admin.html" id="mobile-admin-panel-link" class="admin-panel-link" style="display: none; color: var(--color-gold); font-size: 18px; margin-right: 15px;" title="Panel Admin">
+          <i class="fa-solid fa-cogs"></i>
+        </a>
+        <!-- Selector de idioma móvil con bandera -->
+        <button class="mobile-lang-toggle" onclick="toggleLanguage()" title="Cambiar Idioma">
+          <img id="mobile-lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+        <!-- Carrito móvil -->
+        <a href="index.html?cart=open" class="mobile-cart-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" id="mobile-cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span class="lang-es">✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+    <span class="lang-en">✨ Become a member Accumulate points and win prizes ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <!-- Botones de contacto oficiales en la parte izquierda -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="tel:+17045247396" class="contact-btn phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i> <span class="lang-es">Llamar</span><span class="lang-en">Call</span></a>
+        <a href="https://wa.me/17045247396" target="_blank" class="contact-btn whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="sms:+17045247396" class="contact-btn sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i> SMS</a>
+        <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="contact-btn tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="contact-btn instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+      
+      <!-- Panel administrativo, Login y Bandera de idioma en la parte derecha -->
+      <div class="top-nav-links" style="display: flex; align-items: center; gap: 15px; margin-left: auto;">
+        <a href="admin.html" class="admin-panel-link" style="display: none;"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> <span class="lang-es">Ingresar / Registrarse</span><span class="lang-en">Login / Register</span></a>
+        </span>
+        <!-- Botón con bandera para cambio de idioma -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" style="background: none; border: none; cursor: pointer; padding: 0; display: inline-flex; align-items: center;" title="Cambiar Idioma">
+          <img id="lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia (Buscador y Logo) -->
+  <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field" onkeyup="if(event.key === 'Enter') window.location.href='index.html?search=open';">
+        </div>
+        <a href="index.html?cart=open" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span class="lang-es">Carrito</span><span class="lang-en">Cart</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Contenedor Principal de Políticas -->
+  <main class="container">
+    <div class="policies-container">
+      
+      <!-- Barra lateral de navegación de políticas -->
+      <aside class="policies-sidebar">
+        <ul>
+          <li>
+            <a href="#aviso-legal" class="policy-tab-link active" onclick="switchSection(event, 'aviso-legal')">
+              <span class="lang-es"><i class="fa fa-gavel" style="margin-right:8px;"></i> Aviso Legal</span>
+              <span class="lang-en"><i class="fa fa-gavel" style="margin-right:8px;"></i> Legal Disclaimer</span>
+            </a>
+          </li>
+          <li>
+            <a href="#terminos" class="policy-tab-link" onclick="switchSection(event, 'terminos')">
+              <span class="lang-es"><i class="fa fa-file-text" style="margin-right:8px;"></i> Términos de Servicio</span>
+              <span class="lang-en"><i class="fa fa-file-text" style="margin-right:8px;"></i> Terms of Service</span>
+            </a>
+          </li>
+          <li>
+            <a href="#prevencion" class="policy-tab-link" onclick="switchSection(event, 'prevencion')">
+              <span class="lang-es"><i class="fa fa-heartbeat" style="margin-right:8px;"></i> Prevención de Adicciones</span>
+              <span class="lang-en"><i class="fa fa-heartbeat" style="margin-right:8px;"></i> Addiction Prevention</span>
+            </a>
+          </li>
+          <li>
+            <a href="#envios-devoluciones" class="policy-tab-link" onclick="switchSection(event, 'envios-devoluciones')">
+              <span class="lang-es"><i class="fa fa-truck" style="margin-right:8px;"></i> Envíos y Reembolsos</span>
+              <span class="lang-en"><i class="fa fa-truck" style="margin-right:8px;"></i> Shipping & Refunds</span>
+            </a>
+          </li>
+          <li>
+            <a href="#facturacion-seguridad" class="policy-tab-link" onclick="switchSection(event, 'facturacion-seguridad')">
+              <span class="lang-es"><i class="fa fa-credit-card" style="margin-right:8px;"></i> Facturación y Seguridad</span>
+              <span class="lang-en"><i class="fa fa-credit-card" style="margin-right:8px;"></i> Billing & Security</span>
+            </a>
+          </li>
+          <li>
+            <a href="#privacidad" class="policy-tab-link" onclick="switchSection(event, 'privacidad')">
+              <span class="lang-es"><i class="fa fa-lock" style="margin-right:8px;"></i> Privacidad</span>
+              <span class="lang-en"><i class="fa fa-lock" style="margin-right:8px;"></i> Privacy</span>
+            </a>
+          </li>
+        </ul>
+      </aside>
+
+      <!-- Área de Contenido de Políticas -->
+      <section class="policies-content">
+
+        <!-- SECCIÓN 1: AVISO LEGAL -->
+        <div id="aviso-legal" class="policy-section active">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Aviso Legal y Exclusión de Responsabilidad</h2>
+            <div class="warning-box">
+              <h4>USO EXCLUSIVO EN INVESTIGACIÓN CIENTÍFICA</h4>
+              <p>Todos los productos ofrecidos y distribuidos en scbodycare están destinados exclusivamente para fines de investigación de laboratorio, estudios químicos y científicos <em>in vitro</em>, y ensayos biológicos controlados. <strong>Ninguno de nuestros productos está aprobado ni diseñado para consumo humano, inyección, uso clínico, diagnóstico veterinario o tratamiento terapéutico de ninguna índole.</strong></p>
+            </div>
+            <h3>1. Declaración de No Asesoría Médica</h3>
+            <p>La información, material educativo, descripciones de productos y artículos de divulgación científica en este sitio web se proporcionan únicamente con fines educativos e informativos sobre salud general y biotecnología. <strong>scbodycare no cuenta con un equipo médico y sus agentes no son médicos, terapeutas ni profesionales de la salud.</strong> Ningún dato en este portal debe ser interpretado como asesoramiento médico, diagnóstico, plan de tratamiento o recomendación de dosis.</p>
+            <h3>2. Responsabilidad del Comprador</h3>
+            <p>Al realizar una compra, el comprador declara y garantiza que está plenamente calificado para manejar sustancias químicas de laboratorio y que cuenta con la capacitación e instalaciones necesarias para su uso experimental seguro. El cliente asume total y absoluta responsabilidad civil, penal y sanitaria derivada de la manipulación, almacenamiento o cualquier tipo de uso no autorizado de los productos fuera del ámbito estrictamente de laboratorio.</p>
+            <h3>3. Cumplimiento Legal y Normativo</h3>
+            <p>Es responsabilidad exclusiva del cliente verificar que la importación, tenencia y uso de los péptidos de investigación cumplan rigurosamente con las leyes y reglamentos federales, estatales o locales de su país o jurisdicción. scbodycare declina cualquier responsabilidad por confiscaciones aduaneras o sanciones legales derivadas del incumplimiento de las normativas de importación del comprador.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Legal Disclaimer & Liability Waiver</h2>
+            <div class="warning-box">
+              <h4>LABORATORY RESEARCH USE ONLY</h4>
+              <p>All products offered and distributed on scbodycare are intended strictly for laboratory research, chemical and scientific <em>in vitro</em> studies, and controlled biological testing. <strong>None of our products are approved or designed for human consumption, injection, clinical use, veterinary diagnostics, or therapeutic treatment of any kind.</strong></p>
+            </div>
+            <h3>1. No Medical Advice Representation</h3>
+            <p>Information, educational material, product descriptions, and scientific articles on this website are provided solely for educational and general health/biotechnology informational purposes. <strong>scbodycare does not employ a medical team, and its representatives are not doctors, therapists, or healthcare professionals.</strong> No data on this portal should be construed as medical advice, diagnosis, treatment plan, or dosing recommendations.</p>
+            <h3>2. Buyer's Responsibility</h3>
+            <p>By purchasing, the buyer declares and warrants that they are fully qualified to handle laboratory chemicals and have the necessary training and facilities for safe experimental use. The customer assumes full and absolute civil, criminal, and sanitary liability resulting from the handling, storage, or any unauthorized use of the products outside of a strictly laboratory setting.</p>
+            <h3>3. Regulatory Compliance</h3>
+            <p>It is the customer's sole responsibility to ensure that the importation, possession, and use of research peptides comply strictly with the federal, state, or local laws and regulations of their country or jurisdiction. scbodycare disclaims any liability for customs seizures or legal penalties resulting from the buyer's failure to comply with import regulations.</p>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: PREVENCIÓN DE ADICCIONES -->
+        <div id="terminos" class="policy-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Términos y Condiciones de Servicio</h2>
+            <p>Al acceder, navegar o utilizar este sitio web, usted acepta y se compromete a cumplir plenamente los presentes Términos de Servicio. Si no está de acuerdo con estos términos, le rogamos que se abstenga de usar el portal.</p>
+            <h3>1. Elegibilidad de Uso</h3>
+            <p>El uso de este sitio web y la adquisición de sus productos están restringidos exclusivamente a personas mayores de edad (18 años o más en la mayoría de jurisdicciones, o 21 años en EE.UU.). Al registrarse, usted certifica la veracidad de su edad e identidad.</p>
+            <h3>2. Prohibición de Reventa</h3>
+            <p>Todos los productos adquiridos en scbodycare están destinados al uso directo del comprador en sus actividades de investigación correspondientes. Queda terminantemente prohibida la reventa, distribución comercial no autorizada o fraccionamiento de nuestros productos bajo otra marca o etiqueta.</p>
+            <h3>3. Indemnización</h3>
+            <p>Usted acepta defender, indemnizar y eximir de toda responsabilidad a scbodycare, sus directores, empleados y afiliados ante cualquier reclamo, demanda, daño, pérdida, costo o gasto (incluidos los honorarios razonables de abogados) resultantes de su uso indebido del sitio web, de su violación de estos Términos o de cualquier manipulación inadecuada de los productos adquiridos.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Terms and Conditions of Service</h2>
+            <p>By accessing, browsing, or using this website, you agree to comply fully with these Terms of Service. If you do not agree to these terms, please refrain from using the portal.</p>
+            <h3>1. Eligibility of Use</h3>
+            <p>The use of this website and the purchase of its products are restricted strictly to legal adults (18 years or older in most jurisdictions, or 21 years in the USA). By registering, you certify the truthfulness of your age and identity.</p>
+            <h3>2. Prohibition of Resale</h3>
+            <p>All products purchased on scbodycare are intended for the direct use of the buyer in their corresponding research activities. Resale, unauthorized commercial distribution, or repackaging of our products under any other brand or label is strictly prohibited.</p>
+            <h3>3. Indemnification</h3>
+            <p>You agree to defend, indemnify, and hold harmless scbodycare, its directors, employees, and affiliates from any claim, demand, damage, loss, cost, or expense (including reasonable attorney fees) resulting from your misuse of the website, your violation of these Terms, or any improper handling of the purchased products.</p>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: PREVENCIÓN DE ADICCIONES -->
+        <div id="prevencion" class="policy-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Prevención de Abuso de Sustancias y Ayuda contra la Adicción</h2>
+            <p>En scbodycare, nos preocupamos profundamente por la integridad física, mental y social de nuestros clientes, afiliados y la comunidad en general. Aunque nuestros productos son péptidos exclusivamente de laboratorio y no están diseñados para el consumo, reconocemos que el abuso excesivo y descontrolado de cualquier sustancia química, fármaco, medicamento o suplemento puede provocar serios problemas de salud, dependencia y adicción.</p>
+            
+            <div class="warning-box" style="border-left-color: #ff9800; background-color: #fffaf0;">
+              <h4 style="color: #ff9800;">ALERTA DE SEGURIDAD GENERAL</h4>
+              <p>El consumo excesivo, el automedicarse y la manipulación irresponsable de sustancias químicas activas representan un riesgo severo. El abuso continuado de compuestos puede generar una adicción psicológica y física perjudicial, afectando negativamente la calidad de vida y el entorno social.</p>
+            </div>
+
+            <h3>¿Cómo identificar problemas de adicción o dependencia?</h3>
+            <p>Si usted, un familiar o un conocido presenta alguno de los siguientes comportamientos respecto a un fármaco o producto, es vital buscar ayuda especializada:</p>
+            <ul>
+              <li>Necesidad imperiosa y obsesiva de consumir el producto constantemente.</li>
+              <li>Aumento progresivo de las cantidades para sentir los mismos efectos (tolerancia).</li>
+              <li>Irritabilidad, ansiedad o malestar físico extremo al dejar de consumirlo (síndrome de abstinencia).</li>
+              <li>Descuidar las responsabilidades familiares, laborales o académicas debido al consumo.</li>
+              <li>Persistir en el consumo a pesar de conocer el daño físico o psicológico que causa.</li>
+            </ul>
+
+            <h3>Canales Oficiales y Líneas de Ayuda Gratuitas</h3>
+            <p>Existen organizaciones profesionales que ofrecen asesoramiento gratuito, confidencial e inmediato las 24 horas, los 7 días de la semana, especialmente en los Estados Unidos y la región de las Américas:</p>
+            
+            <div class="info-box">
+              <h4>Estados Unidos y Norteamérica</h4>
+              <p><strong>SAMHSA (Substance Abuse and Mental Health Services Administration)</strong><br>
+              Línea de Ayuda Nacional Confidencial y Gratuita (disponible en Español e Inglés):<br>
+              <i class="fa fa-phone" style="color:var(--color-gold);"></i> <strong>1-800-662-4357</strong> (1-800-662-HELP)<br>
+              <i class="fa fa-globe" style="color:var(--color-gold);"></i> Sitio Web Oficial: <a href="https://www.samhsa.gov" target="_blank" style="color:var(--color-gold-light);">www.samhsa.gov</a><br>
+              <i class="fa fa-map-marker" style="color:var(--color-gold);"></i> Localizador de Clínicas de Apoyo: <a href="https://findtreatment.gov" target="_blank" style="color:var(--color-gold-light);">findtreatment.gov</a></p>
+            </div>
+
+            <div class="info-box">
+              <h4>América Latina y el Caribe</h4>
+              <p>Cada país cuenta con instituciones públicas gratuitas especializadas en el tratamiento y prevención de adicciones:</p>
+              <ul>
+                <li><strong>México:</strong> CONADIC (Comisión Nacional contra las Adicciones) - Línea de la Vida: <strong>800-911-2000</strong>.</li>
+                <li><strong>Colombia:</strong> Ministerio de Salud - Línea de Orientación en Salud Mental: <strong>192</strong> o líneas locales territoriales.</li>
+                <li><strong>Argentina:</strong> SEDRONAR - Línea de atención y contención gratuita: <strong>141</strong>.</li>
+                <li><strong>Resto de países:</strong> Le instamos a comunicarse con el hospital de salud pública más cercano o marcar la línea nacional de emergencias de su país (como el 911) para ser canalizado con especialistas de inmediato.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Substance Abuse Prevention & Addiction Support Helpline</h2>
+            <p>At scbodycare, we care deeply about the physical, mental, and social well-being of our customers, affiliates, and the community at large. While our products are laboratory research peptides and not intended for consumption, we recognize that the excessive and uncontrolled abuse of any chemical substance, drug, medication, or supplement can lead to serious health problems, dependency, and addiction.</p>
+            
+            <div class="warning-box" style="border-left-color: #ff9800; background-color: #fffaf0;">
+              <h4 style="color: #ff9800;">GENERAL SAFETY ALERT</h4>
+              <p>Excessive consumption, self-medication, and irresponsible manipulation of active chemical substances represent a severe hazard. Continuous abuse of compounds can create a harmful psychological and physical addiction, negatively affecting quality of life and social environments.</p>
+            </div>
+
+            <h3>How to Identify Addiction or Dependency Warning Signs</h3>
+            <p>If you or someone you know shows any of the following behaviors regarding a substance or product, it is vital to seek specialized help:</p>
+            <ul>
+              <li>An obsessive and urgent need to consume the product constantly.</li>
+              <li>A progressive increase in consumption to feel the same effects (tolerance).</li>
+              <li>Irritability, anxiety, or extreme physical distress when stopping consumption (withdrawal).</li>
+              <li>Neglecting family, work, or academic responsibilities due to use.</li>
+              <li>Persisting in consumption despite knowing the physical or psychological damage it causes.</li>
+            </ul>
+
+            <h3>Official Channels & Free Helplines</h3>
+            <p>Professional organizations offer free, confidential, and immediate support 24 hours a day, 7 days a week, particularly in the United States and the Americas region:</p>
+            
+            <div class="info-box">
+              <h4>United States & North America</h4>
+              <p><strong>SAMHSA (Substance Abuse and Mental Health Services Administration)</strong><br>
+              Free and Confidential National Helpline (available in English and Spanish):<br>
+              <i class="fa fa-phone" style="color:var(--color-gold);"></i> <strong>1-800-662-4357</strong> (1-800-662-HELP)<br>
+              <i class="fa fa-globe" style="color:var(--color-gold);"></i> Official Website: <a href="https://www.samhsa.gov" target="_blank" style="color:var(--color-gold-light);">www.samhsa.gov</a><br>
+              <i class="fa fa-map-marker" style="color:var(--color-gold);"></i> Find Treatment Center: <a href="https://findtreatment.gov" target="_blank" style="color:var(--color-gold-light);">findtreatment.gov</a></p>
+            </div>
+
+            <div class="info-box">
+              <h4>Latin America & The Caribbean</h4>
+              <p>Every nation has free public institutions specialized in addiction treatment and prevention:</p>
+              <ul>
+                <li><strong>Mexico:</strong> CONADIC (Comisión Nacional contra las Adicciones) - Línea de la Vida: <strong>800-911-2000</strong>.</li>
+                <li><strong>Colombia:</strong> Ministry of Health - Mental Health Helpline: <strong>192</strong>.</li>
+                <li><strong>Argentina:</strong> SEDRONAR - Free Helpline: <strong>141</strong>.</li>
+                <li><strong>Other Countries:</strong> We urge you to contact your nearest public health clinic or dial your national emergency number (e.g., 911) to be immediately redirected to addiction counselors.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 4: ENVÍOS Y DEVOLUCIONES -->
+        <div id="envios-devoluciones" class="policy-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Políticas de Envío, Devoluciones y Reembolsos</h2>
+            <p> scbodycare opera bajo políticas sumamente estrictas de control sanitario y seguridad biológica para asegurar que cada frasco entregado provenga de un lote estéril y analizado directamente desde nuestras bodegas autorizadas.</p>
+            
+            <h3>1. Política de No Reembolso de Productos Abiertos</h3>
+            <p><strong>Por estrictas razones de higiene, seguridad, esterilidad y protección sanitaria, no se aceptará ningún tipo de reembolso, cambio ni devolución en productos cuyos viales, frascos o cajas de embalaje hayan sido abiertos, manipulados o tengan el sello de garantía roto o alterado.</strong> Una vez que un producto de investigación se expone a un ambiente externo al laboratorio de origen, pierde sus garantías de control biológico y no puede ser reintegrado a nuestros inventarios.</p>
+
+            <h3>2. Devolución de Productos No Abiertos</h3>
+            <p>Si usted cometió un error en su pedido y desea realizar una devolución de un producto que **no ha sido abierto**, el proceso debe cumplir obligatoriamente los siguientes requisitos:</p>
+            <ul>
+              <li><strong>Costo de Envío a cargo del Cliente:</strong> El costo logístico y delivery de retorno de la mercancía deberá ser cubierto en su totalidad por el cliente. scbodycare no emitirá etiquetas de devolución prepagadas.</li>
+              <li><strong>Evidencia fotográfica obligatoria:</strong> Antes de proceder a enviar cualquier devolución física, el cliente debe enviar fotos en alta resolución a nuestro canal de soporte que muestren claramente:
+                <ol>
+                  <li>El estado impecable y sellado de la caja exterior protectora.</li>
+                  <li>El sello térmico o precinto de seguridad del tapón del vial intacto y sin manipular.</li>
+                  <li>El estado general de higiene de la mercancía.</li>
+                </ol>
+              </li>
+              <li><strong>Rechazo por Seguridad:</strong> Si el producto físico arriba a nuestras instalaciones y se detecta cualquier discrepancia con las fotos, humedad, roturas, rayaduras o indicios de manipulación, la devolución será **rechazada inmediatamente** por políticas de seguridad e higiene, y la mercancía será devuelta al remitente sin procesarse el reembolso.</li>
+            </ul>
+
+            <h3>3. Políticas de Delivery y Tiempos de Envío</h3>
+            <p>Nuestros envíos estándar tienen una tarifa fija de <strong>$12.00</strong>. Una vez despachado el pedido, se enviará un número de guía a su correo. scbodycare no es responsable de demoras imputables exclusivamente a la empresa de correo postal (USPS, DHL o FedEx) o retrasos por revisiones aduaneras.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Shipping, Return and Refund Policies</h2>
+            <p>scbodycare operates under highly strict sanitary control and biosecurity protocols to guarantee that every vial delivered originates from a sterile, certified batch directly from our authorized warehouses.</p>
+            
+            <h3>1. No-Refund Policy for Opened Products</h3>
+            <p><strong>Due to strict hygiene, sterility, safety, and health protection regulations, no refunds, exchanges, or returns will be accepted under any circumstances for products whose vials, bottles, or packaging boxes have been opened, tampered with, or have a broken or altered security seal.</strong> Once a research product is exposed to an environment outside its manufacturing laboratory, it loses all biological control guarantees and cannot be re-entered into our inventories.</p>
+
+            <h3>2. Return of Unopened Products</h3>
+            <p>If you made a mistake in your order and wish to return a product that **has not been opened**, the process must strictly comply with the following criteria:</p>
+            <ul>
+              <li><strong>Return Shipping Costs Covered by Customer:</strong> The logistics and delivery cost for returning the merchandise must be covered 100% by the customer. scbodycare will not issue prepaid return labels.</li>
+              <li><strong>Mandatory Photo Verification:</strong> Prior to shipping any physical return, the customer must email high-resolution photos to our support channel clearly displaying:
+                <ol>
+                  <li>The flawless, sealed state of the outer protective box.</li>
+                  <li>The intact, untampered heat-shrink or plastic cap security seal of the vial.</li>
+                  <li>The overall sanitary condition of the merchandise.</li>
+                </ol>
+              </li>
+              <li><strong>Rejection on Safety Grounds:</strong> If the physical product arrives at our facility showing any discrepancies with the photos, dampness, cracks, scratches, or signs of tampering, the return will be **immediately rejected** on safety and hygiene grounds, and the merchandise will be returned to the sender without refund.</li>
+            </ul>
+
+            <h3>3. Delivery Policies & Shipping Times</h3>
+            <p>Our standard shipping has a flat rate of <strong>$12.00</strong>. Once the order is dispatched, a tracking number will be sent to your email. scbodycare is not liable for delays solely attributable to the postal courier agency (USPS, DHL, or FedEx) or custom clearance checks.</p>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 5: FACTURACIÓN Y SEGURIDAD -->
+        <div id="facturacion-seguridad" class="policy-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Políticas de Facturación y Seguridad en Transacciones</h2>
+            <p>Proteger los datos financieros de nuestros clientes es una prioridad absoluta en nuestro portal de comercio electrónico.</p>
+            
+            <h3>1. Cifrado y Pasarelas de Pago Seguras</h3>
+            <p> scbodycare no almacena, procesa ni registra números de tarjetas de crédito o débito, códigos CVV ni información bancaria directa en sus servidores corporativos. Todos los cobros se realizan mediante integraciones oficiales de pasarelas de pago cifradas con seguridad SSL/TLS de 256 bits, certificadas bajo los estándares PCI-DSS.</p>
+
+            <h3>2. Blindaje Antifraude y Verificación de Identidad</h3>
+            <p>Para resguardar el sistema contra operaciones de contracargos fraudulentos, compras no autorizadas o robo de tarjetas de crédito, scbodycare implementa filtros de seguridad. Ante transacciones marcadas como "riesgo medio o alto" por nuestras pasarelas, nos reservamos el derecho de retener el envío temporalmente y solicitar al comprador:</p>
+            <ul>
+              <li>Confirmación telefónica o vía SMS del pedido.</li>
+              <li>Foto de una identificación oficial emitida por el gobierno que coincida con el nombre en la tarjeta utilizada.</li>
+              <li>Prueba de domicilio coincidente con la dirección de facturación bancaria (Billing Address).</li>
+            </ul>
+            <p>Si el comprador no proporciona la documentación de validación dentro de las siguientes 72 horas hábiles, el pedido será cancelado automáticamente y los fondos devueltos a la tarjeta de origen.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Billing & Transaction Security Policies</h2>
+            <p>Protecting our customers' financial data is an absolute priority on our e-commerce portal.</p>
+            
+            <h3>1. Encryption and Secure Payment Gateways</h3>
+            <p>scbodycare does not store, process, or record credit/debit card numbers, CVV codes, or direct banking information on its corporate servers. All charges are executed through official secure payment gateway integrations encrypted with 256-bit SSL/TLS security, certified under PCI-DSS standards.</p>
+
+            <h3>2. Anti-Fraud Screening & Identity Verification</h3>
+            <p>To shield the system against fraudulent chargebacks, unauthorized purchases, or credit card theft, scbodycare implements security screenings. For transactions flagged as "medium or high risk" by our gateways, we reserve the right to temporarily hold the shipment and request the buyer to provide:</p>
+            <ul>
+              <li>Telephone or SMS confirmation of the order.</li>
+              <li>A photograph of a government-issued official ID matching the name on the card used.</li>
+              <li>Proof of residence matching the banking billing address (Billing Address).</li>
+            </ul>
+            <p>If the buyer fails to supply the validation documents within 72 business hours, the order will be cancelled automatically, and funds returned to the card of origin.</p>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 6: PRIVACIDAD -->
+        <div id="privacidad" class="policy-section">
+          <!-- ESPAÑOL -->
+          <div class="lang-es">
+            <h2>Política de Privacidad y Tratamiento de Datos Personales</h2>
+            <p> scbodycare valora la privacidad de los científicos y centros de investigación que confían en nosotros. Los datos personales recolectados serán tratados con apego estricto a las regulaciones nacionales e internacionales de protección de datos.</p>
+            
+            <h3>1. Datos Recopilados y Finalidad</h3>
+            <p>Únicamente solicitamos información básica imprescindible para concretar el proceso de compra-venta y entrega postal: nombre, dirección física de entrega, dirección de correo electrónico, número telefónico de contacto y, si usted lo decide en el formulario de registro, su consentimiento explícito para suscribirse a alertas del boletín informativo.</p>
+            
+            <h3>2. Cero Compartición con Terceros</h3>
+            <p><strong>Bajo ninguna circunstancia vendemos, intercambiamos, alquilamos ni compartimos su información de contacto o historial de pedidos con redes publicitarias de terceros ni intermediarios de marketing.</strong> Sus datos solo se transmiten a la empresa de mensajería responsable de la entrega física del paquete.</p>
+
+            <h3>3. Derechos de Acceso y Cancelación (ARCO)</h3>
+            <p>Usted tiene derecho a acceder a sus datos personales, corregir cualquier dato erróneo o solicitar la eliminación total de su registro y cuenta del sistema de scbodycare. Para ejercer estos derechos, envíe una solicitud a través de nuestros canales oficiales de contacto y el equipo lo procesará de inmediato.</p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="lang-en">
+            <h2>Privacy Policy & Personal Data Treatment</h2>
+            <p>scbodycare values the privacy of the scientists and research facilities that trust us. Collected personal data will be managed in strict compliance with national and international data protection laws.</p>
+            
+            <h3>1. Data Collected & Purpose</h3>
+            <p>We only request basic information essential to complete the sales and postal delivery process: name, physical shipping address, email address, contact telephone number, and, if you choose so in the registration form, your explicit consent to subscribe to our newsletter alerts.</p>
+            
+            <h3>2. Zero Sharing Policy</h3>
+            <p><strong>Under no circumstances do we sell, trade, rent, or share your contact information or order history with third-party advertising networks or marketing brokers.</strong> Your data is transmitted solely to the courier company responsible for the physical delivery of your package.</p>
+
+            <h3>3. Data Access & Deletion Rights</h3>
+            <p>You have the right to access your personal data, correct any errors, or request the complete deletion of your registration and account from the scbodycare database. To exercise these rights, please submit a request through our official contact channels, and our team will process it immediately.</p>
+          </div>
+        </div>
+
+      </section>
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <div class="footer-columns">
+        
+        <div class="footer-col">
+          <h3 class="lang-es">Sobre scbodycare</h3><h3 class="lang-en">About scbodycare</h3>
+          <ul>
+            <li><a href="index.html#difference-heading"><span class="lang-es">Historia de la marca</span><span class="lang-en">Brand History</span></a></li>
+            <li><a href="index.html#difference-heading"><span class="lang-es">Compromiso de Calidad</span><span class="lang-en">Quality Commitment</span></a></li>
+            <li><a href="policies.html#aviso-legal"><span class="lang-es">Aviso Legal</span><span class="lang-en">Legal Disclaimer</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="lang-es">Soporte Técnico</h3><h3 class="lang-en">Support</h3>
+          <ul>
+            <li><a href="index.html?contact=open"><span class="lang-es">Atención al Cliente</span><span class="lang-en">Customer Support</span></a></li>
+            <li><a href="policies.html#envios-devoluciones"><span class="lang-es">Política de Envío y Devoluciones</span><span class="lang-en">Shipping & Return Policy</span></a></li>
+            <li><a href="policies.html#prevencion"><span class="lang-es">Prevención de Adicciones</span><span class="lang-en">Addiction Prevention</span></a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 id="footer-contact-title" class="lang-es">Mantente en contacto</h3><h3 class="lang-en">Keep in Touch</h3>
+          <p id="footer-contact-desc" style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-es">Síguenos en nuestras redes oficiales para contactar directamente.</p>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-en">Follow us on our official channels to contact us directly.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="tel:+17045247396" id="footer-call-btn" class="contact-btn-circle phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/17045247396" target="_blank" id="footer-whatsapp-btn" class="contact-btn-circle whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="sms:+17045247396" id="footer-sms-btn" class="contact-btn-circle sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i></a>
+            <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" id="footer-tiktok-btn" class="contact-btn-circle tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" id="footer-instagram-btn" class="contact-btn-circle instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="lang-es">Únete al boletín</h3><h3 class="lang-en">Join our Newsletter</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-es">Recibe actualizaciones instantáneas del catálogo.</p>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;" class="lang-en">Receive instant catalog updates.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Tu correo electrónico" class="form-control" style="padding: 8px 12px; font-size: 13px; background-color:#111;">
+            <button class="btn-primary" style="padding: 8px 15px; font-size: 13px; box-shadow:none;" onclick="showToast('¡Te has suscrito al boletín!');"><span class="lang-es">Enviar</span><span class="lang-en">Send</span></button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div style="font-size: 11px; color: #888; text-align: justify; margin-top: 30px; line-height: 1.5; border-top: 1px solid #222; padding-top: 25px;">
+        <div class="lang-es">
+          <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+        </div>
+        <div class="lang-en">
+          <strong>SAFETY & LIABILITY DISCLAIMER (RESEARCH USE ONLY):</strong> All products distributed on this portal are intended solely and exclusively for scientific laboratory research, chemical or biological in vitro studies, and not for human therapeutic, clinical, veterinary, injection, dietary, or cosmetic consumption. scbodycare does not provide medical advice, prescriptions, or dosage suggestions. Misuse or abuse of substances can be harmful and highly addictive. If you experience symptoms of dependency, contact professionals by calling SAMHSA in the USA (1-800-662-4357) or local helplines in your country of residence.
+        </div>
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. <span class="lang-es">Todos los derechos reservados.</span><span class="lang-en">All rights reserved.</span></p>
+        <p>
+          <a href="policies.html#terminos" onclick="switchSection(null, 'terminos')"><span class="lang-es">Términos y Condiciones</span><span class="lang-en">Terms & Conditions</span></a> | 
+          <a href="policies.html#privacidad" onclick="switchSection(null, 'privacidad')"><span class="lang-es">Política de Privacidad</span><span class="lang-en">Privacy Policy</span></a> | 
+          <a href="policies.html#aviso-legal" onclick="switchSection(null, 'aviso-legal')"><span class="lang-es">Aviso Legal</span><span class="lang-en">Legal Disclaimer</span></a>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Script global del carrito y usuario -->
+  <script src="app.js"></script>
+  <script>
+    // Inicializar idioma de localStorage
+    let currentLang = localStorage.getItem('lang') || 'es';
+    
+    function applyLanguage(lang) {
+      document.documentElement.lang = lang;
+      
+      const langFlag = document.getElementById('lang-flag-img');
+      const mobileLangFlag = document.getElementById('mobile-lang-flag-img');
+      
+      if (lang === 'en') {
+        if (langFlag) langFlag.src = "https://flagcdn.com/w20/es.png";
+        if (mobileLangFlag) mobileLangFlag.src = "https://flagcdn.com/w20/es.png";
+      } else {
+        if (langFlag) langFlag.src = "https://flagcdn.com/w20/us.png";
+        if (mobileLangFlag) mobileLangFlag.src = "https://flagcdn.com/w20/us.png";
+      }
+    }
+    
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', currentLang);
+      applyLanguage(currentLang);
+      const message = currentLang === 'en' ? "Language changed to English" : "Idioma cambiado a Español";
+      showToast(message);
+    }
+    
+    // Función para cambiar de sección en las pestañas
+    function switchSection(event, sectionId) {
+      if (event) {
+        event.preventDefault();
+      }
+      
+      // Remover clase activa de todos los links
+      document.querySelectorAll('.policy-tab-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      
+      // Activar link actual
+      const activeLink = document.querySelector(`.policy-tab-link[href="#${sectionId}"]`);
+      if (activeLink) {
+        activeLink.classList.add('active');
+      }
+      
+      // Ocultar todas las secciones y activar la seleccionada
+      document.querySelectorAll('.policy-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+      
+      const targetSec = document.getElementById(sectionId);
+      if (targetSec) {
+        targetSec.classList.add('active');
+        // Hacer scroll suave hacia arriba del contenido
+        document.querySelector('.policies-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      applyLanguage(currentLang);
+      
+      // Escuchar hash en URL para activar sección directa (e.g. policies.html#envios-devoluciones)
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        switchSection(null, hash);
+      }
+    });
+
+    // Escuchar cambios de hash dinámicos
+    window.addEventListener('hashchange', () => {
+      const hash = window.location.hash.substring(1);
+      if (hash) {
+        switchSection(null, hash);
+      }
+    });
+  </script>
+</body>
+</html>

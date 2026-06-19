@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <script>
+    const id = new URLSearchParams(window.location.search).get("id");
+    window.location.replace("index.html" + (id ? "?product=" + id : ""));
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Producto | scbodycare</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span>✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container">
+      <div class="top-nav-links">
+        <a href="admin.html"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> Ingresar / Registrarse</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia -->
+    <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field">
+        </div>
+        <a href="cart.html" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span>Carrito</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación Inferior (Categorías) -->
+  <nav class="bottom-nav">
+    <div class="container" style="justify-content: center;">
+      <ul class="bottom-nav-list">
+        <li class="bottom-nav-item"><a href="index.html" class="bottom-nav-link">Inicio</a></li>
+        <li class="bottom-nav-item">
+          <a href="catalog.html?category=Nutrición" class="bottom-nav-link">Nutrición</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Nutrición&subcategory=Vitaminas-y-Minerales" class="submenu-link">Vitaminas y Minerales</a></li>
+            <li><a href="catalog.html?category=Nutrición&subcategory=Colágeno" class="submenu-link">Colágeno</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="catalog.html?category=Proteína" class="bottom-nav-link">Proteína</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Proteína&subcategory=Suero" class="submenu-link">Suero</a></li>
+            <li><a href="catalog.html?category=Proteína&subcategory=Vegetal-y-Vegano" class="submenu-link">Vegetal y Vegano</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item">
+          <a href="catalog.html?category=Belleza" class="bottom-nav-link">Belleza</a>
+          <ul class="submenu">
+            <li><a href="catalog.html?category=Belleza&subcategory=Sueros-Faciales" class="submenu-link">Sueros Faciales</a></li>
+            <li><a href="catalog.html?category=Belleza&subcategory=Antienvejecimiento" class="submenu-link">Antienvejecimiento</a></li>
+          </ul>
+        </li>
+        <li class="bottom-nav-item"><a href="catalog.html?category=Hogar-Verde" class="bottom-nav-link">Hogar Verde</a></li>
+        <li class="bottom-nav-item"><a href="catalog.html?category=Modere" class="bottom-nav-link">Modere</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Contenedor Detalle del Producto -->
+  <main class="container product-detail-layout" id="product-detail-container">
+    <!-- Carga dinámica -->
+    <div style="width: 100%; text-align: center; padding: 100px;">
+      <p style="font-size: 18px; color: var(--color-text-muted);">Cargando detalles del producto...</p>
+    </div>
+  </main>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Sobre scbodycare</h3>
+          <ul>
+            <li><a href="about.html#historia">Historia de la marca</a></li>
+            <li><a href="about.html#calidad">Compromiso de Calidad</a></li>
+            <li><a href="about.html#sostenibilidad">Sostenibilidad Verde</a></li>
+            <li><a href="about.html#estudios">Estudios Clínicos</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Soporte Técnico</h3>
+          <ul>
+            <li><a href="index.html?contact=open">Atención al Cliente</a></li>
+            <li><a href="policies.html#envios-devoluciones">Política de Envío y Devoluciones</a></li>
+            <li><a href="policies.html#prevencion">Prevención de Adicciones</a></li>
+            <li><a href="policies.html#aviso-legal">Aviso Legal</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Mantente en contacto</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;">Síguenos en nuestras redes oficiales para contactar directamente.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="tel:+17045247396" class="contact-btn-circle phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/17045247396" target="_blank" class="contact-btn-circle whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="sms:+17045247396" class="contact-btn-circle sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i></a>
+            <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="contact-btn-circle tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="contact-btn-circle instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Únete al boletín</h3>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Tu correo electrónico" class="form-control" style="padding: 8px 12px; font-size: 13px; background-color:#111;">
+            <button class="btn-primary" style="padding: 8px 15px; font-size: 13px; box-shadow:none;" onclick="showToast('¡Te has suscrito al boletín!');">Enviar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div id="global-legal-disclaimer" style="font-size: 11px; color: #888; text-align: justify; margin-top: 30px; line-height: 1.5; border-top: 1px solid #222; padding-top: 25px;">
+        <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clinical, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p>
+          <a href="policies.html#terminos">Términos y Condiciones</a> | 
+          <a href="policies.html#privacidad">Política de Privacidad</a> | 
+          <a href="policies.html#aviso-legal">Aviso Legal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+  <script>
+    let currentProduct = null;
+    let selectedQty = 1;
+    let purchaseType = 'regular'; // 'regular' o 'autoship'
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id');
+
+      // Configurar campo buscador
+      const searchField = document.getElementById('search-input-field');
+      searchField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const query = searchField.value.trim();
+          if (query) {
+            window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+          }
+        }
+      });
+
+      if (productId) {
+        fetchProductDetails(productId);
+      } else {
+        showProductError("No se especificó un ID de producto válido.");
+      }
+    });
+
+    function fetchProductDetails(id) {
+      fetch(`/api/products/${id}`)
+        .then(res => {
+          if (!res.ok) throw new Error("Producto no encontrado");
+          return res.json();
+        })
+        .then(product => {
+          currentProduct = product;
+          renderProductDetails();
+        })
+        .catch(err => {
+          console.error(err);
+          showProductError("El producto que buscas no existe o fue desincorporado.");
+        });
+    }
+
+    function showProductError(msg) {
+      const container = document.getElementById('product-detail-container');
+      container.innerHTML = `
+        <div style="width: 100%; text-align: center; padding: 80px; background-color: var(--color-black-card); border-radius: 8px; border: var(--border-gold-subtle);">
+          <i class="fa fa-exclamation-triangle" style="font-size: 40px; color: var(--color-gold); margin-bottom: 20px;"></i>
+          <h2>Lo sentimos</h2>
+          <p style="color: var(--color-text-muted); margin-bottom: 30px; margin-top: 10px;">${msg}</p>
+          <a href="catalog.html" class="btn-primary">Volver al Catálogo</a>
+        </div>
+      `;
+    }
+
+    function renderProductDetails() {
+      const container = document.getElementById('product-detail-container');
+      const autoshipPrice = currentProduct.price * 0.85; // 15% OFF en Autoship
+      
+      container.innerHTML = `
+        <div class="product-detail-media">
+          <img src="${currentProduct.image}" alt="${currentProduct.name}" class="product-detail-img">
+        </div>
+        
+        <div class="product-detail-info">
+          <span class="hero-tag" style="margin-bottom: 10px;">${currentProduct.promo || 'Colección Premium'}</span>
+          <h1 class="product-detail-title">${currentProduct.name}</h1>
+          <p class="product-detail-category">Categoría: ${currentProduct.category} &gt; ${currentProduct.subcategory.replace(/-/g, ' ')}</p>
+          
+          <div class="product-detail-price" id="displayed-price">$${currentProduct.price.toFixed(2)}</div>
+          
+          <p class="product-detail-desc">${currentProduct.description}</p>
+          
+          <!-- Opciones de Compra Shaklee Style -->
+          <div class="purchase-options">
+            
+            <div class="purchase-option-row" onclick="setPurchaseType('regular')">
+              <input type="radio" id="purchase-regular" name="purchase-type" value="regular" checked>
+              <label for="purchase-regular" class="purchase-option-label">
+                Compra única
+                <span class="purchase-option-desc">Precio regular sin compromisos recurrentes.</span>
+              </label>
+              <span style="margin-left: auto; font-weight:700;">$${currentProduct.price.toFixed(2)}</span>
+            </div>
+            
+            <div class="purchase-option-row" onclick="setPurchaseType('autoship')" style="margin-top: 15px; border-top: 1px solid #222; padding-top: 15px;">
+              <input type="radio" id="purchase-autoship" name="purchase-type" value="autoship">
+              <label for="purchase-autoship" class="purchase-option-label" style="color: var(--color-gold-light);">
+                Autoship (Compra Recurrente) <span style="background: var(--gold-gradient); color: #000; font-size: 9px; padding: 2px 5px; border-radius: 3px; font-weight: 700; margin-left: 5px;">Ahorra 15%</span>
+                <span class="purchase-option-desc">Entrega automática cada mes. Cancela cuando quieras.</span>
+              </label>
+              <span style="margin-left: auto; font-weight:700; color: var(--color-gold);">$${autoshipPrice.toFixed(2)}</span>
+            </div>
+
+          </div>
+
+          <!-- Selector de Cantidad -->
+          <div class="quantity-selector">
+            <label>Cantidad:</label>
+            <div class="quantity-control">
+              <button class="quantity-btn" onclick="updateQty(-1)">-</button>
+              <input type="text" value="1" class="quantity-input" id="qty-input" readonly>
+              <button class="quantity-btn" onclick="updateQty(1)">+</button>
+            </div>
+          </div>
+
+          <!-- Botones de Acción -->
+          <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+            <button class="btn-primary" style="flex: 1;" onclick="handleAddToCartClick()">Agregar al Carrito</button>
+            <a href="catalog.html" class="btn-secondary" style="display: inline-flex; align-items: center; justify-content: center;">Volver</a>
+          </div>
+
+          ${currentProduct.benefits && currentProduct.benefits.length > 0 ? `
+            <div class="detail-section-box">
+              <div class="detail-section-title">
+                <i class="fa-solid fa-circle-check" style="color: var(--color-gold);"></i> Beneficios
+              </div>
+              <div class="detail-section-content">
+                <ul>
+                  ${currentProduct.benefits.map(b => `<li>${b}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          ` : ''}
+
+          ${currentProduct.indications && currentProduct.indications.length > 0 ? `
+            <div class="detail-section-box">
+              <div class="detail-section-title">
+                <i class="fa-solid fa-syringe" style="color: var(--color-gold);"></i> ¿Cómo aplicar / Reconstitución?
+              </div>
+              <div class="detail-section-content">
+                <ul>
+                  ${currentProduct.indications.map(i => `<li>${i}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          ` : ''}
+
+          ${currentProduct.contraindications && currentProduct.contraindications.length > 0 ? `
+            <div class="detail-section-box">
+              <div class="detail-section-title">
+                <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-gold);"></i> Almacenamiento y Advertencias
+              </div>
+              <div class="detail-section-content">
+                <ul>
+                  ${currentProduct.contraindications.map(c => `<li>${c}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+          ` : ''}
+
+          ${currentProduct.legal ? `
+            <div class="disclaimer-box">
+              <i class="fa-solid fa-gavel"></i> ${currentProduct.legal}
+            </div>
+          ` : ''}
+
+        </div>
+      `;
+    }
+
+    function updateQty(val) {
+      selectedQty = Math.max(1, selectedQty + val);
+      document.getElementById('qty-input').value = selectedQty;
+    }
+
+    function setPurchaseType(type) {
+      purchaseType = type;
+      document.getElementById(`purchase-${type}`).checked = true;
+      
+      const displayedPrice = document.getElementById('displayed-price');
+      if (type === 'autoship') {
+        displayedPrice.textContent = `$${(currentProduct.price * 0.85).toFixed(2)}`;
+        displayedPrice.style.color = 'var(--color-gold)';
+      } else {
+        displayedPrice.textContent = `$${currentProduct.price.toFixed(2)}`;
+        displayedPrice.style.color = 'var(--color-gold-light)';
+      }
+    }
+
+    function handleAddToCartClick() {
+      const price = purchaseType === 'autoship' ? currentProduct.price * 0.85 : currentProduct.price;
+      addToCart(currentProduct.id, currentProduct.name, price, selectedQty, purchaseType);
+    }
+  </script>
+</body>
+</html>

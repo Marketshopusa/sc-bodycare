@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>scbodycare | Tienda en Línea de Suplementos y Cuidado Corporal Premium</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#0c231e">
+</head>
+<body>
+
+  <!-- Cabecera Móvil Estilo App Nativa -->
+  <header class="mobile-app-bar">
+    <div class="mobile-app-bar-container">
+      <a href="index.html" class="mobile-app-logo-link">
+        <img src="logo.jpg" alt="S&C Logo" class="mobile-logo-img">
+        <span class="mobile-logo-text">S&C Body Care</span>
+      </a>
+      <div class="mobile-app-bar-actions">
+        <!-- Panel administrativo móvil oculto por defecto para clientes regulares -->
+        <a href="admin.html" id="mobile-admin-panel-link" class="admin-panel-link" style="display: none; color: var(--color-gold); font-size: 18px; margin-right: 15px;" title="Panel Admin">
+          <i class="fa-solid fa-cogs"></i>
+        </a>
+        <!-- Selector de idioma móvil con bandera -->
+        <button class="mobile-lang-toggle" onclick="toggleLanguage()" title="Cambiar Idioma">
+          <img id="mobile-lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+        <!-- Carrito móvil -->
+        <a href="#" onclick="openCartDrawer(); return false;" class="mobile-cart-link">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span class="cart-count" id="mobile-cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Búsqueda Móvil Desplegable -->
+  <div class="mobile-search-bar" id="mobile-search-bar">
+    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+    <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="mobile-search-input-field">
+  </div>
+
+  <!-- Barra de Anuncios Superior -->
+  <div class="promo-bar">
+    <span>✨ Hazte miembro Acumula puntos y gana premios ✨</span>
+  </div>
+
+  <!-- Navegación Superior -->
+  <nav class="top-nav">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <!-- Botones de contacto oficiales en la parte izquierda -->
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <a href="tel:+17045247396" class="contact-btn phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i> Llamar</a>
+        <a href="https://wa.me/17045247396" target="_blank" class="contact-btn whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+        <a href="sms:+17045247396" class="contact-btn sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i> SMS</a>
+        <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="contact-btn tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="contact-btn instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i> Instagram</a>
+      </div>
+      
+      <!-- Panel administrativo, Login y Bandera de idioma en la parte derecha -->
+      <div class="top-nav-links" style="display: flex; align-items: center; gap: 15px; margin-left: auto;">
+        <a href="admin.html" class="admin-panel-link" style="display: none;"><i class="fa fa-cogs"></i> Admin Panel</a>
+        <span id="nav-login-link">
+          <a href="login.html"><i class="fa fa-user"></i> Ingresar / Registrarse</a>
+        </span>
+        <!-- Botón con bandera para cambio de idioma -->
+        <button id="lang-toggle-btn" onclick="toggleLanguage()" style="background: none; border: none; cursor: pointer; padding: 0; display: inline-flex; align-items: center;" title="Cambiar Idioma">
+          <img id="lang-flag-img" src="https://flagcdn.com/w20/us.png" alt="English" style="width: 20px; height: auto; border-radius: 2px; box-shadow: 0 1px 3px rgba(0,0,0,0.2);">
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Navegación Intermedia (Buscador y Logo) -->
+    <header class="middle-nav">
+    <div class="container">
+      <div class="logo-container">
+        <a href="index.html" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+          <img src="logo.jpg" alt="S&C Logo" class="logo-img">
+          <span class="logo-text">S&C Body Care</span>
+        </a>
+      </div>
+      
+      <div class="header-side-tools">
+        <div class="search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" placeholder="Búsqueda de productos..." class="search-input" id="search-input-field">
+        </div>
+        <a href="#" onclick="openCartDrawer(); return false;" style="display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px;">
+          <i class="fa-solid fa-cart-shopping" style="font-size: 18px; color: var(--color-gold);"></i>
+          <span>Carrito</span>
+          <span class="cart-count" id="cart-badge-count" style="display: none;">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navegación Inferior (Categorías en Landing Page) -->
+  <nav class="bottom-nav">
+    <div class="container" style="justify-content: center;">
+      <ul class="bottom-nav-list">
+        <li class="bottom-nav-item active" id="nav-item-all"><a href="#" onclick="filterCatalog('all'); return false;" class="bottom-nav-link">Todos los Péptidos</a></li>
+        <li class="bottom-nav-item" id="nav-item-metabolismo"><a href="#" onclick="filterCatalog('Metabolismo & Pérdida de Peso'); return false;" class="bottom-nav-link">Metabolismo & Pérdida de Peso</a></li>
+        <li class="bottom-nav-item" id="nav-item-regeneracion"><a href="#" onclick="filterCatalog('Regeneración & Estética'); return false;" class="bottom-nav-link">Regeneración & Estética</a></li>
+        <li class="bottom-nav-item" id="nav-item-otros"><a href="#" onclick="filterCatalog('Otros Péptidos'); return false;" class="bottom-nav-link">Otros Péptidos</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Banner Principal Hero (Peptide edition) -->
+  <section class="hero-banner">
+    <div class="hero-overlay"></div>
+    <img src="hero_bg.png" alt="Péptidos de Investigación Premium" class="hero-bg-img">
+    <div class="container" style="justify-content: flex-start; position: relative; z-index: 10;">
+      <div class="hero-content">
+        <span class="hero-tag" id="hero-tag">USO EXCLUSIVO EN INVESTIGACIÓN</span>
+        <h1 class="hero-title" id="hero-title">La evolución en <span>péptidos de investigación</span> premium</h1>
+        <p class="hero-description" id="hero-desc">Suministro de la más alta pureza en compuestos liofilizados para estudios metabólicos, antienvejecimiento y composición corporal.</p>
+        <a href="#catalog-section" class="btn-primary" id="hero-btn">Ver Catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cinta Deslizante de Valores (Brand values ticker - Peptide edition) -->
+  <section class="ticker-section">
+    <div class="ticker-wrapper">
+      <div class="ticker-item"><i class="fa-solid fa-flask"></i> 100% Alta Pureza HPLC/MS</div>
+      <div class="ticker-item"><i class="fa-solid fa-shield-halved"></i> Calidad Analítica Garantizada</div>
+      <div class="ticker-item"><i class="fa-solid fa-truck-fast"></i> Tarifa Plana de Envío $12.00</div>
+      <div class="ticker-item"><i class="fa-solid fa-microscope"></i> Exclusivo para Investigación Científica</div>
+      
+      <!-- Duplicado para loop sin fin -->
+      <div class="ticker-item"><i class="fa-solid fa-flask"></i> 100% Alta Pureza HPLC/MS</div>
+      <div class="ticker-item"><i class="fa-solid fa-shield-halved"></i> Calidad Analítica Garantizada</div>
+      <div class="ticker-item"><i class="fa-solid fa-truck-fast"></i> Tarifa Plana de Envío $12.00</div>
+      <div class="ticker-item"><i class="fa-solid fa-microscope"></i> Exclusivo para Investigación Científica</div>
+    </div>
+  </section>
+
+  <!-- Título de Sección -->
+  <h2 class="section-title" id="difference-heading">La Diferencia <span>scbodycare</span></h2>
+
+  <!-- Carrusel de Valores/Diferencia -->
+  <section class="container" style="display: block;">
+    <div class="carousel-container">
+      <div class="carousel-track-container">
+        <ul class="carousel-track">
+          <!-- Slide 1: Seguro -->
+          <li class="carousel-slide">
+            <div class="difference-card">
+              <div class="difference-info">
+                <span class="hero-tag">Seguridad Garantizada</span>
+                <h3 class="difference-tag" style="color: #0c231e; font-size: 28px;">Investigación Confiable</h3>
+                <p class="difference-text">Nuestros péptidos están sujetos a los más estrictos controles de calidad de la industria. Cada lote es evaluado independientemente para garantizar la máxima seguridad en sus aplicaciones científicas.</p>
+                <a href="#catalog-section" class="difference-link">Explorar Péptidos</a>
+              </div>
+              <div class="difference-media">
+                <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?auto=format&fit=crop&q=80&w=500" alt="Investigación Segura" class="difference-img">
+              </div>
+            </div>
+          </li>
+          
+          <!-- Slide 2: Comprobado -->
+          <li class="carousel-slide">
+            <div class="difference-card">
+              <div class="difference-info">
+                <span class="hero-tag">Certificación HPLC/MS</span>
+                <h3 class="difference-tag" style="color: #0c231e; font-size: 28px;">Alta Pureza</h3>
+                <p class="difference-text">Garantizamos una pureza superior al 98% en todos nuestros viales liofilizados. Desarrollados y analizados con espectrometría de masas para asegurar resultados de laboratorio consistentes y repetibles.</p>
+                <a href="#catalog-section" class="difference-link">Ver Fichas Técnicas</a>
+              </div>
+              <div class="difference-media">
+                <img src="https://images.unsplash.com/photo-1532187643603-ba119ca4109e?auto=format&fit=crop&q=80&w=500" alt="Alta Pureza Comprobada" class="difference-img">
+              </div>
+            </div>
+          </li>
+          
+          <!-- Slide 3: Garantizado -->
+          <li class="carousel-slide">
+            <div class="difference-card">
+              <div class="difference-info">
+                <span class="hero-tag">100% Satisfacción</span>
+                <h3 class="difference-tag" style="color: #0c231e; font-size: 28px;">Calidad Garantizada</h3>
+                <p class="difference-text">Respaldamos la calidad de nuestros productos con un compromiso de reemplazo absoluto. Si un vial de investigación no cumple con las especificaciones del reporte analítico, le reintegramos el 100% de su compra.</p>
+                <a href="#catalog-section" class="difference-link">Nuestra Garantía</a>
+              </div>
+              <div class="difference-media">
+                <img src="https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=500" alt="Calidad Garantizada" class="difference-img">
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      
+      <button class="carousel-btn left" id="carousel-prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="carousel-btn right" id="carousel-next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+      
+      <div class="carousel-indicators">
+        <button class="carousel-dot active" data-slide-to="0"></button>
+        <button class="carousel-dot" data-slide-to="1"></button>
+        <button class="carousel-dot" data-slide-to="2"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Catálogo de Péptidos (Sección Principal de la Landing Page) -->
+  <section class="container" style="display: block; margin-top: 50px; scroll-margin-top: 80px;" id="catalog-section">
+    <h2 class="section-title" id="catalog-section-title">Catálogo de <span>Péptidos de Investigación</span></h2>
+    <p id="catalog-section-desc" style="text-align: center; color: var(--color-text-muted); max-width: 700px; margin: -10px auto 40px auto; font-size: 15.5px; line-height: 1.6;">
+      Fórmulas liofilizadas de alta pureza (superior al 98%) para uso exclusivo de investigación y desarrollo en laboratorios. Todos los viales muestran el logotipo original y el sello de garantía.
+    </p>
+    
+    <!-- Filtros de Categoría rápidos en catálogo -->
+    <div class="catalog-filter-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 45px;">
+      <button class="btn-primary" id="btn-filter-all" onclick="filterCatalog('all')" style="padding: 8px 25px; font-size: 13.5px; border-radius: 20px; box-shadow: none; color: #000;">Todos</button>
+      <button class="btn-secondary" id="btn-filter-metabolismo" onclick="filterCatalog('Metabolismo & Pérdida de Peso')" style="padding: 8px 25px; font-size: 13.5px; border-radius: 20px; border-color: #ccc; color: #555;">Metabolismo & Pérdida de Peso</button>
+      <button class="btn-secondary" id="btn-filter-regeneracion" onclick="filterCatalog('Regeneración & Estética')" style="padding: 8px 25px; font-size: 13.5px; border-radius: 20px; border-color: #ccc; color: #555;">Regeneración & Estética</button>
+      <button class="btn-secondary" id="btn-filter-otros" onclick="filterCatalog('Otros Péptidos')" style="padding: 8px 25px; font-size: 13.5px; border-radius: 20px; border-color: #ccc; color: #555;">Otros Péptidos</button>
+    </div>
+
+    <div class="products-grid" id="catalog-products-grid">
+      <!-- Los productos se cargarán dinámicamente aquí -->
+    </div>
+  </section>
+
+  <!-- Sección de Unirse (Member/Ambassador) -->
+  <section class="container" style="display: block; margin-top: 60px;">
+    <div class="join-section">
+      <h2 class="join-title">Tu viaje hacia la excelencia comienza ahora</h2>
+      <p class="join-subtitle">Elige cómo formar parte de la comunidad scbodycare y accede a privilegios únicos.</p>
+      
+      <div class="join-cards">
+        <div class="join-card">
+          <h3>Hazte Miembro</h3>
+          <p>Al hacerte miembro acumulas puntos y esos puntos te harán ganar productos.</p>
+          <a href="login.html" class="btn-secondary">Registrarse gratis</a>
+          <span class="disclaimer" style="font-size: 10px; color: #a9a9a9; display: block; margin-top: 10px;">condiciones aplican</span>
+        </div>
+        <div class="join-card">
+          <h3>Sé un Embajador</h3>
+          <p>Comparte bienestar premium con tus conocidos. Obtén ingresos extras promocionando nuestra marca profesional.</p>
+          <a href="login.html" class="btn-primary">Unirse a Nosotros</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pie de Página -->
+  <footer>
+    <div class="container" style="display: block;">
+      <div class="footer-columns">
+        
+        <div class="footer-col">
+          <h3>Sobre scbodycare</h3>
+          <ul>
+            <li><a href="about.html#historia">Historia de la marca</a></li>
+            <li><a href="about.html#calidad">Compromiso de Calidad</a></li>
+            <li><a href="about.html#sostenibilidad">Sostenibilidad Verde</a></li>
+            <li><a href="about.html#estudios">Estudios Clínicos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Soporte Técnico</h3>
+          <ul>
+            <li><a href="index.html?contact=open">Atención al Cliente</a></li>
+            <li><a href="policies.html#envios-devoluciones">Política de Envío y Devoluciones</a></li>
+            <li><a href="policies.html#prevencion">Prevención de Adicciones</a></li>
+            <li><a href="policies.html#aviso-legal">Aviso Legal</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 id="footer-contact-title">Mantente en contacto</h3>
+          <p id="footer-contact-desc" style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;">Síguenos en nuestras redes oficiales para contactar directamente.</p>
+          <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <a href="tel:+17045247396" id="footer-call-btn" class="contact-btn-circle phone-btn" title="Llamar"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/17045247396" target="_blank" id="footer-whatsapp-btn" class="contact-btn-circle whatsapp-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="sms:+17045247396" id="footer-sms-btn" class="contact-btn-circle sms-btn" title="Mensaje SMS"><i class="fa-solid fa-comment-sms"></i></a>
+            <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" id="footer-tiktok-btn" class="contact-btn-circle tiktok-btn" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" id="footer-instagram-btn" class="contact-btn-circle instagram-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Únete al boletín</h3>
+          <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 15px;">Recibe actualizaciones instantáneas del catálogo.</p>
+          <div style="display: flex; gap: 8px;">
+            <input type="email" placeholder="Tu correo electrónico" class="form-control" style="padding: 8px 12px; font-size: 13px; background-color:#111;">
+            <button class="btn-primary" style="padding: 8px 15px; font-size: 13px; box-shadow:none;" onclick="showToast('¡Te has suscrito al boletín!');">Enviar</button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- AVISO DE EXCLUSIÓN DE RESPONSABILIDAD EN EL PIE DE PÁGINA (BLINDAJE DE SEGURIDAD GLOBAL) -->
+      <div id="global-legal-disclaimer" style="font-size: 11px; color: #888; text-align: justify; margin-top: 30px; line-height: 1.5; border-top: 1px solid #222; padding-top: 25px;">
+        <strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.
+      </div>
+
+      <div class="footer-bottom" style="margin-top: 20px;">
+        <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p>
+          <a href="policies.html#terminos">Términos y Condiciones</a> | 
+          <a href="policies.html#privacidad">Política de Privacidad</a> | 
+          <a href="policies.html#aviso-legal">Aviso Legal</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Popup de Registro Automático -->
+  <div class="register-popup-overlay" id="register-popup-overlay">
+    <div class="register-popup-box">
+      <button class="register-popup-close" id="register-popup-close">&times;</button>
+      <img src="logo.jpg" alt="scbodycare logo" class="register-popup-logo">
+      <h3 class="register-popup-title">Únete a la Excelencia</h3>
+      <p class="register-popup-desc">Regístrate hoy en <strong>scbodycare</strong> y obtén un <strong>15% de descuento</strong> en tu primera compra, además de recibir alertas exclusivas e información de nuevos productos en el catálogo de forma automática.</p>
+      <form id="popup-register-form">
+        <div class="form-group" style="margin-bottom: 15px;">
+          <input type="text" id="popup-reg-name" placeholder="Nombre completo" class="form-control" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #fff; color: #333;" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <input type="email" id="popup-reg-email" placeholder="Correo electrónico" class="form-control" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #fff; color: #333;" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 15px;">
+          <input type="password" id="popup-reg-password" placeholder="Contraseña" class="form-control" style="width: 100%; padding: 10px; border-radius: 4px; border: 1px solid #ccc; background-color: #fff; color: #333;" required>
+        </div>
+        <div class="form-group" style="margin-bottom: 20px; display: flex; align-items: flex-start; gap: 10px; text-align: left;">
+          <input type="checkbox" id="popup-reg-subscribe" checked style="width: 18px; height: 18px; accent-color: var(--color-gold); cursor: pointer; margin-top: 2px;">
+          <label for="popup-reg-subscribe" style="font-size: 13px; color: #333; cursor: pointer; line-height: 1.4; user-select: none;">
+            <strong id="popup-newsletter-title" style="color: var(--color-gold-light); display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Únete al boletín</strong>
+            <span id="popup-newsletter-desc">Recibe actualizaciones instantáneas del catálogo y notificaciones de nuevos productos de forma automática bajo mi autorización.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; border-radius: 4px;">Registrarse Ahora</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal de Detalle de Producto (Popup Ficha Técnica) -->
+  <div class="product-modal" id="product-modal">
+    <div class="product-modal-content">
+      <button class="product-modal-close" onclick="closeProductModal()">&times;</button>
+      <div class="product-modal-media">
+        <img id="modal-product-img" src="" alt="" class="product-modal-img">
+      </div>
+      <div class="product-modal-info" id="modal-product-info">
+        <!-- Render dinámico del detalle del péptido -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer (Panel Deslizable) del Carrito de Compras -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" onclick="closeCartDrawer()"></div>
+  <div class="cart-drawer" id="cart-drawer">
+    <div class="cart-drawer-header">
+      <h3 class="cart-drawer-title"><i class="fa-solid fa-cart-shopping"></i> Tu Carrito</h3>
+      <button class="cart-drawer-close" onclick="closeCartDrawer()">&times;</button>
+    </div>
+    <div class="cart-drawer-body" id="cart-drawer-body">
+      <!-- Artículos del carrito se cargan dinámicamente -->
+    </div>
+    <div class="cart-drawer-footer" id="cart-drawer-footer">
+      <!-- Totales, descuentos y formulario de checkout rápido -->
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    let allProducts = [];
+    let activeCategory = 'all';
+
+    // Sistema Multilingüe (Español / Inglés)
+    let currentLang = localStorage.getItem('lang') || 'es';
+
+    const translations = {
+      es: {
+        adminLink: '<i class="fa fa-cogs"></i> Panel Admin',
+        loginLink: '<i class="fa fa-user"></i> Ingresar / Registrarse',
+        searchPlaceholder: "Búsqueda de productos...",
+        cartText: "Carrito",
+        navAll: "Todos los Péptidos",
+        navMetabolismo: "Metabolismo & Pérdida de Peso",
+        navRegeneracion: "Regeneración & Estética",
+        navOtros: "Otros Péptidos",
+        heroTag: "USO EXCLUSIVO EN INVESTIGACIÓN",
+        heroTitle: "La evolución en <span>péptidos de investigación</span> premium",
+        heroDesc: "Suministro de la más alta pureza en compuestos liofilizados para estudios metabólicos, antienvejecimiento y composición corporal.",
+        heroBtn: "Ver Catálogo",
+        catalogTitle: "Catálogo de <span>Péptidos de Investigación</span>",
+        catalogDesc: "Fórmulas liofilizadas de alta pureza (superior al 98%) para uso exclusivo de investigación y desarrollo en laboratorios. Todos los viales muestran el logotipo original y el sello de garantía.",
+        filterLabel: "Filtrar por Categoría:",
+        guaranteeTitle: "Calidad y Pureza <span>Garantizadas</span>",
+        guaranteeDesc: "Por qué los laboratorios eligen S&C Body Care",
+        diffTitle: "La diferencia S&C",
+        diffText: "Respaldamos la calidad de nuestros productos con un compromiso de reemplazo absoluto. Si un vial de investigación no cumple con las especificaciones del reporte analítico, le reintegramos el 100% de su compra.",
+        cartTitle: '<i class="fa-solid fa-cart-shopping"></i> Tu Carrito',
+        emptyCart: "Tu carrito está vacío.",
+        emptyCartDesc: "Agrega péptidos de alta pureza del catálogo para comenzar.",
+        checkoutBtn: "Proceder al Pago Seguro",
+        subtotalText: "Subtotal",
+        shippingText: "Envío (Plano)",
+        freeText: "GRATIS",
+        totalText: "Total",
+        popupTitle: "Únete a S&C Body Care",
+        popupDesc: "Regístrate hoy en <strong>scbodycare</strong> y obtén un <strong>15% de descuento</strong> en tu primera compra, además de recibir alertas exclusivas e información de nuevos productos en el catálogo de forma automática.",
+        popupBtn: "Suscribirme Ahora",
+        popupClose: "Cerrar"
+      },
+      en: {
+        adminLink: '<i class="fa fa-cogs"></i> Admin Panel',
+        loginLink: '<i class="fa fa-user"></i> Login / Register',
+        searchPlaceholder: "Search products...",
+        cartText: "Cart",
+        navAll: "All Peptides",
+        navMetabolismo: "Metabolism & Weight Loss",
+        navRegeneracion: "Regeneration & Aesthetics",
+        navOtros: "Other Peptides",
+        heroTag: "RESEARCH USE ONLY",
+        heroTitle: "The evolution in premium <span>research peptides</span>",
+        heroDesc: "Supplying the highest purity in lyophilized compounds for metabolic, anti-aging, and body composition studies.",
+        heroBtn: "View Catalog",
+        catalogTitle: "Research <span>Peptides Catalog</span>",
+        catalogDesc: "Lyophilized formulas of high purity (above 98%) for exclusive use of laboratory research and development. All vials show the original logo and seal of guarantee.",
+        filterLabel: "Filter by Category:",
+        guaranteeTitle: "Quality and Purity <span>Guaranteed</span>",
+        guaranteeDesc: "Why laboratories choose S&C Body Care",
+        diffTitle: "The S&C difference",
+        diffText: "We back our product quality with an absolute replacement commitment. If a research vial does not meet analytical specifications, we will refund 100% of your purchase.",
+        cartTitle: '<i class="fa-solid fa-cart-shopping"></i> Your Cart',
+        emptyCart: "Your cart is empty.",
+        emptyCartDesc: "Add high purity peptides from the catalog to start.",
+        checkoutBtn: "Proceed to Secure Payment",
+        subtotalText: "Subtotal",
+        shippingText: "Shipping (Flat)",
+        freeText: "FREE",
+        totalText: "Total",
+        popupTitle: "Join S&C Body Care",
+        popupDesc: "Register today in <strong>scbodycare</strong> and get a <strong>15% discount</strong> on your first purchase, in addition to receiving exclusive alerts and information on new products in the catalog automatically.",
+        popupBtn: "Subscribe Now",
+        popupClose: "Close"
+      }
+    };
+
+    const productTranslations = {
+      "prod-tirzepatide": {
+        name: "Tirzepatide Peptide (3-Month Treatment)",
+        description: "Complete Tirzepatide kit for research of 15mg, 20mg or 30mg. Tirzepatide acts as a dual GIP and GLP-1 receptor agonist for weight management and metabolic studies.",
+        promo: "3-Month Treatment",
+        benefits: [
+          "Significantly improves glycemic control and insulin response.",
+          "Promotes body weight loss highly effectively.",
+          "Significantly increases cellular insulin sensitivity.",
+          "Supports comprehensive metabolic health and optimizes body composition."
+        ],
+        indications: [
+          "Reconstitute the lyophilized powder with sterile or bacteriostatic water.",
+          "Gently shake the vial in circular motions until completely dissolved.",
+          "Extract the dose using a sterile insulin syringe of suitable scale.",
+          "Apply subcutaneously in the abdominal area, thighs, or arms.",
+          "Rotate the application site with each injection to avoid skin atrophy."
+        ]
+      },
+      "prod-tirze-glp1": {
+        name: "Tirze GLP-1 / GIP Agonist (Lyophilized Powder)",
+        description: "Innovative GIP and GLP-1 dual agonist peptide. Designed under strict high-purity standards for body composition optimization and appetite control studies in laboratories."
+      },
+      "prod-kisspeptin": {
+        name: "Kisspeptin Peptide 10 mg (Fertility & Balance)",
+        description: "High purity lyophilized Kisspeptin. Naturally stimulates gonadotropin-releasing hormone (GnRH) secretion, increasing LH and FSH levels for hormonal balance.",
+        benefits: [
+          "Stimulates natural LH and FSH release.",
+          "Favors hormonal balance and regulation.",
+          "Improves reproductive function and supports fertility management.",
+          "Contributes to general well-being and physical recovery."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic water.",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh."
+        ]
+      },
+      "prod-mots": {
+        name: "Mots Mitochondrial Peptide 10 mg (Cellular Energy)",
+        description: "MOTS-c is a mitochondrial-encoded peptide that plays a key role in regulating cellular energy metabolism and physical endurance.",
+        benefits: [
+          "Substantially improves insulin sensitivity.",
+          "Increases cellular energy levels and reduces fatigue.",
+          "Promotes fatty acid oxidation and body composition.",
+          "Favores mitochondrial function and metabolism."
+        ],
+        indications: [
+          "Reconstitute with sterile bacteriostatic.",
+          "Gently shake.",
+          "Apply subcutaneously in abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-promo-carnitine-ghk": {
+        name: "2-Peptide Pack: L-Carnitine (600mg) + GHK-Cu (100mg)",
+        description: "The perfect combination for regeneration and fat metabolism. L-Carnitine to burn fat and GHK-Cu copper peptide to boost skin firmness.",
+        benefits: [
+          "Promotes fat burning and energy metabolism (L-Carnitine).",
+          "Improves skin firmness, elasticity and tone (GHK-Cu).",
+          "Supports cellular regeneration and wound healing.",
+          "Antioxidant and anti-inflammatory properties."
+        ]
+      },
+      "prod-promo-2ghk": {
+        name: "Special Pack: 2 Vials GHK-Cu (100mg)",
+        description: "High purity GHK-Cu copper peptides. Designed to boost skin firmness, elasticity and natural collagen production in dermatological studies.",
+        benefits: [
+          "Improves skin firmness and elasticity.",
+          "Stimulates collagen and elastin production.",
+          "Powerful cellular antioxidant activity.",
+          "Visibly improves skin texture and tone."
+        ]
+      },
+      "prod-retatrutide": {
+        name: "Retatrutide Peptide 40 mg (Triple Agonist)",
+        description: "Retatrutide is a double and triple agonist research peptide acting on GLP-1, GIP, and glucagon (GCGR) receptors, designed for advanced metabolic and weight loss studies.",
+        benefits: [
+          "Optimizes fatty acid oxidation and energy expenditure.",
+          "Substantially increases insulin sensitivity.",
+          "Promotes body weight loss highly effectively.",
+          "Stimulates natural incretin secretion."
+        ],
+        indications: [
+          "Reconstitute the lyophilized powder with sterile or bacteriostatic water.",
+          "Gently shake until completely dissolved.",
+          "Draw the dose with a sterile syringe and apply subcutaneously."
+        ]
+      },
+      "prod-bpc-tb": {
+        name: "BPC 157 + TB500 Regenerative Peptides (Advanced Support)",
+        description: "A potent combination of BPC-157 and TB-500 formulated to accelerate the repair of tissues, tendons, ligaments, and muscles in laboratory studies."
+      },
+      "prod-tirzepatide-30mg": {
+        name: "Tirzepatide Peptide 30 mg (Individual Vial)",
+        description: "High purity 30 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 receptor dual agonist for metabolic and weight loss studies in laboratory.",
+        benefits: [
+          "Notably improves glycemic control and cellular response.",
+          "Favors fat mobilization and weight loss.",
+          "Effectively increases cellular insulin sensitivity.",
+          "HPLC/MS verified purity superior to 98%."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake without abrupt movements.",
+          "Administer subcutaneously according to the research protocol."
+        ]
+      },
+      "prod-epithalon": {
+        name: "Epithalon Peptide 10 mg (Telomerase Regulator)",
+        description: "Epithalon is a synthetic peptide that acts as a natural telomerase regulator, a key enzyme in maintaining telomere length to promote healthy aging.",
+        benefits: [
+          "Helps maintain telomere length.",
+          "Improves sleep and rest quality.",
+          "Regulates circadian rhythms.",
+          "Strengthens the immune system.",
+          "Combats oxidative stress.",
+          "Promotes healthy aging and vitality."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously preferably before sleeping.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-retatrutide-15mg": {
+        name: "Retatrutide Peptide 15 mg (Triple Agonist)",
+        description: "Retatrutide is a 15 mg lyophilized triple agonist (GLP-1, GIP and glucagon) synthetic peptide for advanced metabolic optimization and body weight regulation studies.",
+        benefits: [
+          "Improves blood glucose level control.",
+          "Reduces appetite and favors body weight loss.",
+          "Increases energy expenditure and fat oxidation.",
+          "Improves insulin sensitivity.",
+          "Supports metabolic and cardiovascular health.",
+          "Can contribute to general well-being and quality of life."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-retatrutide-3months": {
+        name: "Retatrutide Peptide (3-Month Treatment)",
+        description: "Complete 3-month Retatrutide kit for research in combined vials (20mg, 30mg, 40mg). Triple agonist (GIP, GLP-1, Glucagon) designed to improve glycemic control and comprehensive metabolic health."
+      },
+      "prod-tirzepatide-20mg": {
+        name: "Tirzepatide Peptide 20 mg (Individual Vial)",
+        description: "High purity 20 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 dual agonist for advanced glycemic control and weight loss studies in laboratory.",
+        benefits: [
+          "Improves glycemic control effectively.",
+          "Favors body weight loss.",
+          "Increases cellular insulin sensitivity.",
+          "Supports comprehensive metabolic health.",
+          "Can help in the management of overweight and obesity conditions."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-snap": {
+        name: "SNAP Peptide 10 mg (Cognitive Function)",
+        description: "SNAP is a synthetic peptide derived from the SNAP-25 protein, involved in regulating neurotransmission and cellular signaling. Ideal for cognitive function and nerve recovery studies.",
+        benefits: [
+          "Supports cognitive function, memory and focus.",
+          "Contributes to improving mood and reducing stress.",
+          "Favors recovery and protection of the nervous system.",
+          "Reduces mental fatigue and improves intellectual performance.",
+          "Can support brain health and general well-being."
+        ],
+        indications: [
+          "1. Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "2. Gently shake until the powder is completely dissolved.",
+          "3. Draw the prescribed dose with a sterile syringe.",
+          "4. Apply subcutaneously or intramuscularly.",
+          "5. Rotate the application site each time."
+        ]
+      },
+      "prod-retatrutide-30mg": {
+        name: "Retatrutide Peptide 30 mg (Triple Agonist)",
+        description: "High purity 30 mg lyophilized Retatrutide. Acts as a triple agonist of GLP-1, GIP and glucagon (GCGR) receptors, stimulating the natural release of incretin hormones for metabolic research.",
+        benefits: [
+          "Notably improves cellular glycemic control.",
+          "Favors weight loss effectively and sustainably.",
+          "Increases cellular insulin sensitivity.",
+          "Supports comprehensive metabolic health and energy expenditure.",
+          "Can help in the management of overweight and obesity conditions."
+        ],
+        indications: [
+          "1. Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "2. Gently shake until the powder is completely dissolved.",
+          "3. Draw the prescribed dose with a sterile syringe.",
+          "4. Apply subcutaneously in the abdomen or thigh.",
+          "5. Rotate the application site each time."
+        ]
+      },
+      "prod-cagrilintide": {
+        name: "Cagrilintide Peptide 10 mg (Appetite Regulation)",
+        description: "Cagrilintide is a synthetic research peptide acting as a dual agonist of amylin (AMY3) and calcitonin (CTR) receptors, designed for appetite control and gastric emptying studies.",
+        benefits: [
+          "Reduces appetite and notably increases cellular satiety.",
+          "Slows gastric emptying for better metabolic regulation.",
+          "Improves general glycemic control.",
+          "Favors sustained body weight loss.",
+          "Improves cellular insulin sensitivity.",
+          "Can contribute to metabolic and cardiovascular health."
+        ],
+        indications: [
+          "1. Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "2. Gently shake until the powder is completely dissolved.",
+          "3. Draw the prescribed dose with a sterile syringe.",
+          "4. Apply subcutaneously in the abdomen or thigh.",
+          "5. Rotate the application site each time."
+        ]
+      },
+      "prod-promo-ghk-lemon": {
+        name: "Special Pack: GHK-Cu (100mg) + Lemon Bottle (103.5mg)",
+        description: "The Peptide of Beauty: A double pack combining GHK-Cu copper peptide for skin firmness and Lemon Bottle for localized fat reduction and skin remodeling studies."
+      },
+      "prod-b12": {
+        name: "B12 Injectable Subcutaneous (Cyanocobalamin)",
+        description: "Vitamin B12 (cyanocobalamin) is essential for energy metabolism, red blood cell formation, and optimal nervous system function.",
+        benefits: [
+          "Supports energy metabolism.",
+          "Favors red blood cell formation.",
+          "Contributes to healthy nervous system function.",
+          "Can help reduce fatigue and weakness associated with deficiencies."
+        ],
+        indications: [
+          "Draw the prescribed dose with syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Use according to research protocol."
+        ]
+      },
+      "prod-tirzepatide-40mg": {
+        name: "Tirzepatide Peptide 40 mg (Individual Vial)",
+        description: "High purity 40 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 dual agonist for advanced glycemic control and weight loss studies in laboratory.",
+        benefits: [
+          "Improves glycemic control highly effectively.",
+          "Favors body weight loss.",
+          "Increases cellular insulin sensitivity.",
+          "Supports comprehensive metabolic health.",
+          "Can help in the management of overweight and obesity conditions."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-promo-tirze-lemon": {
+        name: "Special Pack: Tirzepatide + Lemon Bottle",
+        description: "Your Ally for a Better Version of You: A double pack combining Tirzepatide (dual GIP/GLP-1 agonist) for metabolic control and Lemon Bottle for localized fat reduction and skin texture studies."
+      },
+      "prod-glutatione-500mg": {
+        name: "Glutatione 500 mg (Master Antioxidant)",
+        description: "Glutathione is a master antioxidant composed of three amino acids: glutamate, cysteine, and glycine. Its action helps protect cells from oxidative damage, strengthens the immune system, promotes liver detoxification, and contributes to skin health and healthy aging.",
+        promo: "Master Antioxidant",
+        benefits: [
+          "Powerful antioxidant that protects cells.",
+          "Promotes liver detoxification.",
+          "Strengthens the immune system.",
+          "Improves skin health and combats aging.",
+          "Reduces inflammation and oxidative stress.",
+          "Supports brain function and general well-being."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously or intramuscularly.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-retatrutide-20mg": {
+        name: "Retatrutide Peptide 20 mg (Individual Vial)",
+        description: "Retatrutide is a synthetic research peptide acting as a GLP-1, GIP, and glucagon (GCGR) receptor triple agonist, designed to stimulate the natural release of incretin hormones and regulate energy metabolism in metabolic and weight loss studies.",
+        promo: "Individual Vial",
+        benefits: [
+          "Improves glycemic control.",
+          "Favors body weight loss.",
+          "Increases cellular insulin sensitivity.",
+          "Supports comprehensive metabolic health.",
+          "Can help in the management of overweight and obesity conditions."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-cagrilintide-5mg": {
+        name: "Cagrilintide Peptide 5 mg (Appetite Regulation)",
+        description: "Cagrilintide is a synthetic research peptide acting as a dual agonist of amylin (AMY3) and calcitonin (CTR) receptors, designed to mimic the actions of these hormones to reduce appetite, increase satiety, slow gastric emptying, and improve glycemic control.",
+        promo: "Individual Vial",
+        benefits: [
+          "Reduces appetite and increases cellular satiety.",
+          "Slows gastric emptying for better metabolic regulation.",
+          "Improves general glycemic control.",
+          "Favors sustained body weight loss.",
+          "Improves cellular insulin sensitivity.",
+          "Can contribute to metabolic and cardiovascular health."
+        ],
+        indications: [
+          "Reconstitute the contents of the vial with bacteriostatic (sterile water).",
+          "Gently shake until the powder is completely dissolved.",
+          "Draw the prescribed dose with a sterile syringe.",
+          "Apply subcutaneously in the abdomen or thigh.",
+          "Rotate the application site each time."
+        ]
+      },
+      "prod-reta-glp3": {
+        name: "Reta GLP-3 Triple Agonist (Lyophilized Powder)",
+        description: "Innovative triple agonist peptide acting on GLP-1, GIP, and glucagon (GCGR) receptors. Designed under strict high-purity standards for studies of appetite control, insulin sensitivity, and energy expenditure optimization in laboratories.",
+        promo: "RESEARCH USE ONLY",
+        benefits: [
+          "Reduces appetite and caloric intake effectively.",
+          "Supports fat loss and improves body composition.",
+          "Enhances insulin sensitivity and glucose balance.",
+          "Increases energy and overall well-being for improved daily performance."
+        ],
+        indications: [
+          "Reconstitute the lyophilized powder with sterile or bacteriostatic water.",
+          "Gently shake until completely dissolved.",
+          "Draw the desired dose using a sterile syringe.",
+          "Inject subcutaneously in the abdomen or thigh.",
+          "Use according to the scientific research protocol."
+        ]
+      },
+      "prod-tirzepatide-15mg": {
+        name: "Tirzepatide Peptide 15 mg (Individual Vial)",
+        description: "High purity 15 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 receptor dual agonist for metabolic and weight loss studies in laboratory.",
+        benefits: [
+          "Notably improves glycemic control and cellular response.",
+          "Favors fat mobilization and weight loss.",
+          "Effectively increases cellular insulin sensitivity."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake without abrupt movements.",
+          "Administer subcutaneously according to the research protocol."
+        ]
+      },
+      "prod-tirzepatide-50mg": {
+        name: "Tirzepatide Peptide 50 mg (Individual Vial)",
+        description: "High purity 50 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 dual agonist for advanced glycemic control and weight loss studies in laboratory.",
+        benefits: [
+          "Improves glycemic control highly effectively.",
+          "Favors body weight loss.",
+          "Increases cellular insulin sensitivity."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake without abrupt movements.",
+          "Administer subcutaneously according to the research protocol."
+        ]
+      },
+      "prod-tirzepatide-60mg": {
+        name: "Tirzepatide Peptide 60 mg (Individual Vial)",
+        description: "High purity 60 mg lyophilized Tirzepatide. Acts as a GIP/GLP-1 dual agonist for advanced glycemic control and weight loss studies in laboratory.",
+        benefits: [
+          "Improves glycemic control highly effectively.",
+          "Favors body weight loss.",
+          "Increases cellular insulin sensitivity."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake without abrupt movements.",
+          "Administer subcutaneously according to the research protocol."
+        ]
+      },
+      "prod-nad-500mg": {
+        name: "NAD 500+ 500 mg (Cellular Energy & Anti-Aging)",
+        description: "High purity 500 mg lyophilized coenzyme NAD+ (Nicotinamide Adenine Dinucleotide). Essential for mitochondrial energy (ATP) production, DNA repair, and sirtuin activation in cellular longevity studies.",
+        benefits: [
+          "Stimulates cellular energy production and mitochondrial function.",
+          "Supports DNA repair and cellular anti-aging mechanisms.",
+          "Promotes sirtuin activity for metabolic health.",
+          "Optimizes cognitive function and protects against oxidative stress."
+        ],
+        indications: [
+          "Reconstitute gently with sterile or bacteriostatic water.",
+          "Avoid vigorous shaking to prevent compound degradation.",
+          "Use in specific cellular dosing protocols."
+        ]
+      },
+      "prod-ghkcu-100mg": {
+        name: "GHK-Cu Peptide 100 mg (Individual Vial)",
+        description: "High purity GHK-Cu copper peptide (100 mg). Designed for dermatological studies of skin firmness, elasticity, and collagen stimulation.",
+        benefits: [
+          "Stimulates natural collagen and elastin production.",
+          "Significantly improves skin firmness and elasticity.",
+          "Promotes skin tissue healing and regeneration.",
+          "Powerful antioxidant and anti-inflammatory cellular activity."
+        ],
+        indications: [
+          "Reconstitute with sterile or bacteriostatic water.",
+          "Administer in laboratory dermatological protocols."
+        ]
+      },
+      "prod-lemon-bottle": {
+        name: "Lemon Bottle Lipolytic Solution (Individual Vial)",
+        description: "High efficiency Lemon Bottle lipolytic solution. Advanced Korean formulation combining bromelain, lecithin, and riboflavin for localized fat reduction and body remodeling studies.",
+        benefits: [
+          "Accelerates fat cell breakdown and facilitates elimination.",
+          "Favors lymphatic circulation to drain lipids.",
+          "Improves skin elasticity and reduces cellulite appearance.",
+          "Progressive and visible results in body contouring research."
+        ],
+        indications: [
+          "Draw the sterile solution directly from the vial ready to use.",
+          "Apply in target areas for localized fat research."
+        ]
+      },
+      "prod-lipob": {
+        name: "LIPOB Lipolytic Compound (Individual Vial)",
+        description: "Advanced LIPOB lipotropic and lipolytic compound. Designed for studies of accelerated lipid metabolism, fat degradation, and body composition optimization.",
+        benefits: [
+          "Favors fat mobilization for energy utilization.",
+          "Supports metabolic function and adipose tissue reduction.",
+          "Helps maintain lean muscle mass during caloric studies."
+        ],
+        indications: [
+          "Use sterile syringe of appropriate scale.",
+          "Administer according to laboratory weight loss protocol."
+        ]
+      },
+      "prod-bpc157-10mg": {
+        name: "BPC 157 Peptide 10 mg (Individual Vial)",
+        description: "Lyophilized 10 mg Body Protection Compound-157 (BPC-157) peptide. Synthetic compound researched for its potent effects on healing, tissue repair, and tendon/ligament/joint regeneration.",
+        benefits: [
+          "Accelerates healing of tendons, ligaments, and muscle fibers.",
+          "Promotes angiogenesis and soft tissue regeneration.",
+          "Protects and heals the gastrointestinal tract in specific studies.",
+          "Reduces inflammatory processes in injured tissues."
+        ],
+        indications: [
+          "Reconstitute powder with bacteriostatic water.",
+          "Draw dose with sterile insulin syringe.",
+          "Apply subcutaneously in study area."
+        ]
+      },
+      "prod-glow70": {
+        name: "Glow 70 Skin Booster (Individual Vial)",
+        description: "Premium Glow 70 formula for skin health and aesthetic regeneration. Composed of selected peptides and cofactors for rejuvenation, skin texture, and cellular aging control studies.",
+        benefits: [
+          "Notably increases cellular radiance and hydration.",
+          "Reduces fine lines and improves skin density.",
+          "Stimulates epidermal cell renewal.",
+          "Strengthens the skin's natural barrier."
+        ],
+        indications: [
+          "Reconstitute with sterile solvent under aseptic conditions.",
+          "Apply according to cellular rejuvenation protocol."
+        ]
+      },
+      "prod-ipamorelin-10mg": {
+        name: "Ipamorelin Peptide 10 mg (Individual Vial)",
+        description: "High purity 10 mg lyophilized Ipamorelin. Selective growth hormone secretagogue receptor (GHS-R) agonist peptide, studied to evaluate GH release, muscle strength, and body composition.",
+        benefits: [
+          "Selectively stimulates growth hormone (GH) secretion.",
+          "Promotes protein synthesis and lean muscle development.",
+          "Favors body fat reduction and cellular regeneration.",
+          "Improves density and shortens physical recovery times."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake and apply subcutaneously."
+        ]
+      },
+      "prod-ipamorelin-70mg": {
+        name: "Ipamorelin Peptide 70 mg (Individual Vial)",
+        description: "High purity 70 mg lyophilized Ipamorelin in high concentration presentation. Designed for long-term research protocols or intensive growth hormone dosing.",
+        benefits: [
+          "Selectively stimulates growth hormone (GH) secretion.",
+          "Promotes protein synthesis and lean muscle development.",
+          "Favors body fat reduction and cellular regeneration.",
+          "Improves density and shortens physical recovery times."
+        ],
+        indications: [
+          "Reconstitute with bacteriostatic water.",
+          "Gently shake and apply subcutaneously."
+        ]
+      },
+      "prod-l-carnitine": {
+        name: "L-Carnitine 600 mg (Individual Vial)",
+        description: "High purity 600 mg injectable L-Carnitine. Key amino acid facilitating the transport of long-chain fatty acids into mitochondria for beta-oxidation and energy (ATP) production.",
+        benefits: [
+          "Accelerates fat oxidation and promotes weight loss.",
+          "Increases physical performance and cellular energy production.",
+          "Reduces muscle fatigue and speeds up post-workout recovery.",
+          "Supports cardiovascular and mitochondrial health."
+        ],
+        indications: [
+          "Draw the dose directly from the vial.",
+          "Apply subcutaneously or intramuscularly according to protocol."
+        ]
+      },
+      "prod-hcg2000": {
+        name: "HCG 2000 IU (Human Chorionic Gonadotropin)",
+        description: "High purity 2000 IU lyophilized Human Chorionic Gonadotropin (HCG). Hormonal glycoprotein used in studies of endocrine axis regulation, fertility, and laboratory hormone balance.",
+        benefits: [
+          "Stimulates endogenous steroid hormone production.",
+          "Supports hypothalamus-pituitary-gonad axis balance.",
+          "Useful in fertility and follicle stimulation studies.",
+          "Helps maintain testicular function during research protocols."
+        ],
+        indications: [
+          "Reconstitute with sterile bacteriostatic water.",
+          "Administer subcutaneously or intramuscularly according to experimental design."
+        ]
+      },
+      "prod-lipoc-b12": {
+        name: "LIPOC + B12 Lipotropic Compound (Individual Vial)",
+        description: "LIPOC lipotropic formula combined with Vitamin B12 (Cyanocobalamina). Designed for synergistic metabolic studies associating fat burning and cellular energy support.",
+        benefits: [
+          "Lipotropic and vitamin synergy to optimize fat burning.",
+          "Increases mitochondrial energy and combats fatigue in studies.",
+          "Supports liver detoxification and correct metabolism.",
+          "Favors red blood cell formation and nervous health."
+        ],
+        indications: [
+          "Draw required amount with sterile syringe.",
+          "Apply subcutaneously according to research design."
+        ]
+      },
+      "prod-cjc1295-10mg": {
+        name: "CJC-1295 Peptide 10 mg (DAC-Free)",
+        description: "High purity 10 mg lyophilized CJC-1295 (DAC-Free) peptide. Synthetic growth hormone releasing hormone (GHRH) analog used to investigate pulsatile GH secretion.",
+        benefits: [
+          "Stimulates constant and natural cellular GH release.",
+          "Favors muscle development and tone in composition studies.",
+          "Accelerates cellular recovery and tissue regeneration.",
+          "Improves metabolism and aids in fat oxidation."
+        ],
+        indications: [
+          "Reconstitute with sterile bacteriostatic water very gently.",
+          "Draw dose with sterile insulin syringe.",
+          "Apply subcutaneously in thigh or abdomen."
+        ]
+      }
+    };
+
+    function translateProduct(p) {
+      if (currentLang === 'es') return p;
+      const t = productTranslations[p.id];
+      if (!t) return p;
+      return {
+        ...p,
+        name: t.name || p.name,
+        description: t.description || p.description,
+        promo: t.promo || p.promo,
+        benefits: t.benefits || p.benefits,
+        indications: t.indications || p.indications
+      };
+    }
+
+    function translatePage() {
+      const lang = currentLang;
+      
+      // Update flag image in header toggle
+      const flagImg = document.getElementById('lang-flag-img');
+      const mobileFlagImg = document.getElementById('mobile-lang-flag-img');
+      if (flagImg) {
+        if (lang === 'en') {
+          flagImg.src = "https://flagcdn.com/w20/es.png";
+          flagImg.alt = "Español";
+        } else {
+          flagImg.src = "https://flagcdn.com/w20/us.png";
+          flagImg.alt = "English";
+        }
+      }
+      if (mobileFlagImg) {
+        if (lang === 'en') {
+          mobileFlagImg.src = "https://flagcdn.com/w20/es.png";
+          mobileFlagImg.alt = "Español";
+        } else {
+          mobileFlagImg.src = "https://flagcdn.com/w20/us.png";
+          mobileFlagImg.alt = "English";
+        }
+      }
+
+      // Static text updates
+      const t = translations[lang];
+      
+      // Admin Panel and Login links
+      const adminLink = document.querySelector('.top-nav-links a[href="admin.html"]');
+      if (adminLink) adminLink.innerHTML = t.adminLink;
+      
+      const searchField = document.getElementById('search-input-field');
+      if (searchField) searchField.placeholder = t.searchPlaceholder;
+      
+      const mobileSearchField = document.getElementById('mobile-search-input-field');
+      if (mobileSearchField) mobileSearchField.placeholder = t.searchPlaceholder;
+
+      // Translate mobile bottom sheet
+      const mobileContactTitle = document.getElementById('mobile-contact-title');
+      if (mobileContactTitle) mobileContactTitle.textContent = lang === 'en' ? "Keep in Touch" : "Mantente en contacto";
+      const mobileContactDesc = document.getElementById('mobile-contact-desc');
+      if (mobileContactDesc) mobileContactDesc.textContent = lang === 'en' ? "Select your preferred official channel:" : "Selecciona tu canal oficial preferido:";
+      const btnCall = document.getElementById('mobile-contact-call');
+      if (btnCall) btnCall.innerHTML = lang === 'en' ? '<i class="fa-solid fa-phone"></i> Call Us' : '<i class="fa-solid fa-phone"></i> Llamar';
+      const btnWa = document.getElementById('mobile-contact-wa');
+      if (btnWa) btnWa.innerHTML = lang === 'en' ? '<i class="fa-brands fa-whatsapp"></i> WhatsApp' : '<i class="fa-brands fa-whatsapp"></i> WhatsApp';
+      const btnSms = document.getElementById('mobile-contact-sms');
+      if (btnSms) btnSms.innerHTML = lang === 'en' ? '<i class="fa-solid fa-comment-sms"></i> SMS / Message' : '<i class="fa-solid fa-comment-sms"></i> SMS / Mensaje';
+      const btnTiktok = document.getElementById('mobile-contact-tiktok');
+      if (btnTiktok) btnTiktok.innerHTML = lang === 'en' ? '<i class="fa-brands fa-tiktok"></i> Official TikTok' : '<i class="fa-brands fa-tiktok"></i> TikTok Oficial';
+      const btnInstagram = document.getElementById('mobile-contact-instagram');
+      if (btnInstagram) btnInstagram.innerHTML = lang === 'en' ? '<i class="fa-brands fa-instagram"></i> Official Instagram' : '<i class="fa-brands fa-instagram"></i> Instagram Oficial';
+      
+      const cartHeader = document.querySelector('.header-side-tools a[onclick="openCartDrawer(); return false;"] span');
+      if (cartHeader) cartHeader.textContent = t.cartText;
+      
+      const heroTag = document.getElementById('hero-tag');
+      if (heroTag) heroTag.textContent = t.heroTag;
+      
+      const heroTitle = document.getElementById('hero-title');
+      if (heroTitle) heroTitle.innerHTML = t.heroTitle;
+      
+      const heroDesc = document.getElementById('hero-desc');
+      if (heroDesc) heroDesc.textContent = t.heroDesc;
+      
+      const heroBtn = document.getElementById('hero-btn');
+      if (heroBtn) heroBtn.textContent = t.heroBtn;
+      
+      const diffHeading = document.getElementById('difference-heading');
+      if (diffHeading) diffHeading.innerHTML = t.diffTitle;
+      
+      const catTitle = document.getElementById('catalog-section-title');
+      if (catTitle) catTitle.innerHTML = t.catalogTitle;
+      
+      const catDesc = document.getElementById('catalog-section-desc');
+      if (catDesc) catDesc.textContent = t.catalogDesc;
+
+      const navAll = document.querySelector('#nav-item-all a');
+      if (navAll) navAll.textContent = t.navAll;
+      
+      const navMetabolismo = document.querySelector('#nav-item-metabolismo a');
+      if (navMetabolismo) navMetabolismo.textContent = t.navMetabolismo;
+      
+      const navRegeneracion = document.querySelector('#nav-item-regeneracion a');
+      if (navRegeneracion) navRegeneracion.textContent = t.navRegeneracion;
+      
+      const navOtros = document.querySelector('#nav-item-otros a');
+      if (navOtros) navOtros.textContent = t.navOtros;
+
+      const btnFilterAll = document.getElementById('btn-filter-all');
+      if (btnFilterAll) btnFilterAll.textContent = t.navAll === 'All Peptides' ? 'All' : 'Todos';
+
+      const btnFilterMetabolismo = document.getElementById('btn-filter-metabolismo');
+      if (btnFilterMetabolismo) btnFilterMetabolismo.textContent = t.navMetabolismo;
+
+      const btnFilterRegeneracion = document.getElementById('btn-filter-regeneracion');
+      if (btnFilterRegeneracion) btnFilterRegeneracion.textContent = t.navRegeneracion;
+
+      const btnFilterOtros = document.getElementById('btn-filter-otros');
+      if (btnFilterOtros) btnFilterOtros.textContent = t.navOtros;
+
+      // Translate Slide 1
+      const slide1Tag = document.querySelector('.carousel-slide:nth-child(1) .hero-tag');
+      if (slide1Tag) slide1Tag.textContent = lang === 'en' ? "Guaranteed Security" : "Seguridad Garantizada";
+      const slide1Title = document.querySelector('.carousel-slide:nth-child(1) h3');
+      if (slide1Title) slide1Title.textContent = lang === 'en' ? "Reliable Research" : "Investigación Confiable";
+      const slide1Text = document.querySelector('.carousel-slide:nth-child(1) p');
+      if (slide1Text) slide1Text.textContent = lang === 'en' ? "Our peptides are subject to the strictest quality controls in the industry. Each batch is independently evaluated to guarantee maximum safety in your scientific applications." : "Nuestros péptidos están sujetos a los más estrictos controles de calidad de la industria. Cada lote es evaluado independientemente para garantizar la máxima seguridad en sus aplicaciones científicas.";
+      const slide1Link = document.querySelector('.carousel-slide:nth-child(1) .difference-link');
+      if (slide1Link) slide1Link.textContent = lang === 'en' ? "Explore Peptides" : "Explorar Péptidos";
+
+      // Translate Slide 2
+      const slide2Tag = document.querySelector('.carousel-slide:nth-child(2) .hero-tag');
+      if (slide2Tag) slide2Tag.textContent = lang === 'en' ? "HPLC/MS Certification" : "Certificación HPLC/MS";
+      const slide2Title = document.querySelector('.carousel-slide:nth-child(2) h3');
+      if (slide2Title) slide2Title.textContent = lang === 'en' ? "High Purity" : "Alta Pureza";
+      const slide2Text = document.querySelector('.carousel-slide:nth-child(2) p');
+      if (slide2Text) slide2Text.textContent = lang === 'en' ? "We guarantee a purity superior to 98% in all our lyophilized vials. Developed and analyzed with mass spectrometry to ensure consistent and repeatable laboratory results." : "Garantizamos una pureza superior al 98% en todos nuestros viales liofilizados. Desarrollados y analizados con espectrometría de masas para asegurar resultados de laboratorio consistentes y repetibles.";
+      const slide2Link = document.querySelector('.carousel-slide:nth-child(2) .difference-link');
+      if (slide2Link) slide2Link.textContent = lang === 'en' ? "View Analytical Reports" : "Ver Fichas Técnicas";
+
+      // Translate Slide 3
+      const slide3Tag = document.querySelector('.carousel-slide:nth-child(3) .hero-tag');
+      if (slide3Tag) slide3Tag.textContent = lang === 'en' ? "100% Satisfaction" : "100% Satisfacción";
+      const slide3Title = document.querySelector('.carousel-slide:nth-child(3) h3');
+      if (slide3Title) slide3Title.textContent = lang === 'en' ? "Guaranteed Quality" : "Calidad Garantizada";
+      const slide3Text = document.querySelector('.carousel-slide:nth-child(3) p');
+      if (slide3Text) slide3Text.textContent = lang === 'en' ? "We back our product quality with an absolute replacement commitment. If a research vial does not meet analytical specifications, we will refund 100% of your purchase." : "Respaldamos la calidad de nuestros productos con un compromiso de reemplazo absoluto. Si un vial de investigación no cumple con las especificaciones del reporte analítico, le reintegramos el 100% de su compra.";
+      const slide3Link = document.querySelector('.carousel-slide:nth-child(3) .difference-link');
+      if (slide3Link) slide3Link.textContent = lang === 'en' ? "Our Guarantee" : "Nuestra Garantía";
+
+      // Translate Top Announcement Bar
+      const promoBarSpan = document.querySelector('.promo-bar span');
+      if (promoBarSpan) {
+        promoBarSpan.textContent = lang === 'en' 
+          ? "✨ Become a member Accumulate points and win prizes ✨" 
+          : "✨ Hazte miembro Acumula puntos y gana premios ✨";
+      }
+
+      // Translate Join Section
+      const joinTitle = document.querySelector('.join-title');
+      if (joinTitle) joinTitle.textContent = lang === 'en' ? "Your journey to excellence starts now" : "Tu viaje hacia la excelencia comienza ahora";
+      const joinSubtitle = document.querySelector('.join-subtitle');
+      if (joinSubtitle) joinSubtitle.textContent = lang === 'en' ? "Choose how to become part of the scbodycare community and access unique privileges." : "Elige cómo formar parte de la comunidad scbodycare y accede a privilegios únicos.";
+      const joinCard1Title = document.querySelector('.join-cards .join-card:nth-child(1) h3');
+      if (joinCard1Title) joinCard1Title.textContent = lang === 'en' ? "Become a Member" : "Hazte Miembro";
+      const joinCard1Text = document.querySelector('.join-cards .join-card:nth-child(1) p');
+      if (joinCard1Text) joinCard1Text.textContent = lang === 'en' ? "As a member you accumulate points and those points will earn you products." : "Al hacerte miembro acumulas puntos y esos puntos te harán ganar productos.";
+      const joinCard1Disclaimer = document.querySelector('.join-cards .join-card:nth-child(1) .disclaimer');
+      if (joinCard1Disclaimer) joinCard1Disclaimer.textContent = lang === 'en' ? "terms apply" : "condiciones aplican";
+      const joinCard1Btn = document.querySelector('.join-cards .join-card:nth-child(1) a');
+      if (joinCard1Btn) joinCard1Btn.textContent = lang === 'en' ? "Register for Free" : "Registrarse gratis";
+      const joinCard2Title = document.querySelector('.join-cards .join-card:nth-child(2) h3');
+      if (joinCard2Title) joinCard2Title.textContent = lang === 'en' ? "Be an Ambassador" : "Sé un Embajador";
+      const joinCard2Text = document.querySelector('.join-cards .join-card:nth-child(2) p');
+      if (joinCard2Text) joinCard2Text.textContent = lang === 'en' ? "Share premium wellness with your friends. Get extra income promoting our professional brand." : "Comparte bienestar premium con tus conocidos. Obtén ingresos extras promocionando nuestra marca profesional.";
+      const joinCard2Btn = document.querySelector('.join-cards .join-card:nth-child(2) a');
+      if (joinCard2Btn) joinCard2Btn.textContent = lang === 'en' ? "Join Us" : "Unirse a Nosotros";
+
+      // Footer Col 1
+      const footerCol1Title = document.querySelector('footer .footer-col:nth-child(1) h3');
+      if (footerCol1Title) footerCol1Title.textContent = lang === 'en' ? "About scbodycare" : "Sobre scbodycare";
+      const footerCol1Links = document.querySelectorAll('footer .footer-col:nth-child(1) ul li a');
+      if (footerCol1Links.length >= 4) {
+        footerCol1Links[0].textContent = lang === 'en' ? "Brand History" : "Historia de la marca";
+        footerCol1Links[1].textContent = lang === 'en' ? "Quality Commitment" : "Compromiso de Calidad";
+        footerCol1Links[2].textContent = lang === 'en' ? "Green Sustainability" : "Sostenibilidad Verde";
+        footerCol1Links[3].textContent = lang === 'en' ? "Clinical Studies" : "Estudios Clínicos";
+      }
+
+      // Footer Col 2 (Soporte Técnico)
+      const footerCol2Title = document.querySelector('footer .footer-col:nth-child(2) h3');
+      if (footerCol2Title) footerCol2Title.textContent = lang === 'en' ? "Support" : "Soporte Técnico";
+      const footerCol2Links = document.querySelectorAll('footer .footer-col:nth-child(2) ul li a');
+      if (footerCol2Links.length >= 4) {
+        footerCol2Links[0].textContent = lang === 'en' ? "Customer Support" : "Atención al Cliente";
+        footerCol2Links[1].textContent = lang === 'en' ? "Shipping & Return Policy" : "Política de Envío y Devoluciones";
+        footerCol2Links[2].textContent = lang === 'en' ? "Addiction Prevention" : "Prevención de Adicciones";
+        footerCol2Links[3].textContent = lang === 'en' ? "Legal Disclaimer" : "Aviso Legal";
+      }
+
+      // Global Disclaimer
+      const globalDisclaimer = document.getElementById('global-legal-disclaimer');
+      if (globalDisclaimer) {
+        globalDisclaimer.innerHTML = lang === 'en' 
+          ? "<strong>SAFETY & LIABILITY DISCLAIMER (RESEARCH USE ONLY):</strong> All products distributed on this portal are intended solely and exclusively for scientific laboratory research, chemical or biological in vitro studies, and not for human therapeutic, clinical, veterinary, injection, dietary, or cosmetic consumption. scbodycare does not provide medical advice, prescriptions, or dosage suggestions. Misuse or abuse of substances can be harmful and highly addictive. If you experience symptoms of dependency, contact professionals by calling SAMHSA in the USA (1-800-662-4357) or local helplines in your country of residence." 
+          : "<strong>AVISO DE EXCLUSIÓN DE RESPONSABILIDAD DE SEGURIDAD (USO EXCLUSIVO EN INVESTIGACIÓN):</strong> Todos los productos distribuidos en este portal web están destinados única y exclusivamente para investigación científica de laboratorio, estudios biológicos o químicos in vitro, y no para uso terapéutico, clínico, veterinario, inyección, consumo alimenticio o cosmético en humanos. scbodycare no suministra asesoría médica, recetas o sugerencias de dosis. El uso indebido o abuso de sustancias puede resultar dañino y altamente adictivo. Si experimenta síntomas de dependencia, comuníquese con profesionales llamando a SAMHSA en EE.UU. (1-800-662-4357) o a las líneas de apoyo local en su país de residencia.";
+      }
+
+      // Footer Bottom Links
+      const footerBottomLinks = document.querySelectorAll('footer .footer-bottom p a');
+      if (footerBottomLinks.length >= 3) {
+        footerBottomLinks[0].textContent = lang === 'en' ? "Terms & Conditions" : "Términos y Condiciones";
+        footerBottomLinks[1].textContent = lang === 'en' ? "Privacy Policy" : "Política de Privacidad";
+        footerBottomLinks[2].textContent = lang === 'en' ? "Legal Disclaimer" : "Aviso Legal";
+      }
+
+      const footerBottomCopyright = document.querySelector('footer .footer-bottom p:first-child');
+      if (footerBottomCopyright) {
+        footerBottomCopyright.textContent = lang === 'en' 
+          ? "© 2026 scbodycare Corporation. All rights reserved." 
+          : "© 2026 scbodycare Corporation. Todos los derechos reservados.";
+      }
+
+      // Footer Col 3 (Contact Links)
+      const footerContactTitle = document.getElementById('footer-contact-title');
+      if (footerContactTitle) footerContactTitle.textContent = lang === 'en' ? "Keep in Touch" : "Mantente en contacto";
+      
+      const footerContactDesc = document.getElementById('footer-contact-desc');
+      if (footerContactDesc) footerContactDesc.textContent = lang === 'en' ? "Follow us on our official channels to contact us directly." : "Síguenos en nuestras redes oficiales para contactar directamente.";
+      
+      const footerCallBtn = document.getElementById('footer-call-btn');
+      if (footerCallBtn) footerCallBtn.setAttribute('title', lang === 'en' ? 'Call' : 'Llamar');
+      
+      const footerSMSBtn = document.getElementById('footer-sms-btn');
+      if (footerSMSBtn) footerSMSBtn.setAttribute('title', lang === 'en' ? 'SMS' : 'SMS');
+
+      // Translate Popup Newsletter checkbox
+      const popupNewsTitle = document.getElementById('popup-newsletter-title');
+      if (popupNewsTitle) popupNewsTitle.textContent = lang === 'en' ? 'Join the newsletter' : 'Únete al boletín';
+      
+      const popupNewsDesc = document.getElementById('popup-newsletter-desc');
+      if (popupNewsDesc) popupNewsDesc.textContent = lang === 'en' ? 'Receive instant catalog updates and new product notifications automatically with my authorization.' : 'Recibe actualizaciones instantáneas del catálogo y notificaciones de nuevos productos de forma automática bajo mi autorización.';
+
+      // Update user login/logout header links
+      updateUserHeader();
+
+      // Refresh dynamic elements
+      renderCatalog();
+      renderCartDrawer();
+    }
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'es' ? 'en' : 'es';
+      localStorage.setItem('lang', currentLang);
+      translatePage();
+      const message = currentLang === 'en' ? "Language changed to English" : "Idioma cambiado a Español";
+      showToast(message);
+    }
+
+    // 1. Cargar productos y renderizar catálogo
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchProducts();
+      
+      // Escuchar cambios en el carrito global para sincronizar el badge del header
+      window.addEventListener('cartUpdated', () => {
+        updateCartCountHeader();
+        if (document.getElementById('cart-drawer').classList.contains('open')) {
+          renderCartDrawer();
+        }
+      });
+      
+      // Aplicar traducciones iniciales
+      translatePage();
+    });
+
+    function fetchProducts() {
+      fetch('/api/products')
+        .then(res => res.json())
+        .then(products => {
+          allProducts = products;
+          window.allProducts = products;
+          renderCatalog();
+          
+          // Procesar parámetros de URL (redirecciones)
+          const urlParams = new URLSearchParams(window.location.search);
+          const productParam = urlParams.get('product');
+          const cartParam = urlParams.get('cart');
+          const categoryParam = urlParams.get('category');
+          const searchParam = urlParams.get('search');
+          const contactParam = urlParams.get('contact');
+          
+          if (productParam) {
+            // Esperar un instante para que se renderice e iniciar modal
+            setTimeout(() => {
+              openProductModal(productParam);
+            }, 100);
+          }
+          if (cartParam === 'open') {
+            setTimeout(() => {
+              openCartDrawer();
+            }, 100);
+          }
+          if (categoryParam) {
+            setTimeout(() => {
+              filterCatalog(categoryParam);
+            }, 100);
+          }
+          if (searchParam === 'open') {
+            setTimeout(() => {
+              toggleMobileSearch();
+            }, 100);
+          }
+          if (contactParam === 'open') {
+            setTimeout(() => {
+              toggleMobileContactSheet();
+            }, 100);
+          }
+        })
+        .catch(err => {
+          console.error("Error al cargar productos:", err);
+          document.getElementById('catalog-products-grid').innerHTML = `
+            <div style="grid-column:1/-1; text-align:center; padding:40px; color:red;">
+              <i class="fa-solid fa-triangle-exclamation" style="font-size:30px; margin-bottom:10px;"></i>
+              <p>No se pudo cargar el catálogo de productos en este momento.</p>
+            </div>
+          `;
+        });
+    }
+
+    function renderCatalog() {
+      const grid = document.getElementById('catalog-products-grid');
+      let filtered = allProducts;
+      
+      if (activeCategory !== 'all') {
+        filtered = allProducts.filter(p => p.category === activeCategory);
+      }
+      
+      if (filtered.length === 0) {
+        const emptyMsg = currentLang === 'en' ? 'No products in this category.' : 'No hay productos en esta categoría.';
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:40px; color:#666;">${emptyMsg}</p>`;
+        return;
+      }
+      
+      grid.innerHTML = filtered.map(p => {
+        const pTrans = translateProduct(p);
+        const badgeText = pTrans.promo || (currentLang === 'en' ? 'RESEARCH ONLY' : 'INVESTIGACIÓN');
+        const detailsBtnText = currentLang === 'en' ? 'Details' : 'Detalles';
+        const addBtnText = currentLang === 'en' ? 'Add' : 'Agregar';
+        const escapedName = pTrans.name.replace(/'/g, "\\'");
+        
+        // Estado y Badge de Inventario (Stock)
+        const isOutOfStock = pTrans.stock !== undefined && pTrans.stock === 0;
+        const stockBadgeClass = isOutOfStock ? 'out-of-stock' : 'in-stock';
+        const stockBadgeText = isOutOfStock 
+          ? (currentLang === 'en' ? 'Out of Stock' : 'Agotado') 
+          : (currentLang === 'en' ? `In Stock: ${pTrans.stock}` : `En Stock: ${pTrans.stock}`);
+
+        return `
+          <div class="product-card">
+            <div class="product-img-container">
+              <span class="product-badge">${badgeText}</span>
+              <img src="${pTrans.image}" alt="${pTrans.name}" class="product-img">
+            </div>
+            <div style="padding: 20px; display: flex; flex-direction: column; flex: 1;">
+              <h3 style="font-family: var(--font-secondary); font-size: 19px; margin-bottom: 8px; color: var(--color-black-deep); font-style: italic;">${pTrans.name}</h3>
+              <p style="font-size: 13.5px; color: var(--color-text-muted); margin-bottom: 10px; flex: 1; line-height: 1.4;">${pTrans.description.substring(0, 110)}...</p>
+              
+              <!-- Badge de Inventario -->
+              <span class="stock-badge ${stockBadgeClass}" style="margin-bottom: 15px;">
+                ${stockBadgeText}
+              </span>
+
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                <span style="font-size: 18px; font-weight: 700; color: var(--color-gold-light);">$${pTrans.price.toFixed(2)}</span>
+                <div style="display: flex; gap: 8px;">
+                  <button class="btn-secondary" onclick="openProductModal('${pTrans.id}')" style="padding: 6px 12px; font-size: 12px; border-radius: 4px; border-color: var(--color-gold); color: var(--color-gold-light); box-shadow: none;">${detailsBtnText}</button>
+                  ${isOutOfStock 
+                    ? `<button class="btn-primary" disabled style="padding: 6px 15px; font-size: 12px; border-radius: 4px; box-shadow: none; opacity: 0.5; cursor: not-allowed;">${currentLang === 'en' ? 'Sold Out' : 'Agotado'}</button>`
+                    : `<button class="btn-primary" onclick="addToCart('${pTrans.id}', '${escapedName}', ${pTrans.price}, 1, 'regular')" style="padding: 6px 15px; font-size: 12px; border-radius: 4px; box-shadow: none;">${addBtnText}</button>`
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterCatalog(category) {
+      activeCategory = category;
+      
+      // Actualizar clases activas en botones de la navegación superior e inferior
+      document.querySelectorAll('.bottom-nav-item').forEach(item => item.classList.remove('active'));
+      
+      // Reset color styles for filters
+      const btnAll = document.getElementById('btn-filter-all');
+      const btnMet = document.getElementById('btn-filter-metabolismo');
+      const btnReg = document.getElementById('btn-filter-regeneracion');
+      const btnOtr = document.getElementById('btn-filter-otros');
+      
+      const buttons = [btnAll, btnMet, btnReg, btnOtr];
+      buttons.forEach(btn => {
+        if (btn) {
+          btn.className = 'btn-secondary';
+          btn.style.borderColor = '#ccc';
+          btn.style.color = '#555';
+          btn.style.backgroundColor = '#fff';
+        }
+      });
+      
+      if (category === 'all') {
+        document.getElementById('nav-item-all')?.classList.add('active');
+        if (btnAll) {
+          btnAll.className = 'btn-primary';
+          btnAll.style.color = '#000';
+          btnAll.style.backgroundColor = '';
+        }
+      } else if (category === 'Metabolismo & Pérdida de Peso') {
+        document.getElementById('nav-item-metabolismo')?.classList.add('active');
+        if (btnMet) {
+          btnMet.className = 'btn-primary';
+          btnMet.style.color = '#000';
+          btnMet.style.backgroundColor = '';
+        }
+      } else if (category === 'Regeneración & Estética') {
+        document.getElementById('nav-item-regeneracion')?.classList.add('active');
+        if (btnReg) {
+          btnReg.className = 'btn-primary';
+          btnReg.style.color = '#000';
+          btnReg.style.backgroundColor = '';
+        }
+      } else if (category === 'Otros Péptidos') {
+        document.getElementById('nav-item-otros')?.classList.add('active');
+        if (btnOtr) {
+          btnOtr.className = 'btn-primary';
+          btnOtr.style.color = '#000';
+          btnOtr.style.backgroundColor = '';
+        }
+      }
+      
+      renderCatalog();
+      
+      // Desplazarse al catálogo
+      const section = document.getElementById('catalog-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // 2. Controladores de Modal de Detalle de Producto
+    let currentModalProduct = null;
+    let selectedQty = 1;
+    let purchaseType = 'regular';
+
+    function openProductModal(id) {
+      currentModalProduct = allProducts.find(p => p.id === id);
+      if (!currentModalProduct) return;
+      
+      selectedQty = 1;
+      purchaseType = 'regular';
+      
+      const pTrans = translateProduct(currentModalProduct);
+      
+      document.getElementById('modal-product-img').src = pTrans.image;
+      document.getElementById('modal-product-img').alt = pTrans.name;
+      
+      const infoContainer = document.getElementById('modal-product-info');
+      const autoshipPrice = pTrans.price * 0.85;
+      
+      let categoryName = pTrans.category;
+      if (categoryName === 'Metabolismo & Pérdida de Peso') {
+        categoryName = currentLang === 'en' ? 'Metabolism & Weight Loss' : 'Metabolismo & Pérdida de Peso';
+      } else if (categoryName === 'Regeneración & Estética') {
+        categoryName = currentLang === 'en' ? 'Regeneration & Aesthetics' : 'Regeneración & Estética';
+      } else if (categoryName === 'Otros Péptidos') {
+        categoryName = currentLang === 'en' ? 'Other Peptides' : 'Otros Péptidos';
+      }
+      
+      const badgeLabel = pTrans.promo || (currentLang === 'en' ? 'SCIENTIFIC RESEARCH' : 'INVESTIGACIÓN CIENTÍFICA');
+      const catLabelText = currentLang === 'en' ? 'Category' : 'Categoría';
+      const singlePayText = currentLang === 'en' ? 'One-Time Purchase' : 'Compra Única';
+      const autoPayText = currentLang === 'en' ? 'Autoship (Recurring Purchase)' : 'Autoship (Compra Recurrente)';
+      const saveText = currentLang === 'en' ? 'Save 15%' : 'Ahorra 15%';
+      const qtyLabelText = currentLang === 'en' ? 'Quantity:' : 'Cantidad:';
+      const addCartBtnText = currentLang === 'en' ? 'Add to Cart' : 'Agregar al Carrito';
+      const closeBtnText = currentLang === 'en' ? 'Close' : 'Cerrar';
+      
+      const benefitsTitle = currentLang === 'en' ? 'Benefits' : 'Beneficios';
+      const applicationTitle = currentLang === 'en' ? 'Application / Reconstitution' : '¿Cómo aplicar / Reconstitución?';
+      const warningsTitle = currentLang === 'en' ? 'Storage and Warnings' : 'Almacenamiento y Advertencias';
+
+      const isOutOfStock = pTrans.stock !== undefined && pTrans.stock === 0;
+      const stockBadgeClass = isOutOfStock ? 'out-of-stock' : 'in-stock';
+      const stockBadgeText = isOutOfStock 
+        ? (currentLang === 'en' ? 'Out of Stock' : 'Agotado') 
+        : (currentLang === 'en' ? `In Stock: ${pTrans.stock}` : `En Stock: ${pTrans.stock}`);
+
+      infoContainer.innerHTML = `
+        <span class="hero-tag" style="margin-bottom: 10px;">${badgeLabel}</span>
+        <h2 style="font-family: var(--font-secondary); font-size: 28px; margin-bottom: 8px; color: var(--color-black-deep); font-style: italic;">${pTrans.name}</h2>
+        <p style="font-size:12px; color: var(--color-text-muted); text-transform: uppercase; margin-bottom: 15px; font-weight:600; letter-spacing:1px;">${catLabelText}: ${categoryName}</p>
+        
+        <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+          <div style="font-size: 24px; font-weight: 700; color: var(--color-gold-light);" id="modal-displayed-price">$${pTrans.price.toFixed(2)}</div>
+          <span class="stock-badge ${stockBadgeClass}">${stockBadgeText}</span>
+        </div>
+        
+        <p style="font-size: 14px; color: var(--color-text-muted); margin-bottom: 20px; line-height: 1.5;">${pTrans.description}</p>
+        
+        <!-- Opciones de Compra -->
+        <div class="purchase-options" style="padding:15px; border-radius:8px; border:1px solid #eaeaea; background-color:#fafafa; margin-bottom: 20px; ${isOutOfStock ? 'opacity: 0.5; pointer-events: none;' : ''}">
+          <div style="display:flex; align-items:center; gap:10px; cursor:pointer;" onclick="${isOutOfStock ? '' : "setModalPurchaseType('regular')"}" >
+            <input type="radio" id="modal-purchase-regular" name="modal-purchase-type" value="regular" checked ${isOutOfStock ? 'disabled' : ''}>
+            <label for="modal-purchase-regular" style="font-size:13.5px; font-weight:600; cursor:pointer;">${singlePayText}</label>
+            <span style="margin-left:auto; font-weight:700;">$${pTrans.price.toFixed(2)}</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:10px; margin-top:10px; padding-top:10px; border-top:1px solid #eee; cursor:pointer;" onclick="${isOutOfStock ? '' : "setModalPurchaseType('autoship')"}" >
+            <input type="radio" id="modal-purchase-autoship" name="modal-purchase-type" value="autoship" ${isOutOfStock ? 'disabled' : ''}>
+            <label for="modal-purchase-autoship" style="font-size:13.5px; font-weight:600; color: var(--color-gold-light); cursor:pointer;">${autoPayText} <span style="background:var(--gold-gradient); color:#000; font-size:9px; padding:2px 5px; border-radius:3px; font-weight:700; margin-left:5px;">${saveText}</span></label>
+            <span style="margin-left:auto; font-weight:700; color: var(--color-gold);">$${autoshipPrice.toFixed(2)}</span>
+          </div>
+        </div>
+
+        <!-- Selector de Cantidad -->
+        <div style="display:flex; align-items:center; gap:15px; margin-bottom:25px; ${isOutOfStock ? 'opacity: 0.5; pointer-events: none;' : ''}">
+          <label style="font-size:14px; font-weight:600;">${qtyLabelText}</label>
+          <div class="quantity-control" style="width:fit-content;">
+            <button class="quantity-btn" onclick="updateModalQty(-1)" ${isOutOfStock ? 'disabled' : ''}>-</button>
+            <input type="text" value="1" class="quantity-input" id="modal-qty-input" style="width:40px;" readonly>
+            <button class="quantity-btn" onclick="updateModalQty(1)" ${isOutOfStock ? 'disabled' : ''}>+</button>
+          </div>
+        </div>
+
+        <!-- Botones de Acción -->
+        <div style="display:flex; gap:10px; margin-bottom:20px;">
+          ${isOutOfStock 
+            ? `<button class="btn-primary" disabled style="flex:1; padding:12px; opacity: 0.5; cursor: not-allowed;">${currentLang === 'en' ? 'Sold Out' : 'Agotado'}</button>`
+            : `<button class="btn-primary" style="flex:1; padding:12px;" onclick="addModalProductToCart()">${addCartBtnText}</button>`
+          }
+          <button class="btn-secondary" style="padding:12px;" onclick="closeProductModal()">${closeBtnText}</button>
+        </div>
+
+        <!-- Ficha Técnica de Investigación -->
+        ${pTrans.benefits ? `
+          <div class="detail-section-box">
+            <div class="detail-section-title"><i class="fa-solid fa-circle-check" style="color:var(--color-gold);"></i> ${benefitsTitle}</div>
+            <div class="detail-section-content">
+              <ul>${pTrans.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
+            </div>
+          </div>
+        ` : ''}
+
+        ${pTrans.indications ? `
+          <div class="detail-section-box">
+            <div class="detail-section-title"><i class="fa-solid fa-syringe" style="color:var(--color-gold);"></i> ${applicationTitle}</div>
+            <div class="detail-section-content">
+              <ul>${pTrans.indications.map(i => `<li>${i}</li>`).join('')}</ul>
+            </div>
+          </div>
+        ` : ''}
+
+        ${pTrans.contraindications ? `
+          <div class="detail-section-box">
+            <div class="detail-section-title"><i class="fa-solid fa-triangle-exclamation" style="color:var(--color-gold);"></i> ${warningsTitle}</div>
+            <div class="detail-section-content">
+              <ul>${pTrans.contraindications.map(c => `<li>${c}</li>`).join('')}</ul>
+            </div>
+          </div>
+        ` : ''}
+
+        ${pTrans.legal ? `
+          <div class="disclaimer-box">
+            <i class="fa-solid fa-gavel"></i> ${pTrans.legal}
+          </div>
+        ` : ''}
+      `;
+      
+      document.getElementById('product-modal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProductModal() {
+      document.getElementById('product-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    function updateModalQty(val) {
+      selectedQty = Math.max(1, selectedQty + val);
+      if (currentModalProduct && currentModalProduct.stock !== undefined) {
+        selectedQty = Math.min(selectedQty, currentModalProduct.stock);
+      }
+      document.getElementById('modal-qty-input').value = selectedQty;
+    }
+
+    function setModalPurchaseType(type) {
+      purchaseType = type;
+      const rad = document.getElementById(`modal-purchase-${type}`);
+      if (rad) rad.checked = true;
+      
+      const displayedPrice = document.getElementById('modal-displayed-price');
+      if (displayedPrice && currentModalProduct) {
+        const pTrans = translateProduct(currentModalProduct);
+        if (type === 'autoship') {
+          displayedPrice.textContent = `$${(pTrans.price * 0.85).toFixed(2)}`;
+          displayedPrice.style.color = 'var(--color-gold)';
+        } else {
+          displayedPrice.textContent = `$${pTrans.price.toFixed(2)}`;
+          displayedPrice.style.color = 'var(--color-gold-light)';
+        }
+      }
+    }
+
+    function addModalProductToCart() {
+      if (currentModalProduct && currentModalProduct.stock !== undefined && currentModalProduct.stock === 0) {
+        const isEn = currentLang === 'en';
+        showToast(isEn ? "This product is out of stock" : "Este producto está agotado");
+        return;
+      }
+      if (currentModalProduct && currentModalProduct.stock !== undefined && selectedQty > currentModalProduct.stock) {
+        selectedQty = currentModalProduct.stock;
+      }
+      const pTrans = translateProduct(currentModalProduct);
+      const price = purchaseType === 'autoship' ? pTrans.price * 0.85 : pTrans.price;
+      addToCart(currentModalProduct.id, pTrans.name, price, selectedQty, purchaseType);
+      closeProductModal();
+      openCartDrawer();
+    }
+
+    // 3. Controladores de Cart Drawer
+    function openCartDrawer() {
+      const backdrop = document.getElementById('cart-drawer-backdrop');
+      const drawer = document.getElementById('cart-drawer');
+      if (backdrop && drawer) {
+        backdrop.style.display = 'block';
+        drawer.classList.add('open');
+        renderCartDrawer();
+      }
+    }
+
+    function closeCartDrawer() {
+      const backdrop = document.getElementById('cart-drawer-backdrop');
+      const drawer = document.getElementById('cart-drawer');
+      if (backdrop && drawer) {
+        backdrop.style.display = 'none';
+        drawer.classList.remove('open');
+      }
+    }
+
+    function renderCartDrawer() {
+      const body = document.getElementById('cart-drawer-body');
+      const footer = document.getElementById('cart-drawer-footer');
+      if (!body || !footer) return;
+      
+      const isEn = currentLang === 'en';
+      
+      if (cart.length === 0) {
+        body.innerHTML = `
+          <div style="text-align:center; padding: 50px 20px; color: var(--color-text-muted);">
+            <i class="fa-solid fa-basket-shopping" style="font-size:48px; color:#ccc; margin-bottom:15px;"></i>
+            <h3 style="color:#333; margin-bottom:10px;">${isEn ? 'Your cart is empty' : 'Tu carrito está vacío'}</h3>
+            <p style="font-size:13px;">${isEn ? 'Add high purity peptides from the catalog to start.' : 'Agrega péptidos de alta pureza del catálogo para comenzar.'}</p>
+          </div>
+        `;
+        footer.innerHTML = '';
+        return;
+      }
+      
+      let subtotal = 0;
+      let autoshipDiscount = 0;
+      
+      const autoshipText = isEn ? 'Autoship (15% OFF)' : 'Autoship (15% OFF)';
+      const singleText = isEn ? 'One-Time Purchase' : 'Compra Única';
+      
+      body.innerHTML = cart.map((item, index) => {
+        const itemSubtotal = item.price * item.quantity;
+        subtotal += itemSubtotal;
+        
+        if (item.type === 'autoship') {
+          autoshipDiscount += (item.price / 0.85 * 0.15) * item.quantity;
+        }
+        
+        const prodObj = allProducts.find(p => p.id === item.productId);
+        const nameTrans = prodObj ? translateProduct(prodObj).name : item.name;
+        const typeTrans = item.type === 'autoship' ? autoshipText : singleText;
+        
+        return `
+          <div style="display:flex; gap:15px; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:15px; align-items:center;">
+            <div style="flex:1;">
+              <h4 style="font-size:14.5px; font-weight:600; color:var(--color-black-deep); margin-bottom:3px;">${nameTrans}</h4>
+              <p style="font-size:11.5px; font-weight:700; color: ${item.type === 'autoship' ? 'var(--color-gold)' : '#888'}; margin-bottom:8px;">
+                ${typeTrans}
+              </p>
+              <div style="display:flex; justify-content:space-between; align-items:center;">
+                <div class="quantity-control" style="width:fit-content; height:30px;">
+                  <button class="quantity-btn" onclick="updateDrawerQty(${index}, -1)" style="width:25px; height:25px; font-size:12px;">-</button>
+                  <input type="text" value="${item.quantity}" class="quantity-input" style="width:30px; height:25px; font-size:12px; text-align:center;" readonly>
+                  <button class="quantity-btn" onclick="updateDrawerQty(${index}, 1)" style="width:25px; height:25px; font-size:12px;">+</button>
+                </div>
+                <span style="font-size:14.5px; font-weight:700; color:#333;">$${itemSubtotal.toFixed(2)}</span>
+              </div>
+            </div>
+            <button onclick="removeFromCart('${item.productId}', '${item.type}')" style="background:none; border:none; color:#ff4a4a; cursor:pointer; padding:5px; font-size:16px;">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        `;
+      }).join('');
+      
+      const shippingCost = subtotal >= 99 ? 0 : 12.00;
+      const total = subtotal + shippingCost;
+      
+      const freeLabel = isEn ? 'FREE' : 'GRATIS';
+      const shippingDisplay = shippingCost === 0 ? freeLabel : `$${shippingCost.toFixed(2)}`;
+      
+      footer.innerHTML = `
+        <div style="margin-bottom:15px;">
+          <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:#555;">
+            <span>${isEn ? 'Subtotal:' : 'Subtotal:'}</span>
+            <span>$${subtotal.toFixed(2)}</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:#555;">
+            <span>${isEn ? 'Shipping (Flat):' : 'Envío (Plano):'}</span>
+            <span style="${shippingCost === 0 ? 'color:#4CAF50; font-weight:bold;' : ''}">
+              ${shippingDisplay}
+            </span>
+          </div>
+          ${autoshipDiscount > 0 ? `
+            <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:#4CAF50;">
+              <span>${isEn ? 'Autoship Savings:' : 'Ahorro Autoship:'}</span>
+              <span>-$${autoshipDiscount.toFixed(2)}</span>
+            </div>
+          ` : ''}
+          <div style="display:flex; justify-content:space-between; font-size:17px; font-weight:700; margin-top:10px; padding-top:10px; border-top:1px solid #ddd; color:#111;">
+            <span>${isEn ? 'Total:' : 'Total:'}</span>
+            <span>$${total.toFixed(2)}</span>
+          </div>
+        </div>
+
+        <form id="drawer-checkout-form" onsubmit="checkoutDrawer(event)" style="margin-top:20px;">
+          <p style="font-size:12px; font-weight:700; margin-bottom:10px; color:#333; text-transform:uppercase; letter-spacing:0.5px;">${isEn ? 'Shipping & Payment Info' : 'Datos de Envío y Pago'}</p>
+          <div style="margin-bottom:10px;">
+            <input type="text" id="chk-name" placeholder="${isEn ? 'Full name' : 'Nombre completo'}" class="form-control" style="width:100%; padding:8px; font-size:12.5px; border-radius:4px; border:1px solid #ccc; background-color: #fff; color: #333;" required>
+          </div>
+          <div style="margin-bottom:10px;">
+            <input type="email" id="chk-email" placeholder="${isEn ? 'Email address' : 'Correo electrónico'}" class="form-control" style="width:100%; padding:8px; font-size:12.5px; border-radius:4px; border:1px solid #ccc; background-color: #fff; color: #333;" required>
+          </div>
+          <div style="margin-bottom:15px;">
+            <input type="text" id="chk-address" placeholder="${isEn ? 'Shipping address' : 'Dirección de envío'}" class="form-control" style="width:100%; padding:8px; font-size:12.5px; border-radius:4px; border:1px solid #ccc; background-color: #fff; color: #333;" required>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%; padding: 12px; font-size: 14px; font-weight: 700; border-radius: 4px; display: block; text-align: center;">${isEn ? 'Proceed to Secure Payment' : 'Proceder al Pago Seguro'}</button>
+        </form>
+      `;
+      
+      // Llenar datos de usuario si está logueado
+      if (currentUser) {
+        const chkName = document.getElementById('chk-name');
+        const chkEmail = document.getElementById('chk-email');
+        if (chkName) chkName.value = currentUser.name;
+        if (chkEmail) chkEmail.value = currentUser.email;
+      }
+    }
+
+    function updateDrawerQty(index, val) {
+      const cartItem = cart[index];
+      const prod = allProducts.find(p => p.id === cartItem.productId);
+      let newQty = cartItem.quantity + val;
+      if (prod && prod.stock !== undefined) {
+        newQty = Math.min(newQty, prod.stock);
+      }
+      cart[index].quantity = Math.max(1, newQty);
+      saveCart();
+      renderCartDrawer();
+    }
+
+    function checkoutDrawer(e) {
+      e.preventDefault();
+      
+      const isEn = currentLang === 'en';
+      
+      if (cart.length === 0) {
+        showToast(isEn ? "Your cart is empty" : "Tu carrito está vacío");
+        return;
+      }
+      
+      const name = document.getElementById('chk-name').value.trim();
+      const email = document.getElementById('chk-email').value.trim();
+      const address = document.getElementById('chk-address').value.trim();
+      
+      const subtotal = getCartTotal();
+      const shipping = subtotal >= 99 ? 0 : 12.00;
+      const total = subtotal + shipping;
+      
+      // Realizar la compra en el backend para descontar stock
+      const purchaseItems = cart.map(item => ({
+        productId: item.productId,
+        quantity: item.quantity
+      }));
+      
+      fetch('/api/products/purchase', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ items: purchaseItems })
+      })
+      .then(res => {
+        if (!res.ok) {
+          return res.json().then(data => {
+            throw new Error(data.error || (isEn ? "Failed to complete purchase due to stock limits" : "No se pudo completar la compra por límites de stock"));
+          });
+        }
+        return res.json();
+      })
+      .then(() => {
+        // Simulación de pasarela de pago segura tras éxito en stock
+        if (isEn) {
+          alert(`Thank you for your order, ${name}!\n\nYour order at scbodycare for a total of $${total.toFixed(2)} (Shipping: ${shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}) has been processed successfully.\n\nWe will send billing details and the shipping tracking number directly to: ${email}\nAddress: ${address}`);
+        } else {
+          alert(`¡Gracias por su orden, ${name}!\n\nSu pedido en scbodycare por un total de $${total.toFixed(2)} (Envío: ${shipping === 0 ? 'GRATIS' : `$${shipping.toFixed(2)}`}) se ha procesado con éxito.\n\nEnviaremos los detalles de facturación y el número de guía de envío directamente a: ${email}\nDirección: ${address}`);
+        }
+        
+        clearCart();
+        closeCartDrawer();
+        showToast(isEn ? "Order completed successfully!" : "¡Pedido completado exitosamente!");
+        
+        // Recargar productos para actualizar stock en la UI
+        fetchProducts();
+      })
+      .catch(err => {
+        showToast(err.message);
+      });
+    }
+
+    // Buscador y Lógica de Búsqueda Compartida
+    function performSearch(query) {
+      if (!query) {
+        renderCatalog();
+        return;
+      }
+      const section = document.getElementById('catalog-section');
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+      
+      const filtered = allProducts.filter(p => {
+        const pTrans = translateProduct(p);
+        return pTrans.name.toLowerCase().includes(query) || 
+               pTrans.description.toLowerCase().includes(query);
+      });
+      
+      const grid = document.getElementById('catalog-products-grid');
+      if (filtered.length === 0) {
+        const noResultsMsg = currentLang === 'en' ? `No peptides found for "${query}".` : `No se encontraron péptidos para "${query}".`;
+        grid.innerHTML = `<p style="grid-column:1/-1; text-align:center; padding:40px; color:#666;">${noResultsMsg}</p>`;
+      } else {
+        grid.innerHTML = filtered.map(p => {
+          const pTrans = translateProduct(p);
+          const badgeText = pTrans.promo || (currentLang === 'en' ? 'RESEARCH ONLY' : 'INVESTIGACIÓN');
+          const detailsBtnText = currentLang === 'en' ? 'Details' : 'Detalles';
+          const addBtnText = currentLang === 'en' ? 'Add' : 'Agregar';
+          const escapedName = pTrans.name.replace(/'/g, "\\'");
+          return `
+            <div class="product-card">
+              <div class="product-img-container">
+                <span class="product-badge">${badgeText}</span>
+                <img src="${pTrans.image}" alt="${pTrans.name}" class="product-img">
+              </div>
+              <div style="padding: 20px; display: flex; flex-direction: column; flex: 1;">
+                <h3 style="font-family: var(--font-secondary); font-size: 19px; margin-bottom: 8px; color: var(--color-black-deep); font-style: italic;">${pTrans.name}</h3>
+                <p style="font-size: 13.5px; color: var(--color-text-muted); margin-bottom: 15px; flex: 1; line-height: 1.4;">${pTrans.description.substring(0, 110)}...</p>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: auto;">
+                  <span style="font-size: 18px; font-weight: 700; color: var(--color-gold-light);">$${pTrans.price.toFixed(2)}</span>
+                  <div style="display: flex; gap: 8px;">
+                    <button class="btn-secondary" onclick="openProductModal('${pTrans.id}')" style="padding: 6px 12px; font-size: 12px; border-radius: 4px; border-color: var(--color-gold); color: var(--color-gold-light); box-shadow: none;">${detailsBtnText}</button>
+                    <button class="btn-primary" onclick="addToCart('${pTrans.id}', '${escapedName}', ${pTrans.price}, 1, 'regular')" style="padding: 6px 15px; font-size: 12px; border-radius: 4px; box-shadow: none;">${addBtnText}</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    }
+
+    const searchField = document.getElementById('search-input-field');
+    if (searchField) {
+      searchField.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          performSearch(searchField.value.trim().toLowerCase());
+        }
+      });
+    }
+
+    const mobileSearchInput = document.getElementById('mobile-search-input-field');
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          performSearch(mobileSearchInput.value.trim().toLowerCase());
+          document.getElementById('mobile-search-bar')?.classList.remove('open');
+          updateActiveTab('mobile-tab-home');
+        }
+      });
+    }
+
+    // Funciones globales para control de navegación móvil
+    function focusMobileCatalog(event) {
+      if (event) event.preventDefault();
+      const section = document.getElementById('catalog-section');
+      if (section) section.scrollIntoView({ behavior: 'smooth' });
+      updateActiveTab('mobile-tab-home');
+      document.getElementById('mobile-search-bar')?.classList.remove('open');
+    }
+    
+    function toggleMobileSearch(event) {
+      if (event) event.preventDefault();
+      const searchBar = document.getElementById('mobile-search-bar');
+      if (searchBar) {
+        searchBar.classList.toggle('open');
+        if (searchBar.classList.contains('open')) {
+          setTimeout(() => {
+            document.getElementById('mobile-search-input-field')?.focus();
+          }, 100);
+          updateActiveTab('mobile-tab-search');
+        } else {
+          updateActiveTab('mobile-tab-home');
+        }
+      }
+    }
+    
+    function toggleMobileContactSheet(event) {
+      if (event) event.preventDefault();
+      const backdrop = document.getElementById('mobile-contact-backdrop');
+      const sheet = document.getElementById('mobile-contact-sheet');
+      if (backdrop && sheet) {
+        backdrop.classList.toggle('open');
+        sheet.classList.toggle('open');
+        
+        if (sheet.classList.contains('open')) {
+          updateActiveTab('mobile-tab-contact');
+        } else {
+          updateActiveTab('mobile-tab-home');
+        }
+      }
+    }
+    
+    function updateActiveTab(activeId) {
+      document.querySelectorAll('.mobile-nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      document.getElementById(activeId)?.classList.add('active');
+    }
+
+    // Sobrescribir la función de actualización de carrito para soportar versión móvil
+    function updateCartCountHeader() {
+      const cartBadge = document.getElementById('cart-badge-count');
+      const mobileCartBadge = document.getElementById('mobile-cart-badge-count');
+      const mobileTabCartBadge = document.getElementById('mobile-tab-cart-badge');
+      const count = getCartCount();
+      
+      if (cartBadge) {
+        cartBadge.textContent = count;
+        cartBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+      }
+      if (mobileCartBadge) {
+        mobileCartBadge.textContent = count;
+        mobileCartBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+      }
+      if (mobileTabCartBadge) {
+        mobileTabCartBadge.textContent = count;
+        mobileTabCartBadge.style.display = count > 0 ? 'inline-flex' : 'none';
+      }
+    }
+
+    // Carrusel "La Diferencia"
+    const track = document.querySelector('.carousel-track');
+    if (track) {
+      const slides = Array.from(track.children);
+      const nextButton = document.getElementById('carousel-next-btn');
+      const prevButton = document.getElementById('carousel-prev-btn');
+      const dotsContainer = document.querySelector('.carousel-indicators');
+      const dots = Array.from(dotsContainer.children);
+      
+      let currentSlideIndex = 0;
+      
+      const updateSlidePosition = (index) => {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[index].classList.add('active');
+        currentSlideIndex = index;
+      };
+      
+      if (nextButton) {
+        nextButton.addEventListener('click', () => {
+          let nextIndex = currentSlideIndex + 1;
+          if (nextIndex >= slides.length) nextIndex = 0;
+          updateSlidePosition(nextIndex);
+        });
+      }
+      
+      if (prevButton) {
+        prevButton.addEventListener('click', () => {
+          let prevIndex = currentSlideIndex - 1;
+          if (prevIndex < 0) prevIndex = slides.length - 1;
+          updateSlidePosition(prevIndex);
+        });
+      }
+      
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+          updateSlidePosition(index);
+        });
+      });
+
+      // Auto-play cada 6 segundos
+      setInterval(() => {
+        let nextIndex = currentSlideIndex + 1;
+        if (nextIndex >= slides.length) nextIndex = 0;
+        updateSlidePosition(nextIndex);
+      }, 6000);
+    }
+
+    // Popup automático de registro (2 segundos)
+    document.addEventListener('DOMContentLoaded', () => {
+      const userStr = localStorage.getItem('currentUser');
+      const popupClosed = sessionStorage.getItem('registerPopupClosed');
+      
+      if (!userStr && !popupClosed) {
+        setTimeout(() => {
+          const overlay = document.getElementById('register-popup-overlay');
+          if (overlay) {
+            overlay.style.display = 'flex';
+          }
+        }, 2000);
+      }
+      
+      // Cerrar popup
+      const closeBtn = document.getElementById('register-popup-close');
+      const overlay = document.getElementById('register-popup-overlay');
+      if (closeBtn && overlay) {
+        closeBtn.addEventListener('click', () => {
+          overlay.style.display = 'none';
+          sessionStorage.setItem('registerPopupClosed', 'true');
+        });
+        
+        // Cerrar al hacer click afuera de la caja
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.style.display = 'none';
+            sessionStorage.setItem('registerPopupClosed', 'true');
+          }
+        });
+      }
+
+      // Procesar registro en el popup
+      const popupForm = document.getElementById('popup-register-form');
+      if (popupForm) {
+        popupForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const name = document.getElementById('popup-reg-name').value.trim();
+          const email = document.getElementById('popup-reg-email').value.trim();
+          const password = document.getElementById('popup-reg-password').value.trim();
+          const subscribe = document.getElementById('popup-reg-subscribe').checked;
+          
+          fetch('/api/auth/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, password, subscribe: subscribe })
+          })
+          .then(res => {
+            if (!res.ok) {
+              return res.json().then(err => { throw new Error(err.error || 'Error al registrarse') });
+            }
+            return res.json();
+          })
+          .then(data => {
+            showToast(`¡Registro exitoso! Bienvenido, ${data.user.name}.`);
+            localStorage.setItem('currentUser', JSON.stringify(data.user));
+            overlay.style.display = 'none';
+            sessionStorage.setItem('registerPopupClosed', 'true');
+            setTimeout(() => {
+              window.location.reload();
+            }, 1000);
+          })
+          .catch(err => {
+            alert(err.message);
+          });
+        });
+      }
+    });
+  </script>
+
+  <!-- Fondo oscuro para modal de contacto móvil -->
+  <div class="mobile-contact-backdrop" id="mobile-contact-backdrop" onclick="toggleMobileContactSheet(event)"></div>
+
+  <!-- Bottom Sheet Móvil para Contactos -->
+  <div class="mobile-contact-sheet" id="mobile-contact-sheet">
+    <div class="mobile-contact-sheet-header">
+      <div class="mobile-contact-sheet-indicator"></div>
+      <h3 id="mobile-contact-title">Mantente en contacto</h3>
+      <p id="mobile-contact-desc">Selecciona tu canal oficial preferido:</p>
+    </div>
+    <div class="mobile-contact-sheet-body">
+      <a href="tel:+17045247396" class="mobile-sheet-btn phone-btn-large" id="mobile-contact-call"><i class="fa-solid fa-phone"></i> Llamar</a>
+      <a href="https://wa.me/17045247396" target="_blank" class="mobile-sheet-btn whatsapp-btn-large" id="mobile-contact-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+      <a href="sms:+17045247396" class="mobile-sheet-btn sms-btn-large" id="mobile-contact-sms"><i class="fa-solid fa-comment-sms"></i> SMS / Mensaje</a>
+      <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="mobile-sheet-btn tiktok-btn-large" id="mobile-contact-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Oficial</a>
+      <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="mobile-sheet-btn instagram-btn-large" id="mobile-contact-instagram"><i class="fa-brands fa-instagram"></i> Instagram Oficial</a>
+      <button class="mobile-contact-sheet-close" onclick="toggleMobileContactSheet(event)">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Barra de Navegación Inferior Móvil Estilo App Nativa -->
+  <nav class="mobile-bottom-nav">
+    <a href="#" onclick="focusMobileCatalog(event)" class="mobile-nav-tab active" id="mobile-tab-home">
+      <i class="fa-solid fa-flask"></i>
+      <span class="mobile-nav-tab-label">Catálogo</span>
+    </a>
+    <a href="#" onclick="toggleMobileSearch(event)" class="mobile-nav-tab" id="mobile-tab-search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="mobile-nav-tab-label">Buscar</span>
+    </a>
+    <a href="#" onclick="openCartDrawer(); return false;" class="mobile-nav-tab" id="mobile-tab-cart">
+      <div style="position: relative; display: inline-block;">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="mobile-tab-cart-badge" style="display: none; position: absolute; top: -6px; right: -12px; font-size: 9px; padding: 2px 5px;">0</span>
+      </div>
+      <span class="mobile-nav-tab-label">Carrito</span>
+    </a>
+    <a href="#" onclick="toggleMobileContactSheet(event)" class="mobile-nav-tab" id="mobile-tab-contact">
+      <i class="fa-solid fa-comments"></i>
+      <span class="mobile-nav-tab-label">Contacto</span>
+    </a>
+    <a href="login.html" class="mobile-nav-tab" id="mobile-tab-profile">
+      <i class="fa-solid fa-user"></i>
+      <span class="mobile-nav-tab-label">Perfil</span>
+    </a>
+  </nav>
+
+</body>
+</html>

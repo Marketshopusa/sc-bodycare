@@ -1,0 +1,17 @@
+# Dependencias
+node_modules/
+bun.lockb
+package-lock.json
+
+# Archivos Temporales e Imágenes de Recorte Locales
+temp_crops/
+*.log
+
+# Archivos de Sistema Operativo
+.DS_Store
+Thumbs.db
+
+# Configuración local de IDEs o Agentes
+.vscode/
+.agents/
+.gemini/
