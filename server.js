@@ -1328,6 +1328,33 @@ app.post('/api/auth/login', (req, res) => {
   }
 });
 
+// Inbound Support Contact Form Submission
+app.post('/api/contact', (req, res) => {
+  const { name, email, message } = req.body;
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "Todos los campos son requeridos" });
+  }
+
+  db.emails.unshift({
+    id: 'support-' + Math.random().toString(36).substr(2, 9),
+    toName: 'S&C Support Team',
+    toEmail: 'sales@sc-bodycare.com',
+    fromName: name,
+    fromEmail: email,
+    subject: `Support: Message from ${name}`,
+    body: `<h3>Consulta de Soporte Recibida</h3>
+           <p><strong>Nombre del Cliente:</strong> ${name}</p>
+           <p><strong>Correo del Cliente:</strong> ${email}</p>
+           <p><strong>Mensaje / Consulta:</strong></p>
+           <div style="background:#f9f9f9; padding:15px; border-left:4px solid #D4AF37; border-radius:4px;">
+             ${message.replace(/\n/g, '<br>')}
+           </div>`,
+    timestamp: new Date().toISOString()
+  });
+
+  res.json({ message: "Mensaje de contacto registrado exitosamente" });
+});
+
 // APIs para visualización de logs en panel de administración
 app.get('/api/admin/emails', (req, res) => {
   res.json(db.emails);

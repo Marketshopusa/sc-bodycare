@@ -1116,6 +1116,29 @@ async function handleMockApi(urlString, options) {
     localStorage.setItem('sc_db_users', JSON.stringify(users));
   };
   
+  const getEmails = () => {
+    let emails = localStorage.getItem('sc_db_emails');
+    if (!emails) {
+      const initial = [
+        {
+          id: 'email-init',
+          toName: 'Administrador',
+          toEmail: 'sales@sc-bodycare.com',
+          subject: 'Sistema Inicializado',
+          body: 'El sistema de registro y mensajería de scbodycare está listo para su uso.',
+          timestamp: new Date().toISOString()
+        }
+      ];
+      localStorage.setItem('sc_db_emails', JSON.stringify(initial));
+      return initial;
+    }
+    return JSON.parse(emails);
+  };
+  
+  const saveEmails = (emails) => {
+    localStorage.setItem('sc_db_emails', JSON.stringify(emails));
+  };
+  
   const ADMIN_EMAILS = [
     'scbodycare26@gmail.com',
     'carmen.arnaud@big-bargain-world.com',
@@ -1317,7 +1340,8 @@ async function handleMockApi(urlString, options) {
   
   // 9. GET /api/admin/emails
   if (pathname === '/api/admin/emails' && method === 'GET') {
-    return new Response(JSON.stringify(ADMIN_EMAILS), {
+    const emails = getEmails();
+    return new Response(JSON.stringify(emails), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
@@ -1328,6 +1352,33 @@ async function handleMockApi(urlString, options) {
     const users = getUsers();
     const sanitized = users.map(u => ({ name: u.name, email: u.email, isAdmin: u.isAdmin }));
     return new Response(JSON.stringify(sanitized), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json' }
+    });
+  }
+
+  // 11. POST /api/contact
+  if (pathname === '/api/contact' && method === 'POST') {
+    const emails = getEmails();
+    emails.unshift({
+      id: 'support-' + Math.random().toString(36).substring(2, 11),
+      toName: 'S&C Support Team',
+      toEmail: 'sales@sc-bodycare.com',
+      fromName: body.name,
+      fromEmail: body.email,
+      subject: `Support: Message from ${body.name}`,
+      body: `<h3>Consulta de Soporte Recibida</h3>
+             <p><strong>Nombre del Cliente:</strong> ${body.name}</p>
+             <p><strong>Correo del Cliente:</strong> ${body.email}</p>
+             <p><strong>Mensaje / Consulta:</strong></p>
+             <div style="background:#f9f9f9; padding:15px; border-left:4px solid #D4AF37; border-radius:4px;">
+               ${(body.message || '').replace(/\n/g, '<br>')}
+             </div>`,
+      timestamp: new Date().toISOString()
+    });
+    saveEmails(emails);
+    
+    return new Response(JSON.stringify({ message: "Mensaje de contacto registrado" }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });

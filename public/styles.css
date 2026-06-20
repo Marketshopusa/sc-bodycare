@@ -2070,14 +2070,68 @@ footer {
 .mobile-contact-sheet {
   display: none;
   background-color: #FAF6EE;
-  border: 1px solid var(--color-gold);
+  border: 2px solid var(--color-gold);
   border-radius: 12px;
   width: 750px;
-  max-width: 90%;
+  max-width: 95%;
   padding: 30px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 45px rgba(0,0,0,0.25);
   z-index: 3000;
   box-sizing: border-box;
+}
+.mobile-contact-sheet.open {
+  display: block;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.mobile-contact-sheet-body {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+  margin-top: 20px;
+}
+.mobile-sheet-btn {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 6px;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  margin-bottom: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  box-sizing: border-box;
+}
+.mobile-sheet-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+.mobile-contact-sheet-close {
+  background-color: #222;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.2s;
+}
+.mobile-contact-sheet-close:hover {
+  background-color: #333;
 }
 
 /* Native-feeling mobile app adaptations */
