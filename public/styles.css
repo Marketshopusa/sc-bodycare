@@ -2057,9 +2057,27 @@ footer {
 }
 .mobile-contact-backdrop {
   display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 2999;
+  justify-content: center;
+  align-items: center;
+}
+.mobile-contact-backdrop.open {
+  display: flex;
 }
 .mobile-contact-sheet {
   display: none;
+  background-color: #FAF6EE;
+  border: 1px solid var(--color-gold);
+  border-radius: 12px;
+  width: 750px;
+  max-width: 90%;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  z-index: 3000;
+  box-sizing: border-box;
 }
 
 /* Native-feeling mobile app adaptations */

@@ -122,7 +122,7 @@
         <div class="footer-col">
           <h3>Soporte Técnico</h3>
           <ul>
-            <li><a href="index.html?contact=open">Atención al Cliente</a></li>
+            <li><a href="index.html?contact=open" onclick="if(window.toggleMobileContactSheet) { window.toggleMobileContactSheet(event); return false; }">Atención al Cliente</a></li>
             <li><a href="policies.html#envios-devoluciones">Política de Envío y Devoluciones</a></li>
             <li><a href="policies.html#prevencion">Prevención de Adicciones</a></li>
             <li><a href="policies.html#aviso-legal">Aviso Legal</a></li>
@@ -280,21 +280,16 @@
       
       summarySubtotal.textContent = `$${subtotal.toFixed(2)}`;
       
-      // Regla de envío gratis para pedidos >= $99
+      // Envío coordinado según distancia (sin tarifa plana)
       let shippingPrice = 0;
       if (subtotal === 0) {
-        shippingPrice = 0;
         summaryShipping.textContent = "$0.00";
-      } else if (subtotal >= 99) {
-        shippingPrice = 0;
-        summaryShipping.textContent = "GRATIS";
-        summaryShipping.style.color = "#4CAF50";
-        summaryShipping.style.fontWeight = "bold";
-      } else {
-        shippingPrice = 12.00;
-        summaryShipping.textContent = `$${shippingPrice.toFixed(2)}`;
         summaryShipping.style.color = "var(--color-text-muted)";
         summaryShipping.style.fontWeight = "normal";
+      } else {
+        summaryShipping.textContent = "A coordinar (según distancia)";
+        summaryShipping.style.color = "var(--color-gold)";
+        summaryShipping.style.fontWeight = "bold";
       }
 
       // Descuentos promocionales si el cliente compra bajo Autoship
@@ -332,7 +327,7 @@
       }
 
       // Simular compra exitosa
-      alert(`¡Gracias por tu compra, ${currentUser.name}!\nTu pedido en scbodycare por un total de ${document.getElementById('summary-total').textContent} se ha procesado exitosamente mediante pasarela segura.\n\nRecibirás la confirmación de la factura en tu correo: ${currentUser.email}`);
+      alert(`¡Gracias por tu compra, ${currentUser.name}!\nTu pedido en scbodycare por un total de ${document.getElementById('summary-total').textContent} se ha procesado exitosamente mediante pasarela segura.\n\nEl costo de envío se calculará y coordinará de acuerdo a la distancia de entrega. Recibirás la confirmación de la factura en tu correo: ${currentUser.email}`);
       clearCart();
       window.location.href = "index.html";
     }

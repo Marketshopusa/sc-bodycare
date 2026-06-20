@@ -270,7 +270,7 @@
         <div class="footer-col">
           <h3>Soporte Técnico</h3>
           <ul>
-            <li><a href="index.html?contact=open">Atención al Cliente</a></li>
+            <li><a href="index.html?contact=open" onclick="if(window.toggleMobileContactSheet) { window.toggleMobileContactSheet(event); return false; }">Atención al Cliente</a></li>
             <li><a href="policies.html#envios-devoluciones">Política de Envío y Devoluciones</a></li>
             <li><a href="policies.html#prevencion">Prevención de Adicciones</a></li>
             <li><a href="policies.html#aviso-legal">Aviso Legal</a></li>
@@ -1714,11 +1714,10 @@
         `;
       }).join('');
       
-      const shippingCost = subtotal >= 99 ? 0 : 12.00;
-      const total = subtotal + shippingCost;
+      const shippingCost = 0; // Exclude flat shipping rate
+      const total = subtotal; // Total is just subtotal
       
-      const freeLabel = isEn ? 'FREE' : 'GRATIS';
-      const shippingDisplay = shippingCost === 0 ? freeLabel : `$${shippingCost.toFixed(2)}`;
+      const shippingDisplay = isEn ? 'Calculated on delivery' : 'A coordinar (según distancia)';
       
       footer.innerHTML = `
         <div style="margin-bottom:15px;">
@@ -1727,8 +1726,8 @@
             <span>$${subtotal.toFixed(2)}</span>
           </div>
           <div style="display:flex; justify-content:space-between; font-size:14px; margin-bottom:6px; color:#555;">
-            <span>${isEn ? 'Shipping (Flat):' : 'Envío (Plano):'}</span>
-            <span style="${shippingCost === 0 ? 'color:#4CAF50; font-weight:bold;' : ''}">
+            <span>${isEn ? 'Shipping:' : 'Envío:'}</span>
+            <span style="color:var(--color-gold); font-weight:bold;">
               ${shippingDisplay}
             </span>
           </div>
@@ -1820,9 +1819,9 @@
       .then(() => {
         // Simulación de pasarela de pago segura tras éxito en stock
         if (isEn) {
-          alert(`Thank you for your order, ${name}!\n\nYour order at scbodycare for a total of $${total.toFixed(2)} (Shipping: ${shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}) has been processed successfully.\n\nWe will send billing details and the shipping tracking number directly to: ${email}\nAddress: ${address}`);
+          alert(`Thank you for your order, ${name}!\n\nYour order at scbodycare for a total of ${total.toFixed(2)} (plus shipping cost coordinated based on distance) has been processed successfully.\n\nWe will send billing details and the shipping tracking number directly to: ${email}\nAddress: ${address}`);
         } else {
-          alert(`¡Gracias por su orden, ${name}!\n\nSu pedido en scbodycare por un total de $${total.toFixed(2)} (Envío: ${shipping === 0 ? 'GRATIS' : `$${shipping.toFixed(2)}`}) se ha procesado con éxito.\n\nEnviaremos los detalles de facturación y el número de guía de envío directamente a: ${email}\nDirección: ${address}`);
+          alert(`¡Gracias por su orden, ${name}!\n\nSu pedido en scbodycare por un total de ${total.toFixed(2)} (más costo de envío a coordinar según distancia) se ha procesado con éxito.\n\nEnviaremos los detalles de facturación y el número de guía de envío directamente a: ${email}\nDirección: ${address}`);
         }
         
         clearCart();
@@ -1945,6 +1944,15 @@
           updateActiveTab('mobile-tab-home');
         }
       }
+    }
+    
+    function submitContactForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const isEn = (localStorage.getItem('lang') || 'es') === 'en';
+      showToast(isEn ? `Thank you, ${name}! Your message has been sent.` : `¡Gracias, ${name}! Tu mensaje ha sido enviado.`);
+      document.getElementById('direct-contact-form').reset();
+      toggleMobileContactSheet();
     }
     
     function updateActiveTab(activeId) {
@@ -2100,16 +2108,37 @@
   <div class="mobile-contact-sheet" id="mobile-contact-sheet">
     <div class="mobile-contact-sheet-header">
       <div class="mobile-contact-sheet-indicator"></div>
-      <h3 id="mobile-contact-title">Mantente en contacto</h3>
-      <p id="mobile-contact-desc">Selecciona tu canal oficial preferido:</p>
+      <h3 id="mobile-contact-title">Atención al Cliente</h3>
+      <p id="mobile-contact-desc">Selecciona tu canal preferido o envíanos un mensaje directo:</p>
     </div>
     <div class="mobile-contact-sheet-body">
-      <a href="tel:+17045247396" class="mobile-sheet-btn phone-btn-large" id="mobile-contact-call"><i class="fa-solid fa-phone"></i> Llamar</a>
-      <a href="https://wa.me/17045247396" target="_blank" class="mobile-sheet-btn whatsapp-btn-large" id="mobile-contact-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
-      <a href="sms:+17045247396" class="mobile-sheet-btn sms-btn-large" id="mobile-contact-sms"><i class="fa-solid fa-comment-sms"></i> SMS / Mensaje</a>
-      <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="mobile-sheet-btn tiktok-btn-large" id="mobile-contact-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Oficial</a>
-      <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="mobile-sheet-btn instagram-btn-large" id="mobile-contact-instagram"><i class="fa-brands fa-instagram"></i> Instagram Oficial</a>
-      <button class="mobile-contact-sheet-close" onclick="toggleMobileContactSheet(event)">Cerrar</button>
+      <!-- Columna 1: Datos y Redes de Contacto -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <a href="tel:+17045247396" class="mobile-sheet-btn phone-btn-large" id="mobile-contact-call"><i class="fa-solid fa-phone"></i> Llamar: +1 (704) 524-7396</a>
+        <a href="https://wa.me/17045247396" target="_blank" class="mobile-sheet-btn whatsapp-btn-large" id="mobile-contact-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp Chat</a>
+        <a href="sms:+17045247396" class="mobile-sheet-btn sms-btn-large" id="mobile-contact-sms"><i class="fa-solid fa-comment-sms"></i> Enviar SMS / Mensaje</a>
+        <a href="mailto:sales@sc-bodycare.com" class="mobile-sheet-btn" style="background-color:#444; color:#fff;" id="mobile-contact-email"><i class="fa-solid fa-envelope" style="color:var(--color-gold);"></i> Correo: sales@sc-bodycare.com</a>
+        <a href="https://www.tiktok.com/@sc.body.care6?_r=1&_t=ZT-97KMCyphd4X" target="_blank" class="mobile-sheet-btn tiktok-btn-large" id="mobile-contact-tiktok"><i class="fa-brands fa-tiktok"></i> TikTok Oficial</a>
+        <a href="https://www.instagram.com/scbodycare26?igsh=MXQ4eHNpdjZvOXZseQ%3D%3D&utm_source=qr" target="_blank" class="mobile-sheet-btn instagram-btn-large" id="mobile-contact-instagram"><i class="fa-brands fa-instagram"></i> Instagram Oficial</a>
+        <button class="mobile-contact-sheet-close" onclick="toggleMobileContactSheet(event)" style="margin-top:10px;">Cerrar Ventana</button>
+      </div>
+      <!-- Columna 2: Formulario de Contacto Directo -->
+      <form id="direct-contact-form" onsubmit="submitContactForm(event)" style="display: flex; flex-direction: column; gap: 12px; background: #ffffff; padding: 20px; border-radius: 8px; border: var(--border-silver-subtle); box-sizing: border-box;">
+        <h4 style="font-size: 14px; font-weight: 700; color: var(--color-black-deep); margin: 0 0 5px 0; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 2px solid var(--color-gold); padding-bottom: 6px; text-align: left;">Formulario de Contacto Directo</h4>
+        <div style="text-align: left;">
+          <label style="font-size: 11px; font-weight: 700; color: #555; display: block; margin-bottom: 4px;">Nombre completo</label>
+          <input type="text" id="contact-name" placeholder="Escribe tu nombre" class="form-control" style="width: 100%; padding: 8px 10px; font-size: 13px; background-color:#fff; color:#333; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+        <div style="text-align: left;">
+          <label style="font-size: 11px; font-weight: 700; color: #555; display: block; margin-bottom: 4px;">Correo electrónico</label>
+          <input type="email" id="contact-email" placeholder="Escribe tu correo" class="form-control" style="width: 100%; padding: 8px 10px; font-size: 13px; background-color:#fff; color:#333; border: 1px solid #ccc; border-radius: 4px;" required>
+        </div>
+        <div style="text-align: left;">
+          <label style="font-size: 11px; font-weight: 700; color: #555; display: block; margin-bottom: 4px;">Mensaje / Consulta</label>
+          <textarea id="contact-message" placeholder="¿En qué podemos ayudarte?" class="form-control" rows="3" style="width: 100%; padding: 8px 10px; font-size: 13px; background-color:#fff; color:#333; border: 1px solid #ccc; border-radius: 4px; resize: none;" required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width: 100%; padding: 10px; font-size: 13px; font-weight: 700; border-radius: 4px;">Enviar Mensaje</button>
+      </form>
     </div>
   </div>
 
