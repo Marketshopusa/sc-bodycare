@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="security-shield.js"></script>
   <script>
     (function() {
       const user = JSON.parse(localStorage.getItem('sc_user') || 'null');
@@ -233,6 +234,10 @@
     <div class="container" style="display: block;">
       <div class="footer-bottom">
         <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p style="font-size: 11px; color: var(--color-text-muted); margin-top: 5px; margin-bottom: 10px;">
+          <span class="lang-es">Esta página utiliza inteligencia artificial</span>
+          <span class="lang-en">This page uses artificial intelligence</span>
+        </p>
       </div>
     </div>
   </footer>
@@ -242,6 +247,16 @@
     let products = [];
     let users = [];
     let emailLogs = [];
+
+    function escapeHTML(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
     const subcategoriesMap = {
       'Metabolismo & Pérdida de Peso': ['Péptidos'],
       'Regeneración & Estética': ['Packs', 'Péptidos'],
@@ -326,11 +341,11 @@
       products.forEach(p => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td><strong>${p.name}</strong></td>
-          <td>${p.category}</td>
+          <td><strong>${escapeHTML(p.name)}</strong></td>
+          <td>${escapeHTML(p.category)}</td>
           <td>$${p.price.toFixed(2)}</td>
           <td><span style="font-weight: bold; color: ${p.stock > 0 ? '#4CAF50' : '#f44336'}">${p.stock !== undefined ? p.stock : 0}</span></td>
-          <td><span style="font-size:11px; background-color:#222; padding:2px 6px; border-radius:3px; color:var(--color-gold);">${p.promo || 'Ninguna'}</span></td>
+          <td><span style="font-size:11px; background-color:#222; padding:2px 6px; border-radius:3px; color:var(--color-gold);">${escapeHTML(p.promo || 'Ninguna')}</span></td>
           <td>
             <button class="btn-edit" onclick="startEditProduct('${p.id}')">Editar</button>
             <button class="btn-delete" onclick="deleteProduct('${p.id}')">Eliminar</button>
@@ -347,8 +362,8 @@
       users.forEach(u => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-          <td>${u.name}</td>
-          <td>${u.email}</td>
+          <td>${escapeHTML(u.name)}</td>
+          <td>${escapeHTML(u.email)}</td>
           <td>
             <span style="font-weight:bold; color: ${u.subscribed ? '#4CAF50' : '#f44336'}">
               ${u.subscribed ? '✅ Autorizado (Suscrito)' : '❌ No Suscrito'}
@@ -382,10 +397,10 @@
         
         item.innerHTML = `
           <div class="email-log-header">
-            <span class="email-log-recipient">Para: ${log.toName} (${log.toEmail})</span>
+            <span class="email-log-recipient">Para: ${escapeHTML(log.toName)} (${escapeHTML(log.toEmail)})</span>
             <span class="email-log-time">${dateStr}</span>
           </div>
-          <div class="email-log-subject"><i class="fa fa-envelope" style="color:var(--color-gold); margin-right:5px;"></i> ${log.subject}</div>
+          <div class="email-log-subject"><i class="fa fa-envelope" style="color:var(--color-gold); margin-right:5px;"></i> ${escapeHTML(log.subject)}</div>
         `;
         container.appendChild(item);
       });

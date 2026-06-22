@@ -2506,4 +2506,16 @@ footer {
   to { transform: translateY(0); }
 }
 
+/* --- LANGUAGE LAYOUT HELPERS --- */
+html[lang="es"] .lang-en { display: none !important; }
+html[lang="es"] .lang-es { display: block !important; }
+html[lang="en"] .lang-es { display: none !important; }
+html[lang="en"] .lang-en { display: block !important; }
 
+span.lang-es, span.lang-en {
+  display: inline-block;
+}
+html[lang="es"] span.lang-en { display: none !important; }
+html[lang="es"] span.lang-es { display: inline !important; }
+html[lang="en"] span.lang-es { display: none !important; }
+html[lang="en"] span.lang-en { display: inline !important; }

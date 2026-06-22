@@ -1075,6 +1075,20 @@ async function handleMockApi(urlString, options) {
   const method = (options && options.method || 'GET').toUpperCase();
   const body = options && options.body ? (typeof options.body === 'string' ? JSON.parse(options.body) : options.body) : null;
   
+  const escapeHTML = (str) => {
+    if (typeof str !== 'string') return str;
+    return str.replace(/[&<>"']/g, (m) => {
+      switch (m) {
+        case '&': return '&amp;';
+        case '<': return '&lt;';
+        case '>': return '&gt;';
+        case '"': return '&quot;';
+        case "'": return '&#39;';
+        default: return m;
+      }
+    });
+  };
+  
   let pathname = '';
   try {
     const urlObj = new URL(urlString, window.location.origin);
@@ -1302,11 +1316,12 @@ async function handleMockApi(urlString, options) {
       });
     }
     
-    const newUser = { name, email, password, isAdmin: ADMIN_EMAILS.includes(email) };
+    const cleanName = escapeHTML(name);
+    const newUser = { name: cleanName, email, password, isAdmin: ADMIN_EMAILS.includes(email) };
     users.push(newUser);
     saveUsers(users);
     
-    const userResult = { name, email, isAdmin: newUser.isAdmin };
+    const userResult = { name: cleanName, email, isAdmin: newUser.isAdmin };
     return new Response(JSON.stringify({ success: true, user: userResult }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' }
@@ -1360,19 +1375,23 @@ async function handleMockApi(urlString, options) {
   // 11. POST /api/contact
   if (pathname === '/api/contact' && method === 'POST') {
     const emails = getEmails();
+    const cleanName = escapeHTML(body.name);
+    const cleanEmail = escapeHTML(body.email);
+    const cleanMessage = escapeHTML(body.message);
+
     emails.unshift({
       id: 'support-' + Math.random().toString(36).substring(2, 11),
       toName: 'S&C Support Team',
       toEmail: 'sales@sc-bodycare.com',
-      fromName: body.name,
-      fromEmail: body.email,
-      subject: `Support: Message from ${body.name}`,
+      fromName: cleanName,
+      fromEmail: cleanEmail,
+      subject: `Support: Message from ${cleanName}`,
       body: `<h3>Consulta de Soporte Recibida</h3>
-             <p><strong>Nombre del Cliente:</strong> ${body.name}</p>
-             <p><strong>Correo del Cliente:</strong> ${body.email}</p>
+             <p><strong>Nombre del Cliente:</strong> ${cleanName}</p>
+             <p><strong>Correo del Cliente:</strong> ${cleanEmail}</p>
              <p><strong>Mensaje / Consulta:</strong></p>
              <div style="background:#f9f9f9; padding:15px; border-left:4px solid #D4AF37; border-radius:4px;">
-               ${(body.message || '').replace(/\n/g, '<br>')}
+               ${(cleanMessage || '').replace(/\n/g, '<br>')}
              </div>`,
       timestamp: new Date().toISOString()
     });

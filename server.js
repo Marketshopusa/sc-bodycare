@@ -1052,6 +1052,20 @@ let db = {
   emails: []
 };
 
+function escapeHTML(str) {
+  if (typeof str !== 'string') return str;
+  return str.replace(/[&<>"']/g, (m) => {
+    switch (m) {
+      case '&': return '&amp;';
+      case '<': return '&lt;';
+      case '>': return '&gt;';
+      case '"': return '&quot;';
+      case "'": return '&#39;';
+      default: return m;
+    }
+  });
+}
+
 // Asegurar que todos los productos iniciales tengan la propiedad stock
 db.products.forEach(p => {
   if (p.stock === undefined) {
@@ -1294,7 +1308,7 @@ app.post('/api/auth/register', (req, res) => {
 
   const isAdmin = ADMIN_EMAILS.includes(email.toLowerCase());
   const newUser = {
-    name,
+    name: escapeHTML(name),
     email: email.toLowerCase(),
     subscribed: subscribe !== undefined ? subscribe === true : true,
     isAdmin
@@ -1335,19 +1349,23 @@ app.post('/api/contact', (req, res) => {
     return res.status(400).json({ error: "Todos los campos son requeridos" });
   }
 
+  const cleanName = escapeHTML(name);
+  const cleanEmail = escapeHTML(email);
+  const cleanMessage = escapeHTML(message);
+
   db.emails.unshift({
     id: 'support-' + Math.random().toString(36).substr(2, 9),
     toName: 'S&C Support Team',
     toEmail: 'sales@sc-bodycare.com',
-    fromName: name,
-    fromEmail: email,
-    subject: `Support: Message from ${name}`,
+    fromName: cleanName,
+    fromEmail: cleanEmail,
+    subject: `Support: Message from ${cleanName}`,
     body: `<h3>Consulta de Soporte Recibida</h3>
-           <p><strong>Nombre del Cliente:</strong> ${name}</p>
-           <p><strong>Correo del Cliente:</strong> ${email}</p>
+           <p><strong>Nombre del Cliente:</strong> ${cleanName}</p>
+           <p><strong>Correo del Cliente:</strong> ${cleanEmail}</p>
            <p><strong>Mensaje / Consulta:</strong></p>
            <div style="background:#f9f9f9; padding:15px; border-left:4px solid #D4AF37; border-radius:4px;">
-             ${message.replace(/\n/g, '<br>')}
+             ${cleanMessage.replace(/\n/g, '<br>')}
            </div>`,
     timestamp: new Date().toISOString()
   });

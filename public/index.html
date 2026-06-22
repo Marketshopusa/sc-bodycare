@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script src="security-shield.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>scbodycare | Tienda en Línea de Suplementos y Cuidado Corporal Premium</title>
@@ -548,6 +549,7 @@
 
       <div class="footer-bottom" style="margin-top: 20px;">
         <p>&copy; 2026 scbodycare Corporation. Todos los derechos reservados.</p>
+        <p id="footer-ai-disclaimer" style="font-size: 11px; color: var(--color-text-muted); margin-top: 5px; margin-bottom: 10px;"></p>
         <p>
           <a href="policies.html#terminos">Términos y Condiciones</a> | 
           <a href="policies.html#privacidad">Política de Privacidad</a> | 
@@ -1464,6 +1466,13 @@
         footerBottomCopyright.textContent = lang === 'en' 
           ? "© 2026 scbodycare Corporation. All rights reserved." 
           : "© 2026 scbodycare Corporation. Todos los derechos reservados.";
+      }
+
+      const footerAiDisclaimer = document.getElementById('footer-ai-disclaimer');
+      if (footerAiDisclaimer) {
+        footerAiDisclaimer.textContent = lang === 'en'
+          ? "This page uses artificial intelligence"
+          : "Esta página utiliza inteligencia artificial";
       }
 
       // Footer Col 3 (Contact Links)
